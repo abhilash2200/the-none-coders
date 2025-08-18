@@ -3,10 +3,12 @@ import Image from "next/image";
 import HeadingText from "./components/HeadingText";
 import WhatWeDeliver from "./components/WhatWeDeliver";
 import SolutionCard from "./components/SolutionCard";
-// @ts-expect-error - Splide types issue
+
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import TechnologiesUsed from "./components/TechnologiesUsed";
 import { Tooltip } from "@mui/material";
+import { EnterpriseCards } from "./components/home/EnterpriseCards";
+import { SolutionCards } from "./components/home/SolutionCards";
 
 interface WhatWeDeliverData {
   title: string;
@@ -71,39 +73,7 @@ const expertiseData: ExpertiseData[] = [
 
 ];
 
-interface Solution {
-  title: string;
-  img: string;
-  desc: string;
-  href: string;
-}
 
-const solution: Solution[] = [
-  {
-    title: 'CRM DEVELOPMENT',
-    img: '/assets/img/solution.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
-  },
-  {
-    title: 'APP DEVELOPMENT',
-    img: '/assets/img/solution-2.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
-  },
-  {
-    title: 'OTT PLATFORM DEVELOPMENT',
-    img: '/assets/img/solution-3.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
-  },
-  {
-    title: 'ERP DEVELOPMENT',
-    img: '/assets/img/solution-4.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
-  },
-];
 
 
 export default function Home() {
@@ -178,14 +148,14 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap gap-y-8">
             {
-              whatwedeliverData.map((ele, i) => {
-                return (
+              whatwedeliverData.map((ele,i)=>{
+                return(
                   <div key={i} className="w-full md:w-[50%] xl:w-[25%] px-1.5">
-                    <WhatWeDeliver
-                      title={ele.title}
-                      desc={ele.desc}
-                      icon={ele.icon}
-                    />
+                      <WhatWeDeliver 
+                        title={ele.title} 
+                        desc={ele.desc} 
+                        icon={ele.icon} 
+                      />
                   </div>
                 )
               })
@@ -195,49 +165,7 @@ export default function Home() {
       </section>
 
       <section className="py-6 lg:py-12">
-        <div className="container mx-auto px-4">
-          <div className="mb-6 lg:mb-10">
-            <HeadingText textalign="text-center" heading="EXPERTISE" />
-          </div>
-          <Splide
-            aria-label="My Favorite Images"
-            options={{
-              type: 'loop',
-              perPage: 4,
-              rewind: true,
-              gap: '1rem',
-              classes: {
-                arrows: 'splide__arrows absolute -bottom-10 left-0 w-[110px]',
-                arrow: 'splide__arrow ',
-                prev: 'splide__arrow--prev your-class-prev',
-                next: 'splide__arrow--next your-class-next',
-              },
-              breakpoints: {
-                1000: {
-                  perPage: 3
-                },
-                640: {
-                  perPage: 1,
-                },
-              }
-            }}
-          >
-            {
-              expertiseData.map((ele, i) => {
-                return (
-                  <SplideSlide key={i}>
-                    <SolutionCard
-                      title={ele.title}
-                      img={ele.img}
-                      desc={ele.desc}
-                      href={ele.href}
-                    />
-                  </SplideSlide>
-                )
-              })
-            }
-          </Splide>
-        </div>
+        <EnterpriseCards />
       </section>
 
       <section className="py-6 lg:py-12">
@@ -248,27 +176,7 @@ export default function Home() {
       </section>
 
       <section className="py-6 lg:py-12">
-        <div className="container mx-auto px-4">
-          <div className="mb-6 lg:mb-10">
-            <HeadingText textalign="text-center" heading="SOLUTIONS" />
-          </div>
-          <div className="flex flex-wrap gap-y-4">
-            {
-              solution.map((ele, i) => {
-                return (
-                  <div key={i} className="w-full md:w-[50%] lg:w-[25%] px-1.5">
-                    <SolutionCard
-                      title={ele.title}
-                      img={ele.img}
-                      desc={ele.desc}
-                      href={ele.href}
-                    />
-                  </div>
-                )
-              })
-            }
-          </div>
-        </div>
+        <SolutionCards />
       </section>
 
       <section className="py-6 lg:py-12">

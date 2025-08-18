@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { PT_Sans } from "next/font/google";
 import "./globals.css";
 import '@splidejs/react-splide/css';
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import LoaderWrapper from "./components/Loader";
 
 const PTSans = PT_Sans({
   weight: ["400","700"],
   subsets: ["latin"],
 });
-
 
 export const metadata: Metadata = {
   title: "The Non Coders",
@@ -19,18 +19,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${PTSans.className} antialiased`}
-      >
+      <body className={`${PTSans.className} antialiased`}>
         <AppRouterCacheProvider>
-          <Header/>
-          {children}
-          <Footer/>
+          <LoaderWrapper>
+            <Header />
+            {children}
+            <Footer />
+          </LoaderWrapper>
         </AppRouterCacheProvider>
       </body>
     </html>
