@@ -10,7 +10,7 @@ const LoaderWrapper: React.FC<LoaderWrapperProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000); // 2 sec loader
+    const timer = setTimeout(() => setLoading(false), 3500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -18,30 +18,29 @@ const LoaderWrapper: React.FC<LoaderWrapperProps> = ({ children }) => {
     if (!loading || !containerRef.current) return;
 
     const animationContainer = containerRef.current;
-    const textData = "In space no one can hear you scream.";
+    const textData = "The Non Coders.";
 
-    animationContainer.innerHTML = ""; // clear previous
+    animationContainer.innerHTML = "";
 
     const words = textData.split(" ");
-    words.forEach((word, i) => {
+    words.forEach((word, wi) => {
       const wordSpan = document.createElement("span");
-      wordSpan.className = "animated-word inline-block mx-1";
+      wordSpan.className = "animated-word mx-1";
       wordSpan.setAttribute("data-text", word);
 
-      // split letters
-      word.split("").forEach((letter) => {
+      word.split("").forEach((letter, li) => {
         const letterSpan = document.createElement("span");
         letterSpan.className = "animated-letter";
         letterSpan.setAttribute("aria-hidden", "true");
         letterSpan.innerHTML = letter === " " ? "&nbsp;" : letter;
+
+        const delay = Math.random() * 2 + wi * 0.3;
+        letterSpan.style.animationDelay = `${delay}s`;
+
         wordSpan.appendChild(letterSpan);
       });
 
       animationContainer.appendChild(wordSpan);
-
-      setTimeout(() => {
-        wordSpan.classList.add("animate");
-      }, i * 200);
     });
   }, [loading]);
 
@@ -50,7 +49,7 @@ const LoaderWrapper: React.FC<LoaderWrapperProps> = ({ children }) => {
       <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
         <div
           ref={containerRef}
-          className="text-4xl font-mono text-white select-none"
+          className="animated-title text-4xl md:text-5xl font-mono text-white text-center select-none"
         ></div>
       </div>
     );
