@@ -26,6 +26,17 @@ const LoaderWrapper: React.FC<LoaderWrapperProps> = ({
 
     return () => clearTimeout(timer);
   }, [fadeDuration, showDuration]);
+  
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [loading]);
 
   // Glitch text animation
   useEffect(() => {
