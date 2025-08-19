@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${PTSans.className} antialiased`}>
         <AppRouterCacheProvider>
-          <LoaderWrapper>
+          <LoaderWrapper fadeDuration={1500} showDuration={3000}>
             <Header />
             {children}
             <Footer />

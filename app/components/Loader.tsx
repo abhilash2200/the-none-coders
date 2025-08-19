@@ -1,22 +1,35 @@
 "use client";
+
 import React, { useEffect, useState, useRef } from "react";
 
 interface LoaderWrapperProps {
   children: React.ReactNode;
+  fadeDuration?: number;
+  showDuration?: number;
 }
 
-const LoaderWrapper: React.FC<LoaderWrapperProps> = ({ children }) => {
+const LoaderWrapper: React.FC<LoaderWrapperProps> = ({
+  children,
+  fadeDuration = 1000,
+  showDuration = 3500,
+}) => {
   const [loading, setLoading] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [hideLoader, setHideLoader] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3500);
+    const timer = setTimeout(() => {
+      setLoading(false);
+      const fadeTimer = setTimeout(() => setHideLoader(true), fadeDuration);
+      return () => clearTimeout(fadeTimer);
+    }, showDuration);
+
     return () => clearTimeout(timer);
-  }, []);
+  }, [fadeDuration, showDuration]);
 
+  // Glitch text animation
   useEffect(() => {
-    if (!loading || !containerRef.current) return;
-
+    if (!containerRef.current) return;
     const animationContainer = containerRef.current;
     const textData = "The Non Coders.";
 
@@ -28,7 +41,7 @@ const LoaderWrapper: React.FC<LoaderWrapperProps> = ({ children }) => {
       wordSpan.className = "animated-word mx-1";
       wordSpan.setAttribute("data-text", word);
 
-      word.split("").forEach((letter, li) => {
+      word.split("").forEach((letter) => {
         const letterSpan = document.createElement("span");
         letterSpan.className = "animated-letter";
         letterSpan.setAttribute("aria-hidden", "true");
@@ -42,20 +55,35 @@ const LoaderWrapper: React.FC<LoaderWrapperProps> = ({ children }) => {
 
       animationContainer.appendChild(wordSpan);
     });
-  }, [loading]);
+  }, []);
 
-  if (loading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
+  return (
+    <>
+      {!hideLoader && (
         <div
-          ref={containerRef}
-          className="animated-title text-4xl md:text-5xl font-mono text-white text-center select-none"
-        ></div>
+          className="fixed inset-0 flex items-center justify-center bg-black z-50 transition-opacity"
+          style={{
+            transitionDuration: `${fadeDuration}ms`,
+            opacity: loading ? 1 : 0,
+          }}
+        >
+          <div
+            ref={containerRef}
+            className="animated-title text-4xl md:text-5xl font-mono text-white text-center select-none"
+          />
+        </div>
+      )}
+      <div
+        className="transition-opacity"
+        style={{
+          transitionDuration: `${fadeDuration}ms`,
+          opacity: !loading ? 1 : 0,
+        }}
+      >
+        {children}
       </div>
-    );
-  }
-
-  return <>{children}</>;
+    </>
+  );
 };
 
 export default LoaderWrapper;

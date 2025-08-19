@@ -11,28 +11,28 @@ const accordionData = [
   },
   {
     title: 'SUSTAINABILITY',
-    content: 'This is the content of the second accordion item.',
+    content: 'More than 60% of the industry is still not aware of the use of a basic software. It can reduce their daily hustle of tedious jobs by 50-70% depending on the nature of the business. We are on a path to develop some sustainable products and services which can help them to reduce the hustle and increase the productivity.',
   },
   {
     title: 'TRANSPARENCY',
-    content: 'This is the content of the third accordion item.',
+    content: 'We build trust with transparency. Any industry is now completely  data-driven and behaviour analysis of the consumer. Keeping your data safe and secure with the maximum transparency and control is the objective',
   },
   {
     title: 'STANDARDISATION',
-    content: 'This is the content of the third accordion item.',
+    content: 'Anywhere in this business industry, standardisation is the best way to channelise things and increase the productivity. Aiming a standardisation process in our execution and in deliverables is our next step action to make things simpler and easy to use.',
   },
   {
     title: 'AI UTILITY',
-    content: 'This is the content of the third accordion item.',
+    content: 'In this vast world of using smart technologies like Artificial Intelligence and Machine Learning. It is necessary to be introduced to the ground level use to enhance the work process and necessity around the globe. Bringing a step by step utilisation of AI in todays environment is the next contribution to the mankind.',
   },
   {
     title: 'AUTOMATIONS',
-    content: 'This is the content of the third accordion item.',
+    content: 'Software automation enhances efficiency by reducing manual tasks, improving accuracy, and speeding up workflows. Combined with continuous software improvements—like performance tuning, security updates, and new feature rollouts—it drives productivity, adaptability, and smarter operations across businesses and industries.',
   },
 ];
 
 const PerspectiveAccordion = () => {
-  const [activeIndex, setActiveIndex] = useState(0); // first item open
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const toggleAccordion = (index: number) => {
     setActiveIndex(index);
@@ -44,10 +44,10 @@ const PerspectiveAccordion = () => {
       const isOpen = activeIndex === index;
 
       return (
-        <div key={index} className="border-t-4 border-[#5379F6] mb-5">
+        <div key={index} className="border-t-3 border-[#5379F6] mb-5">
           <button
             onClick={() => toggleAccordion(index)}
-            className="w-full flex justify-between items-center text-[20px] text-left px-4 py-3 font-bold hover:bg-gray-100 transition"
+            className="w-full flex justify-between items-center text-[20px] text-left px-4 py-3 font-bold hover:bg-gray-100 hover:cursor-pointer transition"
           >
             <span>{item.title}</span>
             <span className="text-xl">{isOpen ? <RemoveIcon/> : <AddIcon/>}</span>
