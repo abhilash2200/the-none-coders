@@ -20,7 +20,7 @@ const expertiseData: ExpertiseData[] = [
     title: 'Customised Softwares',
     img: '/assets/img/solution.jpg',
     desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
+    href: '/solution'
   },
   {
     title: 'E-Learning Applications',
@@ -62,6 +62,7 @@ export function EnterpriseCards() {
           options={{
             type: "loop",
             perPage: 4,
+            arrows: false,
             gap: "1rem",
             autoplay: true,
             breakpoints: {
@@ -72,13 +73,14 @@ export function EnterpriseCards() {
         >
           {expertiseData.map((ele, i) => (
             <SplideSlide key={i}>
-              <SolutionCard
-                index={i}
-                title={ele.title}
-                img={ele.img}
-                desc={ele.desc}
-                href={ele.href}
-              />
+              <div style={{ marginTop: i * 50 }}>
+                <SolutionCard
+                  title={ele.title}
+                  img={ele.img}
+                  desc={ele.desc}
+                  href={ele.href}
+                />
+              </div>
             </SplideSlide>
           ))}
         </Splide>

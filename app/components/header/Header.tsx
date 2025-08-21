@@ -24,8 +24,8 @@ const listData = [
       { name: "Service 2", href: "/services/2" },
     ],
   },
-  { name: "UPDATES", href: "#", dropItem: [], },
-  { name: "CAREER", href: "#", dropItem: [], },
+  { name: "UPDATES", href: "/updates", dropItem: [], },
+  { name: "CAREER", href: "/career", dropItem: [], },
   { name: "SUPPORT", href: "/solution", dropItem: [], },
 ];
 
@@ -127,7 +127,7 @@ function Header() {
                         top: "100%",
                         left: 0,
                         bgcolor: "white",
-                        zIndex: 20,
+                        zIndex: 50,
                         boxShadow: 3,
                         borderRadius: 1,
                         minWidth: 200,

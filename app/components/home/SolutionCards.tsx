@@ -9,38 +9,38 @@ import HeadingText from "../HeadingText";
 import SolutionCard from "../SolutionCard";
 
 interface Solution {
-    title: string;
-    img: string;
-    desc: string;
-    href: string;
-  }
-  
-  const solution: Solution[] = [
-    {
-      title: 'CRM DEVELOPMENT',
-      img: '/assets/img/solution.jpg',
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-      href: '#'
-    },
-    {
-      title: 'APP DEVELOPMENT',
-      img: '/assets/img/solution-2.jpg',
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-      href: '#'
-    },
-    {
-      title: 'OTT PLATFORM DEVELOPMENT',
-      img: '/assets/img/solution-3.jpg',
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-      href: '#'
-    },
-    {
-      title: 'ERP DEVELOPMENT',
-      img: '/assets/img/solution-4.jpg',
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-      href: '#'
-    },
-  ];
+  title: string;
+  img: string;
+  desc: string;
+  href: string;
+}
+
+const solution: Solution[] = [
+  {
+    title: 'CRM DEVELOPMENT',
+    img: '/assets/img/solution.jpg',
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: '#'
+  },
+  {
+    title: 'APP DEVELOPMENT',
+    img: '/assets/img/solution-2.jpg',
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: '#'
+  },
+  {
+    title: 'OTT PLATFORM DEVELOPMENT',
+    img: '/assets/img/solution-3.jpg',
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: '#'
+  },
+  {
+    title: 'ERP DEVELOPMENT',
+    img: '/assets/img/solution-4.jpg',
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: '#'
+  },
+];
 
 export function SolutionCards() {
   return (
@@ -56,12 +56,13 @@ export function SolutionCards() {
         className="relative container mx-auto px-4 py-10"
       >
         <div className="mb-6 lg:mb-10">
-            <HeadingText textalign="text-center" heading="SOLUTIONS" />
-          </div>
-          <Splide
+          <HeadingText textalign="text-center" heading="SOLUTIONS" />
+        </div>
+        <Splide
           options={{
             type: "loop",
             perPage: 4,
+            arrows: false,
             gap: "1rem",
             autoplay: true,
             breakpoints: {
@@ -73,7 +74,6 @@ export function SolutionCards() {
           {solution.map((ele, i) => (
             <SplideSlide key={i}>
               <SolutionCard
-                index={i}
                 title={ele.title}
                 img={ele.img}
                 desc={ele.desc}

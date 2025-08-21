@@ -2,7 +2,7 @@
 import Image from "next/image";
 import HeadingText from "./components/HeadingText";
 import WhatWeDeliver from "./components/WhatWeDeliver";
-import SolutionCard from "./components/SolutionCard";
+import { ContainerTextFlip } from "@/components/ui/container-text-flip";
 
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import TechnologiesUsed from "./components/TechnologiesUsed";
@@ -91,12 +91,16 @@ export default function Home() {
                 <div className="overflow-hidden text-[35px] leading-[40px] text-[#000] py-1 md:py-3">
                   <div className="relative flex items-start gap-x-1 h-[40px] overflow-hidden">
                     <p className="inline m-0 text-[19px] md:text-[30px]">Help you build something</p>
-                    <ul className="mt-0 text-left list-none animate-change text-[#19d442] text-[19px] md:text-[30px]">
+                    {/* <ul className="mt-0 text-left list-none animate-change text-[#19d442] text-[19px] md:text-[30px]">
                       <li className="leading-[40px] m-0">Great.</li>
                       <li className="leading-[40px] m-0">World Class.</li>
                       <li className="leading-[40px] m-0">Excellent.</li>
                       <li className="leading-[40px] m-0">Amazing.</li>
-                    </ul>
+                    </ul> */}
+                    <ContainerTextFlip
+                      words={["Great.", "World Class.", "Excellent.", "Amazing."]}
+                      className="text-[#19d442] text-[19px] md:text-[30px]"
+                    />
                   </div>
                 </div>
                 {/* <p className="text-[30px]">Help you build something <span className="bg-[#61FB83] px-1">Great.</span></p> */}
@@ -148,14 +152,14 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap gap-y-8">
             {
-              whatwedeliverData.map((ele,i)=>{
-                return(
+              whatwedeliverData.map((ele, i) => {
+                return (
                   <div key={i} className="w-full md:w-[50%] xl:w-[25%] px-1.5">
-                      <WhatWeDeliver 
-                        title={ele.title} 
-                        desc={ele.desc} 
-                        icon={ele.icon} 
-                      />
+                    <WhatWeDeliver
+                      title={ele.title}
+                      desc={ele.desc}
+                      icon={ele.icon}
+                    />
                   </div>
                 )
               })
@@ -163,6 +167,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       <section className="py-6 lg:py-12">
         <EnterpriseCards />
