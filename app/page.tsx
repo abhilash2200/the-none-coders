@@ -9,6 +9,7 @@ import TechnologiesUsed from "./components/TechnologiesUsed";
 import { Tooltip } from "@mui/material";
 import { EnterpriseCards } from "./components/home/EnterpriseCards";
 import { SolutionCards } from "./components/home/SolutionCards";
+import { useEffect } from "react";
 
 interface WhatWeDeliverData {
   title: string;
@@ -77,6 +78,9 @@ const expertiseData: ExpertiseData[] = [
 
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   return (
     <main>
 

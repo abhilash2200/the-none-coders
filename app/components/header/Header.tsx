@@ -20,8 +20,8 @@ const listData = [
   {
     name: "PRODUCTS", href: "#",
     dropItem: [
-      { name: "Service 1", href: "/services/1" },
-      { name: "Service 2", href: "/services/2" },
+      { name: "App Development", href: "/products/app-development" },
+      { name: "CRM Development", href: "/products/crm-development" },
     ],
   },
   { name: "UPDATES", href: "/updates", dropItem: [], },

@@ -7,9 +7,6 @@ function SkeletonUpdates() {
     return (
         <section className="py-6 lg:py-12">
             <div className="container mx-auto px-4">
-                <div className="mb-6 lg:mb-10 flex justify-center">
-                    <Skeleton variant="text" width={200} height={40} className="mx-auto" />
-                </div>
                 <div className="flex flex-wrap gap-y-4">
                     {[...Array(3)].map((_, i) => (
                         <div

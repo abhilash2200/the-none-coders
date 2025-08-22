@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
 
 type FooterLink = {
     label: string;
@@ -17,19 +18,19 @@ const footerSections: FooterSection[] = [
     {
         title: "SOLUTIONS",
         links: [
-            { label: "CRM Development", href: "/" },
-            { label: "Mobile App Development", href: "/" },
-            { label: "OTT Platform Development", href: "/" },
-            { label: "Artificial Intelligence", href: "/" },
+            { label: "CRM Development", href: "/solution" },
+            { label: "Mobile App Development", href: "/solution" },
+            { label: "OTT Platform Development", href: "/solution" },
+            { label: "Artificial Intelligence", href: "/solution" },
         ],
     },
     {
         title: "SERVICES",
         links: [
-            { label: "Web Development", href: "/" },
-            { label: "UI/UX Design", href: "/" },
-            { label: "Cloud Solutions", href: "/" },
-            { label: "E-commerce Development", href: "/" },
+            { label: "Web Development", href: "/products/app-development" },
+            { label: "UI/UX Design", href: "/products/app-development" },
+            { label: "Cloud Solutions", href: "/products/app-development" },
+            { label: "E-commerce Development", href: "/products/app-development" },
         ],
     },
     {
@@ -55,28 +56,59 @@ function Footer() {
             <div className="container mx-auto px-4">
                 <div className="flex flex-wrap gap-y-4">
                     {footerSections.map((section, idx) => (
-                        <div key={idx} className="w-full md:w-[50%] lg:w-[33.33%]">
-                            <div>
-                                <h3 className="text-[24px] font-bold mb-3">{section.title}</h3>
-                                <ul>
-                                    {section.links.map((link, i) => (
-                                        <li key={i} className="py-2">
-                                            <Link
-                                                className="text-[18px] text-[/3A3A3A] hover:text-[#19d442] transition-colors duration-300"
-                                                href={link.href}
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
+                        <motion.div
+                            key={idx}
+                            className="w-full md:w-[50%] lg:w-[33.33%]"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: idx * 0.2 }}
+                        >
+                            <motion.h3
+                                className="text-[22px] font-bold mb-3 relative inline-block"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5 }}
+                                whileHover={{ scale: 1.05 }}
+                            >
+                                {section.title}
+                                <motion.span
+                                    className="absolute left-0 -bottom-1 h-[3px] bg-[#19d442] w-full origin-left"
+                                    initial={{ scaleX: 0 }}
+                                    whileHover={{ scaleX: 1 }}
+                                    transition={{ duration: 0.3 }}
+                                />
+                            </motion.h3>
+
+                            <ul>
+                                {section.links.map((link, i) => (
+                                    <motion.li
+                                        key={i}
+                                        whileHover={{ x: 5 }}
+                                        transition={{ type: "spring", stiffness: 300 }}
+                                        className="py-2"
+                                    >
+                                        <Link
+                                            className="text-[16px] text-[#3A3A3A] hover:text-[#19d442] transition-colors duration-300"
+                                            href={link.href}
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        </motion.div>
                     ))}
                     <div className="w-full border-t border-[#414141] py-8">
-                        <div className="flex flex-wrap gap-y-5">
-                            {/* Privacy + Terms */}
-                            <div className="w-full lg:w-[33.33%]">
+                        <div className="flex flex-wrap gap-y-5 items-center">
+                            <motion.div
+                                className="w-full lg:w-[33.33%]"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5 }}
+                            >
                                 <ul className="md:flex items-center gap-x-3">
                                     <li>
                                         <Link
@@ -95,11 +127,21 @@ function Footer() {
                                         </Link>
                                     </li>
                                 </ul>
-                            </div>
-                            <div className="w-full lg:w-[33.33%]">
-                                <ul className="flex items-center gap-x-5">
+                            </motion.div>
+                            <motion.div
+                                className="w-full lg:w-[33.33%]"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.3 }}
+                            >
+                                <ul className="flex items-center gap-x-5 justify-center lg:justify-start">
                                     {socialIcons.map((icon, i) => (
-                                        <li key={i}>
+                                        <motion.li
+                                            key={i}
+                                            whileHover={{ scale: 1.2, rotate: 5 }}
+                                            whileTap={{ scale: 0.9 }}
+                                        >
                                             <Link href={icon.href}>
                                                 <Image
                                                     src={icon.src}
@@ -108,15 +150,21 @@ function Footer() {
                                                     height={25}
                                                 />
                                             </Link>
-                                        </li>
+                                        </motion.li>
                                     ))}
                                 </ul>
-                            </div>
-                            <div className="w-full lg:w-[33.33%]">
+                            </motion.div>
+                            <motion.div
+                                className="w-full lg:w-[33.33%]"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.6 }}
+                            >
                                 <p className="text-[18px] text-center lg:text-left">
                                     COPYRIGHT © THE NON-CODERS
                                 </p>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>

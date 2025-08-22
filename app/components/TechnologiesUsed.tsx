@@ -18,7 +18,19 @@ import {
   SiJavascript,
   SiPhp,
   SiGoogleplay,
-  SiTypescript
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiRedux,
+  SiPostman,
+  SiDocker,
+  SiKubernetes,
+  SiGithub,
+  SiVite
 } from "react-icons/si";
 
 const slider1 = [
@@ -26,22 +38,33 @@ const slider1 = [
   { icon: <SiAmazon />, color: "#FF9900" },
   { icon: <SiAndroid />, color: "#3DDC84" },
   { icon: <SiAngular />, color: "#DD0031" },
-  { icon: <SiAmazon />, color: "#FF9900" },
   { icon: <SiBootstrap />, color: "#7952B3" },
   { icon: <SiCplusplus />, color: "#00599C" },
-  { icon: <SiCss3 />, color: "#1572B6" }
-]
-
-const slider2 = [
+  { icon: <SiCss3 />, color: "#1572B6" },
+  { icon: <SiReact />, color: "#61DAFB" },
+  { icon: <SiNextdotjs />, color: "#000000" },
+  { icon: <SiTailwindcss />, color: "#38B2AC" },
   { icon: <SiFigma />, color: "#F24E1E" },
   { icon: <SiFirebase />, color: "#FFCA28" },
   { icon: <SiFlutter />, color: "#02569B" },
   { icon: <SiGit />, color: "#F05032" },
+]
+
+const slider2 = [
   { icon: <SiHtml5 />, color: "#E34F26" },
   { icon: <SiJavascript />, color: "#F7DF1E" },
+  { icon: <SiTypescript />, color: "#007ACC" },
   { icon: <SiPhp />, color: "#777BB4" },
   { icon: <SiGoogleplay />, color: "#34A853" },
-  { icon: <SiTypescript />, color: "#007ACC" }
+  { icon: <SiNodedotjs />, color: "#339933" },
+  { icon: <SiExpress />, color: "#000000" },
+  { icon: <SiMongodb />, color: "#47A248" },
+  { icon: <SiRedux />, color: "#764ABC" },
+  { icon: <SiPostman />, color: "#FF6C37" },
+  { icon: <SiDocker />, color: "#2496ED" },
+  { icon: <SiKubernetes />, color: "#326CE5" },
+  { icon: <SiGithub />, color: "#181717" },
+  { icon: <SiVite />, color: "#646CFF" },
 ]
 
 function TechnologiesUsed() {
@@ -57,6 +80,7 @@ function TechnologiesUsed() {
           perPage: 10,
           rewind: true,
           gap: '1rem',
+          autoScroll: { speed: 1 },
           breakpoints: {
             1000: { perPage: 5 },
             640: { perPage: 6 },
@@ -68,7 +92,7 @@ function TechnologiesUsed() {
           slider1.map((ele, i) => (
             <SplideSlide key={i}>
               <div
-                className="flex items-center justify-center text-7xl text-[#7E7E7E] hover:text-[var(--icon-color)] transition-colors duration-300"
+                className="flex items-center justify-center text-[90px] text-[#7E7E7E] hover:text-[var(--icon-color)] transition-colors duration-300"
                 style={{ "--icon-color": ele.color } as React.CSSProperties}
               >
                 {ele.icon}
@@ -77,6 +101,7 @@ function TechnologiesUsed() {
           ))
         }
       </Splide>
+
       <Splide
         aria-label="Technologies 2"
         options={{
@@ -98,7 +123,7 @@ function TechnologiesUsed() {
           slider2.map((ele, i) => (
             <SplideSlide key={i}>
               <div
-                className="flex items-center justify-center text-7xl text-[#7E7E7E] hover:text-[var(--icon-color)] transition-colors duration-300"
+                className="flex items-center justify-center text-[90px] text-[#7E7E7E] hover:text-[var(--icon-color)] transition-colors duration-300"
                 style={{ "--icon-color": ele.color } as React.CSSProperties}
               >
                 {ele.icon}
