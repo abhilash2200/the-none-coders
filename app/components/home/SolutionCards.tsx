@@ -87,7 +87,7 @@ export function SolutionCards() {
                 640: { perPage: 1, gap: "0.5rem" },
               },
             }}
-            onMoved={(_splide: any, index: number) => {
+            onMoved={(_splide: SplideInstance, index: number) => {
               setCurrentSlide(index);
             }}
           >

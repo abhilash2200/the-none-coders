@@ -1,4 +1,4 @@
-export default {
+const appUpdate = {
   metaTitle: "Setup Updates in Next.js | Guide",
   metaDescription: "Mobile app development is shaping the future of businesses and daily life. Learn what mobile app development is, its benefits, process and future trends.",
   canonical: "https://yourdomain.com/updates/mobile-app-development-creating-dreams-in-ones-hand",
@@ -90,3 +90,5 @@ export default {
     <p>AI, AR, and voice-based apps will dominate the future. Apps will be like real companions, not machines.</p>
   `
 };
+
+export default appUpdate;

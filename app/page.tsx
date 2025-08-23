@@ -38,41 +38,6 @@ const whatwedeliverData: WhatWeDeliverData[] = [
   },
 ];
 
-interface ExpertiseData {
-  title: string;
-  img: string;
-  desc: string;
-  href: string;
-}
-
-const expertiseData: ExpertiseData[] = [
-  {
-    title: 'Customised Softwares',
-    img: '/assets/img/solution.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
-  },
-  {
-    title: 'E-Learning Applications',
-    img: '/assets/img/solution-2.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
-  },
-  {
-    title: 'CRM Development',
-    img: '/assets/img/solution-3.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
-  },
-  {
-    title: 'Networking Applications',
-    img: '/assets/img/solution-4.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
-  },
-
-];
-
 
 
 

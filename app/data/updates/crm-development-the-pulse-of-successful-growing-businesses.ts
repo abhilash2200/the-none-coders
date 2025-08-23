@@ -1,4 +1,4 @@
-export default {
+const crmUpdate = {
   metaTitle: "10 Useful TypeScript Tips | Productivity Boost",
   metaDescription: "CRM Development is revolutionising how companies engage with customers. Learn what CRM development is all about and how it helps in the long run.",
   canonical: "https://yourdomain.com/updates/crm-development-the-pulse-of-successful-growing-businesses",
@@ -84,3 +84,5 @@ export default {
       <p>The future will see AI-based CRM systems that anticipate customer requirements and make tasks even simpler as well.</p>
   `
 };
+
+export default crmUpdate;

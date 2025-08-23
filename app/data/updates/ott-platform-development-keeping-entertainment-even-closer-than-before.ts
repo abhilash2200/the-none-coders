@@ -1,4 +1,4 @@
-export default {
+const ottUpdate = {
     metaTitle: "React Performance Optimization Guide",
     metaDescription: "OTT platform development is reshaping how people watch movies, shows, and live content. Learn what OTT platforms are, their benefits, process, and future.",
     canonical: "https://yourdomain.com/updates/ott-platform-development-keeping-entertainment-even-closer-than-before",
@@ -95,3 +95,4 @@ export default {
     `
   };
   
+  export default ottUpdate;
