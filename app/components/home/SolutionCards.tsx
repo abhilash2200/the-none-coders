@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import type { Splide as SplideInstance } from "@splidejs/splide"; // ✅ type import
+import type { Splide as SplideInstance } from "@splidejs/splide";
 import "@splidejs/react-splide/css";
 import HeadingText from "../HeadingText";
 import SolutionCard from "../SolutionCard";
