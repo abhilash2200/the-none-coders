@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeadingText from "../components/HeadingText";
-import { Skeleton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { updatesList, type UpdateListItem } from "../data/updatesList";
 import ArrowButton from "@/components/ArrowButton";

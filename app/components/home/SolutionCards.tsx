@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
@@ -43,6 +43,21 @@ const solution: Solution[] = [
 ];
 
 export function SolutionCards() {
+  const splideRef = useRef<any>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const next = () => {
+    if (splideRef.current) {
+      splideRef.current.go('>');
+    }
+  };
+
+  const prev = () => {
+    if (splideRef.current) {
+      splideRef.current.go('<');
+    }
+  };
+
   return (
     <AuroraBackground position="left">
       <motion.div
@@ -58,30 +73,49 @@ export function SolutionCards() {
         <div className="mb-6 lg:mb-10">
           <HeadingText textalign="text-center" heading="SOLUTIONS" />
         </div>
-        <Splide
-          options={{
-            type: "loop",
-            perPage: 4,
-            arrows: false,
-            gap: "1rem",
-            autoplay: true,
-            breakpoints: {
-              1024: { perPage: 2 },
-              640: { perPage: 1 },
-            },
-          }}
-        >
-          {solution.map((ele, i) => (
-            <SplideSlide key={i}>
-              <SolutionCard
-                title={ele.title}
-                img={ele.img}
-                desc={ele.desc}
-                href={ele.href}
+
+        <div className="relative">
+          <Splide
+            ref={splideRef}
+            options={{
+              type: "slide",
+              perPage: 4,
+              arrows: false,
+              pagination: false,
+              gap: "1.5rem",
+              breakpoints: {
+                1280: { perPage: 3 },
+                1024: { perPage: 2, gap: "1rem" },
+                640: { perPage: 1, gap: "0.5rem" },
+              },
+            }}
+            onMoved={(_splide: any, index: number) => {
+              setCurrentSlide(index);
+            }}
+          >
+            {solution.map((ele, i) => (
+              <SplideSlide key={i}>
+                <SolutionCard
+                  title={ele.title}
+                  img={ele.img}
+                  desc={ele.desc}
+                  href={ele.href}
+                />
+              </SplideSlide>
+            ))}
+          </Splide>
+
+          {/* Mobile indicator dots */}
+          <div className="flex justify-center mt-4 gap-2 lg:hidden">
+            {solution.map((_, i) => (
+              <div
+                key={i}
+                className={`h-2 w-2 rounded-full transition-colors ${i === currentSlide ? 'bg-gray-600' : 'bg-gray-300'
+                  }`}
               />
-            </SplideSlide>
-          ))}
-        </Splide>
+            ))}
+          </div>
+        </div>
       </motion.div>
     </AuroraBackground>
   );

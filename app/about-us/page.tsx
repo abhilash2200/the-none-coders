@@ -4,6 +4,7 @@ import Image from "next/image";
 import HeadingText from "../components/HeadingText";
 import PerspectiveAccordion from "../components/PerspectiveAccordion";
 import SectionProgress from "../components/SectionProgress";
+import { motion } from "framer-motion"
 
 export default function Page() {
     const sections = [
@@ -41,13 +42,29 @@ export default function Page() {
                 </div>
             </section>
             <section id="our-perspective" className="pb-6 lg:pb-12 scroll-mt-20">
-                <div className="container mx-auto px-4">
+                <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.8,
+                  ease: "easeInOut",
+                }}
+                className="container mx-auto px-4">
                     <HeadingText textalign="text-start" heading="OUR PERSPECTIVE" />
                     <PerspectiveAccordion />
-                </div>
+                </motion.div>
             </section>
             <section id="our-members" className="pb-12 scroll-mt-20">
-                <div className="container mx-auto px-4">
+                <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.8,
+                  ease: "easeInOut",
+                }}
+                className="container mx-auto px-4">
                     <div className='mb-5'>
                         <HeadingText textalign='text-start' heading="OUR MEMBERS" />
                     </div>
@@ -89,7 +106,7 @@ export default function Page() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </section>
         </main>
     );

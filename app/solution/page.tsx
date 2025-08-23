@@ -6,6 +6,7 @@ import HeadingText from "../components/HeadingText";
 import SectionProgress from "../components/SectionProgress";
 import ArrowButton from "@/components/ArrowButton";
 import Link from "next/link";
+import { motion } from "framer-motion"
 
 interface SectionData {
   id: string;
@@ -72,7 +73,15 @@ function Page() {
 
       {sections.map((section) => (
         <section id={section.id} key={section.id} className="py-6 lg:py-12">
-          <div className="container mx-auto px-4">
+          <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          className="container mx-auto px-4">
             <div
               className={`flex flex-wrap justify-between gap-y-4 ${
                 section.reverse ? "flex-row-reverse" : ""
@@ -101,7 +110,7 @@ function Page() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
       ))}
     </main>
