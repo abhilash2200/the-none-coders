@@ -47,15 +47,6 @@ export function SolutionCards() {
   const splideRef = useRef<SplideInstance | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // ✅ Next & Prev buttons handlers
-  const handleNext = () => {
-    splideRef.current?.go(">");
-  };
-
-  const handlePrev = () => {
-    splideRef.current?.go("<");
-  };
-
   return (
     <AuroraBackground position="left">
       <motion.div
