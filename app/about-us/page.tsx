@@ -5,6 +5,7 @@ import HeadingText from "../components/HeadingText";
 import PerspectiveAccordion from "../components/PerspectiveAccordion";
 import SectionProgress from "../components/SectionProgress";
 import { motion } from "framer-motion"
+import EmployeeCard from "../components/about/EmployeeCard";
 
 export default function Page() {
     const sections = [
@@ -43,69 +44,33 @@ export default function Page() {
             </section>
             <section id="our-perspective" className="pb-6 lg:pb-12 scroll-mt-20">
                 <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.3,
-                  duration: 0.8,
-                  ease: "easeInOut",
-                }}
-                className="container mx-auto px-4">
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                        delay: 0.3,
+                        duration: 0.8,
+                        ease: "easeInOut",
+                    }}
+                    className="container mx-auto px-4">
                     <HeadingText textalign="text-start" heading="OUR PERSPECTIVE" />
                     <PerspectiveAccordion />
                 </motion.div>
             </section>
             <section id="our-members" className="pb-12 scroll-mt-20">
                 <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.3,
-                  duration: 0.8,
-                  ease: "easeInOut",
-                }}
-                className="container mx-auto px-4">
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                        delay: 0.3,
+                        duration: 0.8,
+                        ease: "easeInOut",
+                    }}
+                    className="container mx-auto px-4">
                     <div className='mb-5'>
                         <HeadingText textalign='text-start' heading="OUR MEMBERS" />
                     </div>
-                    <div className='flex flex-wrap justify-between gap-y-4'>
-                        <div className="w-full md:w-[45%]">
-                            <div>
-                                <Image src='/assets/img/office-man.jpg' alt='' width={600} height={440} />
-                                <div className='mt-3'>
-                                    <h4 className='text-[20px]'>EMPLOYEE NAME</h4>
-                                    <p className='text-[#A5A5A5D6]'>DESIGNATION</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full md:w-[45%]">
-                            <div>
-                                <Image src='/assets/img/office-man-2.jpg' alt='' width={600} height={440} />
-                                <div className='mt-3'>
-                                    <h4 className='text-[20px]'>EMPLOYEE NAME</h4>
-                                    <p className='text-[#A5A5A5D6]'>DESIGNATION</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full md:w-[45%]">
-                            <div>
-                                <Image src='/assets/img/office-man.jpg' alt='' width={600} height={440} />
-                                <div className='mt-3'>
-                                    <h4 className='text-[20px]'>EMPLOYEE NAME</h4>
-                                    <p className='text-[#A5A5A5D6]'>DESIGNATION</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-full md:w-[45%]">
-                            <div>
-                                <Image src='/assets/img/office-man-2.jpg' alt='' width={600} height={440} />
-                                <div className='mt-3'>
-                                    <h4 className='text-[20px]'>EMPLOYEE NAME</h4>
-                                    <p className='text-[#A5A5A5D6]'>DESIGNATION</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <EmployeeCard />
+
                 </motion.div>
             </section>
         </main>
