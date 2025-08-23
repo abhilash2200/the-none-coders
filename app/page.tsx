@@ -3,10 +3,7 @@ import Image from "next/image";
 import HeadingText from "./components/HeadingText";
 import WhatWeDeliver from "./components/WhatWeDeliver";
 import { ContainerTextFlip } from "@/components/ui/container-text-flip";
-
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import TechnologiesUsed from "./components/TechnologiesUsed";
-import { Tooltip } from "@mui/material";
 import { EnterpriseCards } from "./components/home/EnterpriseCards";
 import { SolutionCards } from "./components/home/SolutionCards";
 import { UpdateCards } from "./components/home/UpdateCards";

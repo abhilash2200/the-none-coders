@@ -5,7 +5,6 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import HeadingText from "../HeadingText";
 import SolutionCard from "../SolutionCard";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import CircleButton from "../CircleButton";
 
 interface ExpertiseData {
