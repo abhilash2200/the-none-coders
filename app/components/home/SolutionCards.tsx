@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import type { Splide as SplideInstance } from "@splidejs/splide"; // ✅ type import
 import "@splidejs/react-splide/css";
 import HeadingText from "../HeadingText";
 import SolutionCard from "../SolutionCard";
@@ -17,45 +18,42 @@ interface Solution {
 
 const solution: Solution[] = [
   {
-    title: 'CRM DEVELOPMENT',
-    img: '/assets/img/solution.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
+    title: "CRM DEVELOPMENT",
+    img: "/assets/img/solution.jpg",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    href: "#",
   },
   {
-    title: 'APP DEVELOPMENT',
-    img: '/assets/img/solution-2.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
+    title: "APP DEVELOPMENT",
+    img: "/assets/img/solution-2.jpg",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    href: "#",
   },
   {
-    title: 'OTT PLATFORM DEVELOPMENT',
-    img: '/assets/img/solution-3.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
+    title: "OTT PLATFORM DEVELOPMENT",
+    img: "/assets/img/solution-3.jpg",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    href: "#",
   },
   {
-    title: 'ERP DEVELOPMENT',
-    img: '/assets/img/solution-4.jpg',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
-    href: '#'
+    title: "ERP DEVELOPMENT",
+    img: "/assets/img/solution-4.jpg",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+    href: "#",
   },
 ];
 
 export function SolutionCards() {
-  const splideRef = useRef<any>(null);
+  const splideRef = useRef<SplideInstance | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const next = () => {
-    if (splideRef.current) {
-      splideRef.current.go('>');
-    }
+  // ✅ Next & Prev buttons handlers
+  const handleNext = () => {
+    splideRef.current?.go(">");
   };
 
-  const prev = () => {
-    if (splideRef.current) {
-      splideRef.current.go('<');
-    }
+  const handlePrev = () => {
+    splideRef.current?.go("<");
   };
 
   return (
@@ -105,12 +103,30 @@ export function SolutionCards() {
             ))}
           </Splide>
 
-          {/* Mobile indicator dots */}
+          {/* ✅ Navigation buttons */}
+          <div className="absolute inset-y-1/2 left-0 flex items-center -translate-y-1/2">
+            <button
+              onClick={handlePrev}
+              className="p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition"
+            >
+              ◀
+            </button>
+          </div>
+          <div className="absolute inset-y-1/2 right-0 flex items-center -translate-y-1/2">
+            <button
+              onClick={handleNext}
+              className="p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition"
+            >
+              ▶
+            </button>
+          </div>
+
+          {/* ✅ Mobile indicator dots */}
           <div className="flex justify-center mt-4 gap-2 lg:hidden">
             {solution.map((_, i) => (
               <div
                 key={i}
-                className={`h-2 w-2 rounded-full transition-colors ${i === currentSlide ? 'bg-gray-600' : 'bg-gray-300'
+                className={`h-2 w-2 rounded-full transition-colors ${i === currentSlide ? "bg-gray-600" : "bg-gray-300"
                   }`}
               />
             ))}
