@@ -102,26 +102,6 @@ export function SolutionCards() {
               </SplideSlide>
             ))}
           </Splide>
-
-          {/* ✅ Navigation buttons */}
-          <div className="absolute inset-y-1/2 left-0 flex items-center -translate-y-1/2">
-            <button
-              onClick={handlePrev}
-              className="p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition"
-            >
-              ◀
-            </button>
-          </div>
-          <div className="absolute inset-y-1/2 right-0 flex items-center -translate-y-1/2">
-            <button
-              onClick={handleNext}
-              className="p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition"
-            >
-              ▶
-            </button>
-          </div>
-
-          {/* ✅ Mobile indicator dots */}
           <div className="flex justify-center mt-4 gap-2 lg:hidden">
             {solution.map((_, i) => (
               <div
