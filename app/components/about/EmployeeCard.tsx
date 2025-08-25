@@ -139,9 +139,9 @@ function EmployeeItem({
                 }}
                 className="absolute bottom-3 left-3 z-20 text-white/90"
             >
-                <div className="rounded-md bg-black/30 px-2 py-1 backdrop-blur-[2px]">
-                    <div className="text-sm font-semibold">{emp.name}</div>
-                    <div className="text-[11px] text-neutral-200">{emp.designation}</div>
+                <div className="rounded-md bg-black/50 px-2 py-1 backdrop-blur-[2px]">
+                    <div className="text-[19px] md:text-[18px] font-semibold">{emp.name}</div>
+                    <div className="text-[15px] md:text-[13px] text-neutral-200">{emp.designation}</div>
                 </div>
             </motion.div>
         </motion.div>

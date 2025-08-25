@@ -28,7 +28,7 @@ export default function Page() {
                     <HeadingText textalign="text-start" heading="ABOUT US" />
                     <div className="flex flex-wrap gap-y-4">
                         <div className="w-full lg:w-[50%] flex flex-col justify-center">
-                            <p className="text-[20px]">
+                            <p className="md:text-[20px] text-[18px] mt-3 md:mt-0">
                                 A vision to incorporate THE NON CODERS started with a journey of 7 Years in the Digital Marketing Industry by
                                 the parent company DIGITAL WOLF. While achieving the milestones of advertising and generating leads for the
                                 brands we found a huge gap between the administration level and the operation level of members related to the

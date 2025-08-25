@@ -81,16 +81,14 @@ const SectionProgress: React.FC<SectionProgressProps> = ({
         : { left: 0, width: 0 };
 
     return (
-        <div className="sticky top-0 z-30 bg-[#FAFAFA]">
+        <div className="sticky top-0 z-30 bg-[#FAFAFA] hidden md:block">
             <div className="relative w-full mx-auto flex justify-start">
-                {/* Progress background highlight */}
                 <motion.div
                     className="absolute top-0 bottom-0 bg-[#EFEFEF] z-0 rounded"
                     initial={false}
                     animate={progressStyle}
                     transition={{ type: "spring", stiffness: 80, damping: 20 }}
                 />
-                {/* Buttons */}
                 {sections.map((s, i) => (
                     <button
                         key={s.id}
@@ -98,7 +96,7 @@ const SectionProgress: React.FC<SectionProgressProps> = ({
                             btnRefs.current[i] = el;
                         }}
                         onClick={() => handleJump(s.id)}
-                        className={`relative z-10 px-6 py-4 text-sm uppercase tracking-wide text-left transition-colors ${i === active ? "text-gray-900" : "text-gray-600"
+                        className={`relative z-10 px-6 py-4 text-[12px] md:text-[15px] uppercase tracking-wide text-left transition-colors ${i === active ? "text-gray-900" : "text-gray-600"
                             }`}
                     >
                         {s.title}

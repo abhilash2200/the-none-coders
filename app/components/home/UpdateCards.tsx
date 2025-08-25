@@ -50,7 +50,7 @@ export function UpdateCards() {
                 <HeadingText textalign="text-center" heading="UPDATES" />
             </div>
 
-            <div className="flex flex-wrap gap-y-4">
+            <div className="flex flex-wrap gap-y-6">
                 {update.map((ele, i) => (
                     <div key={i} className="w-full md:w-[50%] lg:w-[33.33%]">
                         <Updatecard

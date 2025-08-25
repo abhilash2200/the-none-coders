@@ -44,21 +44,21 @@ const PerspectiveAccordion = () => {
       const isOpen = activeIndex === index;
 
       return (
-        <div key={index} className="border-t-3 border-[#5379F6] mb-5">
+        <div key={index} className="md:border-t-3 border-t-2 border-[#5379F6] mb-5">
           <button
             onClick={() => toggleAccordion(index)}
             className="w-full flex justify-between items-center text-[20px] text-left px-4 py-3 font-bold hover:bg-gray-100 hover:cursor-pointer transition"
           >
-            <span>{item.title}</span>
-            <span className="text-xl">{isOpen ? <RemoveIcon/> : <AddIcon/>}</span>
+            <span className='text-[16px] md:text-[20px]'>{item.title}</span>
+            <span className="text-[16px] md:text-[20px]">{isOpen ? <RemoveIcon/> : <AddIcon/>}</span>
           </button>
 
           <div
             className={`overflow-hidden transition-all duration-1000 ease-in-out ${
-              isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+              isOpen ? 'md:max-h-40 max-h-80 opacity-100' : 'max-h-0 opacity-0'
             }`}
           >
-            <p className="px-4 py-2 bg-white text-[18px]">{item.content}</p>
+            <p className="px-4 py-2 bg-white text-[16px] md:text-[18px]">{item.content}</p>
           </div>
         </div>
       );

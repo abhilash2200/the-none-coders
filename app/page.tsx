@@ -52,11 +52,11 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-y-4">
             <div className="w-full lg:w-[50%] flex justify-center flex-col">
-              <div className="ps-1">
-                <div>
+              <div className="md:ps-1 ps-0">
+                <div className="mb-1 md:mb-0">
                   <span className="text-[25px] md:text-[45px] border-b-4 border-[#61FB83]">LET US</span>
                 </div>
-                <div className="overflow-hidden text-[35px] leading-[40px] text-[#000] py-1 md:py-3">
+                <div className="overflow-hidden text-[35px] leading-[40px] text-[#000] py-1 md:py-3 mb-2 md:mb-0">
                   <div className="relative flex items-start gap-x-1 h-[40px] overflow-hidden">
                     <p className="inline m-0 text-[19px] md:text-[30px]">Help you build something</p>
                     {/* <ul className="mt-0 text-left list-none animate-change text-[#19d442] text-[19px] md:text-[30px]">

@@ -20,26 +20,26 @@ const solution: Solution[] = [
   {
     title: "CRM DEVELOPMENT",
     img: "/assets/img/solution.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-    href: "#",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: "/solution#crm-development",
   },
   {
     title: "APP DEVELOPMENT",
     img: "/assets/img/solution-2.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-    href: "#",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: "/solution#mobile-app-development",
   },
   {
     title: "OTT PLATFORM DEVELOPMENT",
     img: "/assets/img/solution-3.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-    href: "#",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: "/products/app-development#ott-platforms",
   },
   {
     title: "ERP DEVELOPMENT",
     img: "/assets/img/solution-4.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
-    href: "#",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: "/solution#",
   },
 ];
 

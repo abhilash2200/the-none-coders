@@ -101,7 +101,7 @@ function Footer() {
                         </motion.div>
                     ))}
                     <div className="w-full border-t border-[#414141] py-8">
-                        <div className="flex flex-wrap gap-y-5 items-center">
+                        <div className="flex flex-wrap gap-y-3 items-center">
                             <motion.div
                                 className="w-full lg:w-[33.33%]"
                                 initial={{ opacity: 0, y: 20 }}
@@ -109,24 +109,24 @@ function Footer() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <ul className="md:flex items-center gap-x-3">
-                                    <li>
+                                <div className="flex justify-center items-center gap-x-2">
+                                    <p>
                                         <Link
                                             className="text-[15px] text-[#3A3A3A] hover:text-[#19d442] transition-colors duration-300"
                                             href="/privacy-policy"
                                         >
                                             PRIVACY POLICY
                                         </Link>
-                                    </li>
-                                    <li>
+                                    </p>
+                                    <p>
                                         <Link
                                             className="text-[15px] text-[#3A3A3A] hover:text-[#19d442] transition-colors duration-300"
                                             href="/terms-conditions"
                                         >
                                             TERMS & CONDITIONS
                                         </Link>
-                                    </li>
-                                </ul>
+                                    </p>
+                                </div>
                             </motion.div>
                             <motion.div
                                 className="w-full lg:w-[33.33%]"

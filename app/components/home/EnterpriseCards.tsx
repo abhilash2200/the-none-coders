@@ -4,7 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import HeadingText from "../HeadingText";
-import SolutionCard from "../SolutionCard";
+import EnterpriseCard from "../EnterpriseCard";
 import CircleButton from "../CircleButton";
 
 interface ExpertiseData {
@@ -18,25 +18,25 @@ const expertiseData: ExpertiseData[] = [
   {
     title: "Customised Softwares",
     img: "/assets/img/solution.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "/solution",
   },
   {
     title: "E-Learning Applications",
     img: "/assets/img/solution-2.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "#",
   },
   {
     title: "CRM Development",
     img: "/assets/img/solution-3.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "#",
   },
   {
     title: "Networking Applications",
     img: "/assets/img/solution-4.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "#",
   },
 ];
@@ -45,61 +45,72 @@ export function EnterpriseCards() {
   const [items, setItems] = useState(expertiseData);
   const [step, setStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [device, setDevice] = useState<"mobile" | "tablet" | "desktop">("desktop");
   const controls = useAnimation();
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Check if device is mobile
+  // Detect device type
   useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const checkDevice = () => {
+      if (window.innerWidth < 768) {
+        setDevice("mobile");
+      } else if (window.innerWidth < 1024) {
+        setDevice("tablet");
+      } else {
+        setDevice("desktop");
+      }
     };
-    
-    checkIfMobile();
-    window.addEventListener("resize", checkIfMobile);
-    
+
+    checkDevice();
+    window.addEventListener("resize", checkDevice);
+
     return () => {
-      window.removeEventListener("resize", checkIfMobile);
+      window.removeEventListener("resize", checkDevice);
     };
   }, []);
 
+  // Step measurement based on device
   const measureStep = useCallback(() => {
     const el = trackRef.current;
     if (!el) return;
-    
-    if (isMobile) {
-      // On mobile, step is the full width of the container including padding
-      const container = el.parentElement;
-      if (container) {
-        const style = window.getComputedStyle(container);
-        const padding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
-        setStep(container.offsetWidth - padding);
-      }
+
+    const container = el.parentElement;
+    if (!container) return;
+
+    if (device === "mobile") {
+      // Full width card
+      const style = window.getComputedStyle(container);
+      const padding =
+        parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+      setStep(container.offsetWidth - padding);
+    } else if (device === "tablet") {
+      // Tablet → 2 cards
+      const c0 = el.children[0] as HTMLElement | undefined;
+      if (c0) setStep(c0.offsetWidth + 24);
     } else {
-      // On desktop, calculate step as before
+      // Desktop → spacing between first 2 cards
       const c0 = el.children[0] as HTMLElement | undefined;
       const c1 = el.children[1] as HTMLElement | undefined;
-
       if (c0 && c1) {
         setStep(c1.offsetLeft - c0.offsetLeft);
       } else if (c0) {
         setStep(c0.offsetWidth + 24);
       }
     }
-  }, [isMobile]);
+  }, [device]);
 
   useEffect(() => {
     measureStep();
     window.addEventListener("resize", measureStep);
     return () => window.removeEventListener("resize", measureStep);
-  }, [measureStep, isMobile]);
+  }, [measureStep]);
 
   const next = async () => {
     if (isAnimating || step === 0) return;
     setIsAnimating(true);
     await controls.start({
       x: -step,
-      transition: { duration: 0.45, ease: [0.22, 0.61, 0.36, 1] },
+      transition: { type: "spring", stiffness: 120, damping: 20 },
     });
     setItems((prev) => {
       const [first, ...rest] = prev;
@@ -114,8 +125,9 @@ export function EnterpriseCards() {
     setIsAnimating(true);
     await controls.start({
       x: step,
-      transition: { duration: 0.45, ease: [0.22, 0.61, 0.36, 1] },
+      transition: { type: "spring", stiffness: 120, damping: 20 },
     });
+
     setItems((prev) => {
       const last = prev[prev.length - 1];
       const rest = prev.slice(0, -1);
@@ -123,6 +135,13 @@ export function EnterpriseCards() {
     });
     await controls.set({ x: 0 });
     setIsAnimating(false);
+  };
+
+  // Card width classes
+  const getCardWidth = () => {
+    if (device === "mobile") return "min-w-full";
+    if (device === "tablet") return "min-w-[45%]";
+    return "min-w-[300px] md:min-w-[320px] lg:min-w-[350px] [@media(min-width:1024px)]:min-w-[300px] [@media(min-width:1200px)]:min-w-[300px] [@media(min-width:1300px)]:min-w-[350px]";
   };
 
   return (
@@ -146,7 +165,7 @@ export function EnterpriseCards() {
           <div className="overflow-hidden">
             <motion.div
               ref={trackRef}
-              className="flex gap-6"
+              className="flex lg:gap-6 md:gap-2"
               animate={controls}
               style={{ willChange: "transform" }}
             >
@@ -154,16 +173,14 @@ export function EnterpriseCards() {
                 <motion.div
                   key={ele.title + "-" + i}
                   layout
-                  // Remove margin on mobile, keep on desktop
-                  animate={{ marginTop: isMobile ? 0 : i * 50 }}
-                  transition={{ duration: 0.45, ease: [0.22, 0.61, 0.36, 1] }}
-                  // Full width on mobile, fixed width on desktop
-                  className={isMobile 
-                    ? "min-w-full" 
-                    : "min-w-[280px] md:min-w-[350px] lg:min-w-[350px]"
-                  }
+                  animate={{ marginTop: device === "mobile" ? 0 : i * 50 }}
+                  transition={{
+                    duration: 0.45,
+                    ease: [0.22, 0.61, 0.36, 1],
+                  }}
+                  className={getCardWidth()}
                 >
-                  <SolutionCard
+                  <EnterpriseCard
                     title={ele.title}
                     img={ele.img}
                     desc={ele.desc}
@@ -174,16 +191,25 @@ export function EnterpriseCards() {
             </motion.div>
           </div>
 
-          <div className="flex justify-center mt-8 md:absolute md:bottom-4 md:left-4 md:mt-0">
+          {/* Navigation Buttons */}
+          <div className="flex md:justify-center justify-start mt-3 md:absolute md:bottom-4 md:left-4 md:mt-0">
             <div className="flex flex-row gap-4">
               <CircleButton
                 onClick={prev}
-                className={`bg-black/10 hover:bg-black/70 text-white transition ${isAnimating || step === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`hover:bg-black/10 text-black transition ${
+                  isAnimating || step === 0
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
                 disabled={isAnimating || step === 0}
               />
               <CircleButton
                 onClick={next}
-                className={`bg-black/10 hover:bg-black/70 text-white transition ${isAnimating || step === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`hover:bg-black/10 text-black transition ${
+                  isAnimating || step === 0
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
                 disabled={isAnimating || step === 0}
               />
             </div>

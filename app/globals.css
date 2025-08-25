@@ -119,6 +119,21 @@
   @apply text-gray-900 font-semibold;
 }
 
+@media (max-width:414px) {
+  .prose h2 {
+    @apply text-[20px] text-[#2D176A] mt-8 mb-2;
+  }
+  .prose h3 {
+    @apply text-[18px] text-gray-700 font-medium mt-4 mb-2;
+  }
+  .prose p {
+    @apply text-base text-gray-700 leading-relaxed mb-2;
+  }
+  .prose strong {
+    @apply text-gray-900 font-semibold;
+  }
+}
+
 
 
 

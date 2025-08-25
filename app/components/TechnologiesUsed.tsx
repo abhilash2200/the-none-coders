@@ -69,7 +69,7 @@ const slider2 = [
 
 function TechnologiesUsed() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-2 md:space-y-6">
       {/* First Slider */}
       <Splide
         aria-label="Technologies 1"
