@@ -109,7 +109,7 @@ function Footer() {
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <div className="flex justify-center items-center gap-x-2">
+                                <div className="flex justify-center md:justify-start items-center gap-x-2">
                                     <p>
                                         <Link
                                             className="text-[15px] text-[#3A3A3A] hover:text-[#19d442] transition-colors duration-300"

@@ -6,6 +6,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import LoaderWrapper from "./components/Loader";
+import CustomSpeedDial from "./components/CustomSpeedDial";
 
 const PTSans = PT_Sans({
   weight: ["400","700"],
@@ -29,6 +30,7 @@ export default function RootLayout({
           <LoaderWrapper fadeDuration={1500} showDuration={3000}>
             <Header />
             {children}
+            <CustomSpeedDial />
             <Footer />
           </LoaderWrapper>
         </AppRouterCacheProvider>
