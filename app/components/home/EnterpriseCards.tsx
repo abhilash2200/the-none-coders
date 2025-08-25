@@ -184,7 +184,6 @@ export function EnterpriseCards() {
                     title={ele.title}
                     img={ele.img}
                     desc={ele.desc}
-                    href={ele.href}
                   />
                 </motion.div>
               ))}

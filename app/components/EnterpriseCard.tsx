@@ -4,10 +4,9 @@ interface expertiseDataProps {
   title: string;
   img: string;
   desc: string;
-  href: string;
 }
 
-function EnterpriseCard({ title, img, desc, href }: expertiseDataProps) {
+function EnterpriseCard({ title, img, desc }: expertiseDataProps) {
   return (
     <div className="max-w-full lg:w-[250px] xl:w-[300px] mx-auto py-6">
       <div className="relative">
