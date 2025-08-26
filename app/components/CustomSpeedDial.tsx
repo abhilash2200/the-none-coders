@@ -4,39 +4,49 @@ import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
-import SaveIcon from "@mui/icons-material/Save";
-import PrintIcon from "@mui/icons-material/Print";
-import ShareIcon from "@mui/icons-material/Share";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import CallIcon from "@mui/icons-material/Call";
+import MessageIcon from "@mui/icons-material/Message";
+import SliderPopup from "@/components/SliderPopup";
+export default function QuickActionsWithForm() {
+  const [openDial, setOpenDial] = React.useState(false);
+  const [openForm, setOpenForm] = React.useState(false);
 
-const actions = [
-  { icon: <FileCopyIcon />, name: "Copy" },
-  { icon: <SaveIcon />, name: "Save" },
-  { icon: <PrintIcon />, name: "Print" },
-  { icon: <ShareIcon />, name: "Share" },
-];
+  const handleOpen = () => setOpenDial(true);
+  const handleClose = () => setOpenDial(false);
 
-function CustomSpeedDial() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const actions = [
+    {
+      icon: <WhatsAppIcon />,
+      name: "WhatsApp",
+      onClick: () => window.open("https://wa.me/1234567890", "_blank"),
+    },
+    {
+      icon: <CallIcon />,
+      name: "Call",
+      onClick: () => window.open("tel:1234567890"),
+    },
+    {
+      icon: <MessageIcon />,
+      name: "Consultation",
+      onClick: () => setOpenForm(true),
+    },
+  ];
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <SpeedDial
-        ariaLabel="Custom SpeedDial"
+        ariaLabel="Quick Actions"
         sx={{ position: "fixed", bottom: 24, right: 24, zIndex: 1200 }}
         icon={<SpeedDialIcon />}
         onClose={handleClose}
         onOpen={handleOpen}
-        open={open}
+        open={openDial}
         FabProps={{
           sx: {
             bgcolor: "#2D176A",
             color: "#fff",
-            "&:hover": {
-              bgcolor: "#0D0031",
-            },
+            "&:hover": { bgcolor: "#0D0031" },
           },
         }}
       >
@@ -45,21 +55,21 @@ function CustomSpeedDial() {
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
-            onClick={handleClose}
+            onClick={() => {
+              action.onClick();
+              handleClose();
+            }}
             FabProps={{
               sx: {
                 bgcolor: "#02B228",
                 color: "#fff",
-                "&:hover": {
-                  bgcolor: "#005613",
-                },
+                "&:hover": { bgcolor: "#005613" },
               },
             }}
           />
         ))}
       </SpeedDial>
+      <SliderPopup open={openForm} handleClose={() => setOpenForm(false)} />
     </Box>
   );
 }
-
-export default CustomSpeedDial;

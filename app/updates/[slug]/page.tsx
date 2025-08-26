@@ -56,7 +56,7 @@ export default async function UpdateDetail({ params }: { params: Promise<{ slug:
                     <CalendarMonthOutlinedIcon /> <span className="text-gray-800 font-medium">{listItem.date}</span>
                 </p>
             </div>
-            <h1 className="md:text-[30px] text-[25px] font-bold mb-6">{listItem.title}</h1>
+            <h1 className="md:text-[30px] text-[25px] font-bold mb-6 leading-tight">{listItem.title}</h1>
             <article
                 className="prose max-w-none"
                 dangerouslySetInnerHTML={{ __html: update.content }}

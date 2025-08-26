@@ -6,7 +6,7 @@ import { Skeleton } from "@mui/material";
 function SkeletonUpdates() {
     return (
         <section className="py-6 lg:py-12">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-2">
                 <div className="flex flex-wrap gap-y-4">
                     {[...Array(3)].map((_, i) => (
                         <div
