@@ -55,11 +55,13 @@ export default function Home() {
   const handleClose = () => {
     setOpen(false);
     requestAnimationFrame(() => {
-      document.activeElement instanceof HTMLElement && document.activeElement.blur();
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
       const safeBtn = document.querySelector("#mainButton") as HTMLElement;
       safeBtn?.focus();
     });
-  }
+  };
   return (
     <main>
 
