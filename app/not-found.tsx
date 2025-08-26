@@ -2,61 +2,13 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function NotFoundPage() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 text-center px-6">
-      {/* Illustration / Icon */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="mb-6"
-      >
-        <svg
-          className="w-32 h-32 text-purple-600"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.5}
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9.75 9.75L14.25 14.25M14.25 9.75L9.75 14.25M21 12A9 9 0 1 1 3 12a9 9 0 0 1 18 0Z"
-          />
-        </svg>
-      </motion.div>
+    <main className="min-h-[55vh] flex flex-col items-center justify-center bg-[#e9e9e9] text-center px-6">
 
-      {/* Heading */}
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-5xl font-bold text-gray-900"
-      >
-        404
-      </motion.h1>
-
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4, duration: 0.6 }}
-        className="text-xl mt-2 text-gray-600"
-      >
-        Oops! Page not found
-      </motion.h2>
-
-      {/* Description */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
-        className="mt-4 max-w-lg text-gray-500"
-      >
-        The page you’re looking for doesn’t exist or has been moved.
-        Don’t worry, let’s get you back on track.
-      </motion.p>
+      <Image src="/assets/img/404.gif" height={700} width={440} alt="Page not found animation" />
 
       {/* Button */}
       <motion.div
