@@ -57,7 +57,7 @@ export default function Home() {
     requestAnimationFrame(() => {
       document.activeElement instanceof HTMLElement && document.activeElement.blur();
       const safeBtn = document.querySelector("#mainButton") as HTMLElement;
-      safeBtn?.focus(); // agar chaho to kisi visible button pe focus kara do
+      safeBtn?.focus();
     });
   }
   return (
