@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Linkedin, Twitter, Github } from "lucide-react";
 import type { Variants } from "framer-motion";
 
-// Variants
 const imageVariants: Variants = {
   rest: { scale: 1, y: 0, opacity: 1 },
   hover: {
@@ -59,7 +58,7 @@ function EmployeeItem({
       className="relative w-full md:w-[45%] h-[500px] overflow-hidden rounded-xl cursor-pointer shadow-2xl bg-neutral-900 group"
     >
       {/* Image */}
-      <motion.div variants={imageVariants} className="absolute inset-0 z-10 will-change-transform">
+      <motion.div variants={imageVariants} className="absolute inset-0 z-10 will-change-transform" style={{ transformOrigin: "left center" }}>
         <Image src={emp.img} alt={emp.name} width={500} height={500} className="w-full h-full object-cover" />
         <div className="absolute -bottom-1 left-0 right-0 h-2 bg-gradient-to-t from-white/50 to-transparent opacity-60" />
       </motion.div>
