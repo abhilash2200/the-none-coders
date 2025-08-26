@@ -213,3 +213,19 @@
     transform: translateX(0px);
   }
 }
+
+.mui-1ruad3n-MuiDialogContent-root {
+  padding: 20px !important;
+}
+
+@media (min-width: 600px) {
+  .mui-s8he65-MuiDialogContent-root {
+      padding: 25px !important;
+  }
+}
+
+@media (max-width: 415px) {
+  .mui-s8he65-MuiDialogContent-root {
+      padding: 20px 15px !important;
+  }
+}

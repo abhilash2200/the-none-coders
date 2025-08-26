@@ -7,8 +7,9 @@ import TechnologiesUsed from "./components/TechnologiesUsed";
 import { EnterpriseCards } from "./components/home/EnterpriseCards";
 import { SolutionCards } from "./components/home/SolutionCards";
 import { UpdateCards } from "./components/home/UpdateCards";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion"
+import SliderPopup from "@/components/SliderPopup";
 
 interface WhatWeDeliverData {
   title: string;
@@ -44,7 +45,21 @@ const whatwedeliverData: WhatWeDeliverData[] = [
 export default function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
-}, []);
+  }, []);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    requestAnimationFrame(() => {
+      document.activeElement instanceof HTMLElement && document.activeElement.blur();
+      const safeBtn = document.querySelector("#mainButton") as HTMLElement;
+      safeBtn?.focus(); // agar chaho to kisi visible button pe focus kara do
+    });
+  }
   return (
     <main>
 
@@ -73,7 +88,7 @@ export default function Home() {
                 </div>
                 {/* <p className="text-[30px]">Help you build something <span className="bg-[#61FB83] px-1">Great.</span></p> */}
               </div>
-              <button
+              <button onClick={handleClickOpen} id="mainButton"
                 className="cursor-pointer group relative bg-gray-100 hover:bg-zinc-300 text-black font-semibold text-sm py-3 rounded-lg transition-all duration-200 ease-in-out shadow-lg hover:shadow-lg w-40 h-12"
               >
                 <div className="relative flex items-center justify-center gap-2">
@@ -111,19 +126,20 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <SliderPopup open={open} handleClose={handleClose} />
       </section>
 
       <section className="py-6 lg:py-12 bg-[#FAFAFA]">
         <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: "easeInOut",
-        }}
-        
-        className="container mx-auto px-4">
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+
+          className="container mx-auto px-4">
           <div className="mb-6 lg:mb-10">
             <HeadingText textalign="text-center" heading="WHAT WE DELIVER" />
           </div>

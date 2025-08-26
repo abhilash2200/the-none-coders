@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
+import { FaGoogle, FaYoutube, FaFacebook } from "react-icons/fa";
 
 type FooterLink = {
     label: string;
@@ -45,9 +46,9 @@ const footerSections: FooterSection[] = [
 ];
 
 const socialIcons = [
-    { src: "/assets/icons/google.svg", alt: "Google", href: "/" },
-    { src: "/assets/icons/youtube.svg", alt: "YouTube", href: "/" },
-    { src: "/assets/icons/facebook.svg", alt: "Facebook", href: "/" },
+    { icon: FaGoogle, alt: "Google", href: "/" },
+    { icon: FaYoutube, alt: "YouTube", href: "/" },
+    { icon: FaFacebook, alt: "Facebook", href: "/" },
 ];
 
 function Footer() {
@@ -136,22 +137,20 @@ function Footer() {
                                 transition={{ duration: 0.5, delay: 0.3 }}
                             >
                                 <ul className="flex items-center gap-x-5 justify-center lg:justify-start">
-                                    {socialIcons.map((icon, i) => (
-                                        <motion.li
-                                            key={i}
-                                            whileHover={{ scale: 1.2, rotate: 5 }}
-                                            whileTap={{ scale: 0.9 }}
-                                        >
-                                            <Link href={icon.href}>
-                                                <Image
-                                                    src={icon.src}
-                                                    alt={icon.alt}
-                                                    width={25}
-                                                    height={25}
-                                                />
-                                            </Link>
-                                        </motion.li>
-                                    ))}
+                                    {socialIcons.map((item, i) => {
+                                        const Icon = item.icon;
+                                        return (
+                                            <motion.li
+                                                key={i}
+                                                whileHover={{ scale: 1.2, rotate: 5 }}
+                                                whileTap={{ scale: 0.9 }}
+                                            >
+                                                <Link href={item.href}>
+                                                    <Icon className="w-6 h-6 text-gray-700 hover:text-[#19d442]" />
+                                                </Link>
+                                            </motion.li>
+                                        );
+                                    })}
                                 </ul>
                             </motion.div>
                             <motion.div
