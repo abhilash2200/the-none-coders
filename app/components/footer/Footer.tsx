@@ -83,21 +83,23 @@ function Footer() {
 
                             <ul>
                                 {section.links.map((link, i) => (
-                                    <motion.li
-                                        key={i}
-                                        whileHover={{ x: 5 }}
-                                        transition={{ type: "spring", stiffness: 300 }}
-                                        className="py-2"
-                                    >
-                                        <Link
-                                            className="text-[16px] text-[#3A3A3A] hover:text-[#19d442] transition-colors duration-300"
-                                            href={link.href}
+                                    <li key={i} className="py-2">
+                                        <motion.div
+                                            whileHover={{ x: 5 }}
+                                            transition={{ type: "spring", stiffness: 300 }}
+                                            className="inline-block"
                                         >
-                                            {link.label}
-                                        </Link>
-                                    </motion.li>
+                                            <Link
+                                                className="text-[16px] text-[#3A3A3A] hover:text-[#19d442] transition-colors duration-300"
+                                                href={link.href}
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        </motion.div>
+                                    </li>
                                 ))}
                             </ul>
+
                         </motion.div>
                     ))}
                     <div className="w-full border-t border-[#414141] py-8">
