@@ -4,64 +4,52 @@ import { motion } from "framer-motion";
 import { Linkedin, Twitter, Github } from "lucide-react";
 
 const imageVariants = {
-    rest: {
-        y: 0,
-        scaleY: 1,
-        scaleX: 1,
-        opacity: 1,
-        transformOrigin: "bottom center",
-        transition: {
-            duration: 0.4,
-            ease: "easeOut" as const,
-        },
-    },
+    rest: { scale: 1, y: 0, opacity: 1 },
     hover: {
-        y: ["0%", "-20%", "-115%"],
-        scaleY: [1, 1.15, 1.2],
-        scaleX: [1, 1.02, 1.05],
-        opacity: [1, 0.9, 0],
+        scale: 1.5,
+        y: 0,
+        opacity: 0.85,
         transition: {
-            y: { times: [0, 0.4, 1], duration: 0.9, ease: "easeInOut" as const },
-            scaleY: { times: [0, 0.4, 1], duration: 0.9, ease: "easeInOut" as const },
-            scaleX: { times: [0, 0.4, 1], duration: 0.9, ease: "easeInOut" as const },
-            opacity: { times: [0, 0.5, 1], duration: 0.9, ease: "easeOut" as const },
+            duration: 0.8,
+            ease: [0.25, 1, 0.5, 1],
         },
     },
 };
-
 
 const overlayVariants = {
-    rest: { opacity: 0 },
+    rest: { opacity: 0, backdropFilter: "blur(0px)", scale: 1 },
     hover: {
         opacity: 1,
-        transition: { duration: 0.4, delay: 0.3 },
-    },
-};
-
-
-const contentVariants = {
-    rest: { opacity: 0, x: 48 },
-    hover: {
-        opacity: 1,
-        x: 0,
+        backdropFilter: "blur(20px)", // hover blur
+        scale: 1.05, // thoda zoom for quick punch
         transition: {
-            type: "spring" as const,
-            stiffness: 340,
-            damping: 26,
-            delay: 0.6,
-            when: "beforeChildren" as const,
-            staggerChildren: 0.08,
+            duration: 0.4,
+            ease: [0.4, 0, 0.2, 1],
         },
     },
 };
 
+const contentVariants = {
+    rest: { opacity: 0, y: 30 },
+    hover: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            type: "spring" as const,
+            stiffness: 120,
+            damping: 18,
+            delayChildren: 0.3,
+            staggerChildren: 0.12,
+        },
+    },
+};
 
 const lineVariants = {
-    rest: { y: 10, opacity: 0 },
+    rest: { opacity: 0, y: 20 },
     hover: {
-        y: 0,
         opacity: 1,
-        transition: { type: "spring" as const, stiffness: 360, damping: 24 },
+        y: 0,
+        transition: { duration: 0.45, ease: "easeOut" },
     },
 };
 
@@ -75,8 +63,9 @@ function EmployeeItem({
             initial="rest"
             animate="rest"
             whileHover="hover"
-            className="relative w-full md:w-[45%] h-[500px] overflow-hidden rounded-xl cursor-pointer shadow-xl bg-neutral-900"
+            className="relative w-full md:w-[45%] h-[500px] overflow-hidden rounded-xl cursor-pointer shadow-2xl bg-neutral-900 group"
         >
+            {/* Image */}
             <motion.div
                 variants={imageVariants}
                 className="absolute inset-0 z-10 will-change-transform"
@@ -87,19 +76,22 @@ function EmployeeItem({
                     width={500}
                     height={500}
                     className="w-full h-full object-cover"
-                    priority={false}
                 />
                 <div className="absolute -bottom-1 left-0 right-0 h-2 bg-gradient-to-t from-white/50 to-transparent opacity-60" />
             </motion.div>
+
+            {/* Overlay */}
             <motion.div
                 variants={overlayVariants}
                 className="absolute inset-0 z-20 pointer-events-none"
             >
-                <div className="absolute inset-0 bg-gradient-to-tr from-black/90 via-black/70 to-gray-800/80" />
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-700/40 via-pink-600/30 to-transparent mix-blend-overlay" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/90 via-black/70 to-gray-900/80" />
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-700/40 via-pink-600/20 to-transparent mix-blend-overlay" />
                 <div className="absolute inset-0 bg-gradient-to-tl from-cyan-400/20 via-transparent to-blue-500/20 mix-blend-overlay" />
-                <div className="absolute inset-0 backdrop-blur-[2px]" />
             </motion.div>
+
+
+            {/* Content */}
             <motion.div
                 variants={contentVariants}
                 className="absolute inset-0 z-30 flex flex-col justify-center items-start p-6 text-white"
@@ -121,27 +113,40 @@ function EmployeeItem({
                 </motion.p>
 
                 <motion.div variants={lineVariants} className="flex gap-4 mt-4">
-                    <a href="#" aria-label="LinkedIn" className="transition hover:opacity-80">
-                        <Linkedin size={20} />
-                    </a>
-                    <a href="#" aria-label="Twitter" className="transition hover:opacity-80">
-                        <Twitter size={20} />
-                    </a>
-                    <a href="#" aria-label="GitHub" className="transition hover:opacity-80">
-                        <Github size={20} />
-                    </a>
+                    {[
+                        { icon: Linkedin, label: "LinkedIn" },
+                        { icon: Twitter, label: "Twitter" },
+                        { icon: Github, label: "GitHub" },
+                    ].map((s, i) => (
+                        <motion.a
+                            key={i}
+                            href="#"
+                            aria-label={s.label}
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="transition text-white/90 hover:text-white"
+                        >
+                            <s.icon size={22} />
+                        </motion.a>
+                    ))}
                 </motion.div>
             </motion.div>
+
+            {/* Bottom label */}
             <motion.div
                 variants={{
                     rest: { opacity: 1, y: 0 },
-                    hover: { opacity: 0, y: 10, transition: { duration: 0.3 } },
+                    hover: { opacity: 0, y: 15, transition: { duration: 0.4 } },
                 }}
                 className="absolute bottom-3 left-3 z-20 text-white/90"
             >
-                <div className="rounded-md bg-black/50 px-2 py-1 backdrop-blur-[2px]">
-                    <div className="text-[19px] md:text-[18px] font-semibold">{emp.name}</div>
-                    <div className="text-[15px] md:text-[13px] text-neutral-200">{emp.designation}</div>
+                <div className="rounded-md bg-black/50 px-2 py-1 backdrop-blur-sm">
+                    <div className="text-[19px] md:text-[18px] font-semibold">
+                        {emp.name}
+                    </div>
+                    <div className="text-[15px] md:text-[13px] text-neutral-200">
+                        {emp.designation}
+                    </div>
                 </div>
             </motion.div>
         </motion.div>
@@ -150,10 +155,30 @@ function EmployeeItem({
 
 function EmployeeCard() {
     const employees = [
-        { img: "/assets/img/office-man.jpg", name: "John Doe", designation: "Web Developer", details: "Expert in React & Node.js" },
-        { img: "/assets/img/office-man-2.jpg", name: "Jane Smith", designation: "UI/UX Designer", details: "Specialized in Figma & Tailwind" },
-        { img: "/assets/img/office-man.jpg", name: "Michael Lee", designation: "Project Manager", details: "5+ years managing IT projects" },
-        { img: "/assets/img/office-man-2.jpg", name: "Emily Davis", designation: "QA Engineer", details: "Automation & Manual Testing" },
+        {
+            img: "/assets/img/office-man.jpg",
+            name: "John Doe",
+            designation: "Web Developer",
+            details: "Expert in React & Node.js",
+        },
+        {
+            img: "/assets/img/office-man-2.jpg",
+            name: "Jane Smith",
+            designation: "UI/UX Designer",
+            details: "Specialized in Figma & Tailwind",
+        },
+        {
+            img: "/assets/img/office-man.jpg",
+            name: "Michael Lee",
+            designation: "Project Manager",
+            details: "5+ years managing IT projects",
+        },
+        {
+            img: "/assets/img/office-man-2.jpg",
+            name: "Emily Davis",
+            designation: "QA Engineer",
+            details: "Automation & Manual Testing",
+        },
     ];
 
     return (
