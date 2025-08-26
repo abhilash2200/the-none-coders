@@ -14,6 +14,10 @@ function SkeletonUpdates() {
                             className="w-full md:w-[50%] lg:w-[33.33%] px-1.5"
                         >
                             <Skeleton variant="rectangular" width="100%" height={250} className="rounded-md" />
+                            <div className="py-2 flex justify-between items-center">
+                                <Skeleton variant="rounded" sx={{ width: "100px", height: "12px" }} />
+                                <Skeleton variant="rounded" sx={{ width: "100px", height: "12px" }} />
+                            </div>
                             <Skeleton variant="text" width="80%" height={28} className="mt-3" />
                             <Skeleton variant="text" width="95%" height={20} />
                             <Skeleton variant="text" width="90%" height={20} />
