@@ -74,7 +74,7 @@ export default function CareerView() {
 
 // Sorting logic simplified
 const sortedJobs = useMemo(() => {
-  const list = [...jobsList]; // 👈 let → const
+  const list = [...jobsList];
   if (filter === "new") {
     list.sort(
       (a, b) => new Date(b.posted).getTime() - new Date(a.posted).getTime()

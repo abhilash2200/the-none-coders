@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import CareerView from "./CareerView"; // desktop version
 import { Pagination } from "@mui/material";
 import {
@@ -77,6 +77,10 @@ export default function ResponsiveCareerView() {
     const [showFull, setShowFull] = useState(false);
     const [open, setOpen] = useState(false);
 
+    // refs
+    const listTopRef = useRef<HTMLDivElement | null>(null);
+    const detailTopRef = useRef<HTMLDivElement | null>(null);
+
     // Detect mobile width client-side
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -84,6 +88,20 @@ export default function ResponsiveCareerView() {
         window.addEventListener("resize", checkMobile);
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
+
+    // Scroll to top when page changes (for job list)
+    useEffect(() => {
+        if (isMobile && listTopRef.current) {
+            listTopRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }, [page, isMobile]);
+
+    // Scroll to top when job is selected (for job detail)
+    useEffect(() => {
+        if (isMobile && selectedJob && detailTopRef.current) {
+            detailTopRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    }, [selectedJob, isMobile]);
 
     // Sorting
     const sortedJobs = useMemo(() => {
@@ -113,7 +131,7 @@ export default function ResponsiveCareerView() {
     return (
         <div className="p-4 mt-10 min-h-screen pb-24">
             {selectedJob === null ? (
-                <div>
+                <div ref={listTopRef}>
                     {/* Header */}
                     <div className="sticky top-0 z-10 bg-white border border-gray-200 shadow-sm px-4 py-3 flex justify-between items-center">
                         <p className="text-sm text-gray-700 font-medium">
@@ -183,7 +201,7 @@ export default function ResponsiveCareerView() {
                 </div>
             ) : (
                 // Job Detail
-                <div>
+                <div ref={detailTopRef}>
                     <div className="p-4 bg-[#fafafafa] mb-6 border border-gray-400">
                         <button
                             className="flex items-center gap-2 text-gray-700 font-medium hover:bg-gray-300 transition"

@@ -14,19 +14,24 @@ import { ExpandMore, ExpandLess } from "@mui/icons-material";
 
 import { Inter } from "next/font/google";
 
-const listData = [
+interface DropItem {
+  name: string;
+  href: string;
+}
+
+interface NavItem {
+  name: string;
+  href: string;
+  dropItem: DropItem[];
+}
+
+const listData: NavItem[] = [
   { name: "ABOUT COMPANY", href: "/about-us", dropItem: [] },
-  { name: "SOLUTIONS", href: "/solution", dropItem: [], },
-  {
-    name: "PRODUCTS", href: "#",
-    dropItem: [
-      { name: "App Development", href: "/products/app-development" },
-      { name: "CRM Development", href: "/products/crm-development" },
-    ],
-  },
-  { name: "UPDATES", href: "/updates", dropItem: [], },
-  { name: "CAREER", href: "/career", dropItem: [], },
-  { name: "SUPPORT", href: "/support", dropItem: [], },
+  { name: "SOLUTIONS", href: "/solution", dropItem: [] },
+  { name: "PRODUCTS", href: "/products", dropItem: [] },
+  { name: "UPDATES", href: "/updates", dropItem: [] },
+  { name: "CAREER", href: "/career", dropItem: [] },
+  { name: "SUPPORT", href: "/support", dropItem: [] },
 ];
 
 const inter = Inter({

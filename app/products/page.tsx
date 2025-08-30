@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import React, { useEffect } from "react";
-import HeadingText from "../../components/HeadingText";
-import SectionProgress from "../../components/SectionProgress";
+import HeadingText from "../components/HeadingText";
+import SectionProgress from "../components/SectionProgress";
 import ArrowButton from "@/components/ArrowButton";
 import Link from "next/link";
 import { motion } from "framer-motion"
