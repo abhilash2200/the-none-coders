@@ -44,9 +44,9 @@ export default function QuickActionsWithForm() {
         open={openDial}
         FabProps={{
           sx: {
-            bgcolor: "#2D176A",
+            bgcolor: "#414141",
             color: "#fff",
-            "&:hover": { bgcolor: "#0D0031" },
+            "&:hover": { bgcolor: "#383838", color: "#FFF" },
           },
         }}
       >
@@ -61,9 +61,9 @@ export default function QuickActionsWithForm() {
             }}
             FabProps={{
               sx: {
-                bgcolor: "#02B228",
-                color: "#fff",
-                "&:hover": { bgcolor: "#005613" },
+                bgcolor: "#FFF",
+                color: "#383838",
+                "&:hover": { bgcolor: "#9E9E9E", color: "#FFF" },
               },
             }}
           />
