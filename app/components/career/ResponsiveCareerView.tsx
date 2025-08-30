@@ -91,15 +91,15 @@ export default function ResponsiveCareerView() {
 
     // Scroll to top when page changes (for job list)
     useEffect(() => {
-        if (isMobile && listTopRef.current) {
-            listTopRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (isMobile) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     }, [page, isMobile]);
 
     // Scroll to top when job is selected (for job detail)
     useEffect(() => {
-        if (isMobile && selectedJob && detailTopRef.current) {
-            detailTopRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (isMobile && selectedJob) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     }, [selectedJob, isMobile]);
 
