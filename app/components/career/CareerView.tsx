@@ -72,20 +72,20 @@ export default function CareerView() {
 
   const jobsPerPage = 40;
 
-  // Sorting logic simplified
-  const sortedJobs = useMemo(() => {
-    let list = [...jobsList];
-    if (filter === "new") {
-      list.sort(
-        (a, b) => new Date(b.posted).getTime() - new Date(a.posted).getTime()
-      );
-    } else if (filter === "old") {
-      list.sort(
-        (a, b) => new Date(a.posted).getTime() - new Date(b.posted).getTime()
-      );
-    }
-    return list;
-  }, [filter]);
+// Sorting logic simplified
+const sortedJobs = useMemo(() => {
+  const list = [...jobsList]; // 👈 let → const
+  if (filter === "new") {
+    list.sort(
+      (a, b) => new Date(b.posted).getTime() - new Date(a.posted).getTime()
+    );
+  } else if (filter === "old") {
+    list.sort(
+      (a, b) => new Date(a.posted).getTime() - new Date(b.posted).getTime()
+    );
+  }
+  return list;
+}, [filter]);
 
   // Pagination logic
   const pageCount = Math.ceil(sortedJobs.length / jobsPerPage);
