@@ -22,6 +22,38 @@ import { productManager } from "@/app/data/jobDetails/product-manager";
 import { uiuxDesigner } from "@/app/data/jobDetails/ui-ux-designer";
 import SliderPopup from "@/components/SliderPopup";
 
+interface Job {
+    id: number;
+    title: string;
+    posted: string;
+    workType: string;
+    location: string;
+    shortDesc: string;
+  }
+  
+  interface JobDetails {
+    id: number;
+    title: string;
+    location: string;
+    datePosted: string;
+    jobNumber: string;
+    jobStatus: string;
+    travel: string;
+    roleType: string;
+    discipline: string;
+    employmentType: string;
+    profession: string;
+    workMode: string;
+    overview?: string;
+    responsibilities?: string[];
+    qualifications?: string[];
+    preferred?: string[];
+    benefits?: string;
+    culture?: string;
+    careerGrowth?: string;
+    diversityStatement?: string;
+  }
+
 const jobDetailsArray = [
     seniorBusinessDevelopmentManager,
     businessdevelopmentmanager,
@@ -35,12 +67,12 @@ const jobDetailsArray = [
     uiuxDesigner,
 ];
 
-const jobDetailsMap: Record<number, any> = jobDetailsArray.reduce(
-    (acc, job) => {
-        acc[job.id] = job;
-        return acc;
-    },
-    {} as Record<number, any>
+const jobDetailsMap: Record<number, JobDetails> = jobDetailsArray.reduce(
+  (acc, job) => {
+    acc[job.id] = job;
+    return acc;
+  },
+  {} as Record<number, JobDetails>
 );
 
 export default function ResponsiveCareerView() {
@@ -99,7 +131,7 @@ export default function ResponsiveCareerView() {
                             <select
                                 id="sort"
                                 value={filter}
-                                onChange={(e) => setFilter(e.target.value as any)}
+                                onChange={(e) => setFilter(e.target.value as typeof filter)}
                                 className="text-sm border border-gray-300 rounded-md px-2 py-1 bg-white hover:border-gray-400 transition focus:ring-0"
                             >
                                 <option value="all">All</option>
