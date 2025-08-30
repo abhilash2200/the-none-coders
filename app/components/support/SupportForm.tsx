@@ -35,7 +35,6 @@ function SupportForm() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Validation
     const validateForm = () => {
         const newErrors: Partial<FormData> = {};
         if (!formData.name.trim()) newErrors.name = "Name is required";
@@ -68,7 +67,7 @@ function SupportForm() {
         <div className="w-full max-w-[650px] mx-auto bg-white rounded-[5px] p-2 shadow-[5px]">
             <div className="border border-gray-500 p-6 rounded-[5px]">
                 <div className="text-center mb-6 bg-gray-200 p-2">
-                    <h2 className="text-2xl mb-1 font-bold text-[#14053b]">
+                    <h2 className="text-2xl mb-1 font-bold text-[#222222]">
                         Get a Free Consultation
                     </h2>
                     <p className="text-gray-600">
@@ -182,7 +181,7 @@ function SupportForm() {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="mt-6 w-full bg-[#0f0430] text-white font-medium py-2 rounded-[5px] hover:bg-[#2D176A] transition flex justify-center items-center"
+                        className="mt-6 w-full bg-[#222222] text-white font-medium py-2 rounded-[5px] hover:bg-[#4b4b4b] hover:cursor-pointer transition flex justify-center items-center"
                     >
                         {loading ? (
                             <span className="loader border-2 border-white border-t-transparent rounded-full w-5 h-5 animate-spin"></span>
