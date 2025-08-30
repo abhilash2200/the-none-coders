@@ -26,7 +26,7 @@ const listData = [
   },
   { name: "UPDATES", href: "/updates", dropItem: [], },
   { name: "CAREER", href: "/career", dropItem: [], },
-  { name: "SUPPORT", href: "/solution", dropItem: [], },
+  { name: "SUPPORT", href: "/support", dropItem: [], },
 ];
 
 const inter = Inter({

@@ -18,25 +18,25 @@ const expertiseData: ExpertiseData[] = [
   {
     title: "Customised Softwares",
     img: "/assets/img/solution.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     href: "/solution",
   },
   {
     title: "E-Learning Applications",
     img: "/assets/img/solution-2.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     href: "#",
   },
   {
     title: "CRM Development",
     img: "/assets/img/solution-3.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     href: "#",
   },
   {
     title: "Networking Applications",
     img: "/assets/img/solution-4.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     href: "#",
   },
 ];
@@ -173,7 +173,7 @@ export function EnterpriseCards() {
                 <motion.div
                   key={ele.title + "-" + i}
                   layout
-                  animate={{ marginTop: device === "mobile" ? 0 : i * 50 }}
+                  animate={{ marginTop: device === "mobile" ? 0 : i * 0 }}
                   transition={{
                     duration: 0.45,
                     ease: [0.22, 0.61, 0.36, 1],
@@ -191,7 +191,7 @@ export function EnterpriseCards() {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex md:justify-center justify-start mt-3 md:absolute md:bottom-4 md:left-4 md:mt-0">
+          <div className="flex md:justify-center justify-start mt-3 md:absolute md:-bottom-8 md:left-4 md:mt-0">
             <div className="flex flex-row gap-4">
               <CircleButton
                 onClick={prev}
