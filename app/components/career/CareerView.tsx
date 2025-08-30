@@ -102,7 +102,7 @@ export default function CareerView() {
               <h3
                 className={`font-semibold text-lg ${selectedJob === job.id
                   ? "text-[#190849]"
-                  : "text-gray-900 group-hover:text-[#2D176A]"
+                  : "text-gray-900 group-hover:text-[#4d4d4d]"
                   }`}
               >
                 {job.title}
@@ -121,7 +121,7 @@ export default function CareerView() {
               <p className="text-sm mt-2 text-gray-700 line-clamp-2">
                 {job.shortDesc}
               </p>
-              <span className="text-indigo-600 text-sm hover:underline">
+              <span className="text-gray-900 text-sm hover:underline hover:text-[#000]">
                 See details →
               </span>
             </div>
