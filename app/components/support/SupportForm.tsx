@@ -65,12 +65,12 @@ function SupportForm() {
 
     return (
         <div className="w-full max-w-[650px] mx-auto bg-white rounded-[5px] p-2 shadow-[5px]">
-            <div className="border border-gray-500 p-6 rounded-[5px]">
+            <div className="border border-gray-500 md:p-6 p-2 rounded-[5px]">
                 <div className="text-center mb-6 bg-gray-200 p-2">
-                    <h2 className="text-2xl mb-1 font-bold text-[#222222]">
+                    <h2 className="md:text-2xl text-[20px] mb-1 font-bold text-[#222222]">
                         Get a Free Consultation
                     </h2>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 leading-tight">
                         Fill out the form below and our team will get back to you shortly.
                     </p>
                 </div>
