@@ -9,29 +9,22 @@ import {
     CircleArrowLeft,
     SquareArrowOutDownRight,
 } from "lucide-react";
-import { jobsList } from "@/app/data/jobsList";
-import { seniorBusinessDevelopmentManager } from "@/app/data/jobDetails/senior-business-development-manager";
-import { businessdevelopmentmanager } from "@/app/data/jobDetails/business-development-manager";
-import { partnerdevelopmentmanager } from "@/app/data/jobDetails/partner-development-manager";
-import { softwareEngineer } from "@/app/data/jobDetails/software-engineer";
-import { cloudSolutionsArchitect } from "@/app/data/jobDetails/cloud-solutions-architect";
-import { dataScientist } from "@/app/data/jobDetails/data-scientist";
-import { cybersecurityAnalyst } from "@/app/data/jobDetails/cybersecurity-analyst";
-import { aiResearchEngineer } from "@/app/data/jobDetails/ai-research-engineer";
-import { productManager } from "@/app/data/jobDetails/product-manager";
-import { uiuxDesigner } from "@/app/data/jobDetails/ui-ux-designer";
+import { jobsList, JobItem } from "@/app/data/jobsList";
+import {
+    seniorBusinessDevelopmentManager,
+    businessdevelopmentmanager,
+    partnerdevelopmentmanager,
+    softwareEngineer,
+    cloudSolutionsArchitect,
+    dataScientist,
+    cybersecurityAnalyst,
+    aiResearchEngineer,
+    productManager,
+    uiuxDesigner,
+} from "../../data/jobDetails";
 import SliderPopup from "@/components/SliderPopup";
 
-interface Job {
-    id: number;
-    title: string;
-    posted: string;
-    workType: string;
-    location: string;
-    shortDesc: string;
-  }
-  
-  interface JobDetails {
+export interface JobDetails {
     id: number;
     title: string;
     location: string;
@@ -52,9 +45,9 @@ interface Job {
     culture?: string;
     careerGrowth?: string;
     diversityStatement?: string;
-  }
+}
 
-const jobDetailsArray = [
+const jobDetailsArray: JobDetails[] = [
     seniorBusinessDevelopmentManager,
     businessdevelopmentmanager,
     partnerdevelopmentmanager,
@@ -68,17 +61,17 @@ const jobDetailsArray = [
 ];
 
 const jobDetailsMap: Record<number, JobDetails> = jobDetailsArray.reduce(
-  (acc, job) => {
-    acc[job.id] = job;
-    return acc;
-  },
-  {} as Record<number, JobDetails>
+    (acc, job) => {
+        acc[job.id] = job;
+        return acc;
+    },
+    {} as Record<number, JobDetails>
 );
 
 export default function ResponsiveCareerView() {
     // States
     const [isMobile, setIsMobile] = useState(false);
-    const [selectedJob, setSelectedJob] = useState<number | null>(null);
+    const [selectedJob, setSelectedJob] = useState<JobDetails | null>(null);
     const [page, setPage] = useState(1);
     const [filter, setFilter] = useState<"all" | "new" | "old">("all");
     const [showFull, setShowFull] = useState(false);
@@ -96,11 +89,13 @@ export default function ResponsiveCareerView() {
     const sortedJobs = useMemo(() => {
         if (filter === "new")
             return [...jobsList].sort(
-                (a, b) => new Date(b.posted).getTime() - new Date(a.posted).getTime()
+                (a, b) =>
+                    new Date(b.posted).getTime() - new Date(a.posted).getTime()
             );
         if (filter === "old")
             return [...jobsList].sort(
-                (a, b) => new Date(a.posted).getTime() - new Date(b.posted).getTime()
+                (a, b) =>
+                    new Date(a.posted).getTime() - new Date(b.posted).getTime()
             );
         return jobsList;
     }, [filter]);
@@ -110,6 +105,7 @@ export default function ResponsiveCareerView() {
     const endIndex = startIndex + jobsPerPage;
     const paginatedJobs = sortedJobs.slice(startIndex, endIndex);
     const totalPages = Math.ceil(sortedJobs.length / jobsPerPage);
+
     if (!isMobile) {
         return <CareerView />;
     }
@@ -143,12 +139,12 @@ export default function ResponsiveCareerView() {
 
                     {/* Job List */}
                     <div className="mt-4 space-y-4">
-                        {paginatedJobs.map((job) => (
+                        {paginatedJobs.map((job: JobItem) => (
                             <div
                                 key={job.id}
-                                className="p-5 rounded-[10px] transition border-gray-500 shadow-md hover:shadow-md bg-white cursor-pointer"
+                                className="p-5 rounded-[10px] border border-gray-200 transition shadow-sm hover:shadow-md bg-white cursor-pointer"
                                 onClick={() => {
-                                    setSelectedJob(job.id);
+                                    setSelectedJob(jobDetailsMap[job.id]);
                                     setShowFull(false);
                                 }}
                             >
@@ -201,68 +197,39 @@ export default function ResponsiveCareerView() {
                     </div>
 
                     <h2 className="text-[22px] font-semibold mb-2 text-gray-900">
-                        {jobDetailsMap[selectedJob].title}
+                        {selectedJob.title}
                     </h2>
-                    <p className="text-gray-600 mb-4 text-sm">
-                        {jobDetailsMap[selectedJob].location}
-                    </p>
+                    <p className="text-gray-600 mb-4 text-sm">{selectedJob.location}</p>
                     <hr className="text-[#969696]" />
 
+                    {/* Job Detail Grid */}
                     <h2 className="text-[18px] font-semibold text-gray-800 mt-3">
                         Job Detail
                     </h2>
                     <div className="grid grid-cols-2 gap-3 text-sm py-2 rounded-lg mb-2">
-                        <p>
-                            <strong>Date posted:</strong>{" "}
-                            {jobDetailsMap[selectedJob].datePosted}
-                        </p>
-                        <p>
-                            <strong>Job number:</strong>{" "}
-                            {jobDetailsMap[selectedJob].jobNumber}
-                        </p>
-                        <p>
-                            <strong>Job status:</strong>{" "}
-                            {jobDetailsMap[selectedJob].jobStatus}
-                        </p>
-                        <p>
-                            <strong>Travel:</strong> {jobDetailsMap[selectedJob].travel}
-                        </p>
-                        <p>
-                            <strong>Role type:</strong> {jobDetailsMap[selectedJob].roleType}
-                        </p>
-                        <p>
-                            <strong>Discipline:</strong>{" "}
-                            {jobDetailsMap[selectedJob].discipline}
-                        </p>
-                        <p>
-                            <strong>Employment type:</strong>{" "}
-                            {jobDetailsMap[selectedJob].employmentType}
-                        </p>
-                        <p>
-                            <strong>Profession:</strong>{" "}
-                            {jobDetailsMap[selectedJob].profession}
-                        </p>
-                        <p>
-                            <strong>Work Mode:</strong>{" "}
-                            {jobDetailsMap[selectedJob].workMode}
-                        </p>
+                        <p><strong>Date posted:</strong> {selectedJob.datePosted}</p>
+                        <p><strong>Job number:</strong> {selectedJob.jobNumber}</p>
+                        <p><strong>Job status:</strong> {selectedJob.jobStatus}</p>
+                        <p><strong>Travel:</strong> {selectedJob.travel}</p>
+                        <p><strong>Role type:</strong> {selectedJob.roleType}</p>
+                        <p><strong>Discipline:</strong> {selectedJob.discipline}</p>
+                        <p><strong>Employment type:</strong> {selectedJob.employmentType}</p>
+                        <p><strong>Profession:</strong> {selectedJob.profession}</p>
+                        <p><strong>Work Mode:</strong> {selectedJob.workMode}</p>
                     </div>
                     <hr className="text-[#969696]" />
 
+                    {/* Overview & More */}
                     <div className="text-sm text-gray-700 leading-relaxed pb-24">
-                        <p className="mb-2">{jobDetailsMap[selectedJob].overview}</p>
+                        <p className="mb-2">{selectedJob.overview}</p>
 
-                        {jobDetailsMap[selectedJob].responsibilities && (
+                        {selectedJob.responsibilities && (
                             <div>
-                                <h3 className="font-semibold text-gray-900 mb-1">
-                                    Responsibilities
-                                </h3>
+                                <h3 className="font-semibold text-gray-900 mb-1">Responsibilities</h3>
                                 <ul className="list-disc pl-5 space-y-1">
-                                    {jobDetailsMap[selectedJob].responsibilities.map(
-                                        (r: string, i: number) => (
-                                            <li key={i}>{r}</li>
-                                        )
-                                    )}
+                                    {selectedJob.responsibilities.map((r, i) => (
+                                        <li key={i}>{r}</li>
+                                    ))}
                                 </ul>
                             </div>
                         )}
@@ -276,56 +243,45 @@ export default function ResponsiveCareerView() {
                             </button>
                         )}
 
-                        <div
-                            className={`transition-all duration-500 ease-in-out overflow-hidden ${showFull
-                                    ? "max-h-[2000px] opacity-100 mt-6"
-                                    : "max-h-0 opacity-0"
-                                }`}
-                        >
-                            {jobDetailsMap[selectedJob].qualifications && (
-                                <div>
-                                    <h3 className="font-semibold text-gray-900 mb-1">
-                                        Qualifications
-                                    </h3>
-                                    <ul className="list-disc pl-5 space-y-1">
-                                        {jobDetailsMap[selectedJob].qualifications.map(
-                                            (q: string, i: number) => (
+                        {showFull && (
+                            <div className="transition-all duration-500 ease-in-out mt-6 space-y-4">
+                                {selectedJob.qualifications && (
+                                    <div>
+                                        <h3 className="font-semibold text-gray-900 mb-1">Qualifications</h3>
+                                        <ul className="list-disc pl-5 space-y-1">
+                                            {selectedJob.qualifications.map((q, i) => (
                                                 <li key={i}>{q}</li>
-                                            )
-                                        )}
-                                    </ul>
-                                </div>
-                            )}
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
 
-                            {jobDetailsMap[selectedJob].preferred && (
-                                <div>
-                                    <h3 className="font-semibold text-gray-900 mb-1">
-                                        Preferred Qualifications
-                                    </h3>
-                                    <ul className="list-disc pl-5 space-y-1">
-                                        {jobDetailsMap[selectedJob].preferred.map(
-                                            (p: string, i: number) => (
+                                {selectedJob.preferred && (
+                                    <div>
+                                        <h3 className="font-semibold text-gray-900 mb-1">Preferred Qualifications</h3>
+                                        <ul className="list-disc pl-5 space-y-1">
+                                            {selectedJob.preferred.map((p, i) => (
                                                 <li key={i}>{p}</li>
-                                            )
-                                        )}
-                                    </ul>
-                                </div>
-                            )}
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
 
-                            {jobDetailsMap[selectedJob].benefits && (
-                                <div>
-                                    <h3 className="font-semibold text-gray-900 mb-1">Benefits</h3>
-                                    <div>{jobDetailsMap[selectedJob].benefits}</div>
-                                </div>
-                            )}
+                                {selectedJob.benefits && (
+                                    <div>
+                                        <h3 className="font-semibold text-gray-900 mb-1">Benefits</h3>
+                                        <div>{selectedJob.benefits}</div>
+                                    </div>
+                                )}
 
-                            {jobDetailsMap[selectedJob].culture && (
-                                <div>
-                                    <h3 className="font-semibold text-gray-900 mb-1">Culture</h3>
-                                    <div>{jobDetailsMap[selectedJob].culture}</div>
-                                </div>
-                            )}
-                        </div>
+                                {selectedJob.culture && (
+                                    <div>
+                                        <h3 className="font-semibold text-gray-900 mb-1">Culture</h3>
+                                        <div>{selectedJob.culture}</div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
                     </div>
 
                     {/* Footer */}

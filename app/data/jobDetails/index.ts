@@ -1,0 +1,10 @@
+export { seniorBusinessDevelopmentManager } from './senior-business-development-manager';
+export { businessdevelopmentmanager } from './business-development-manager';
+export { partnerdevelopmentmanager } from './partner-development-manager';
+export { softwareEngineer } from './software-engineer';
+export { cloudSolutionsArchitect } from './cloud-solutions-architect';
+export { dataScientist } from './data-scientist';
+export { cybersecurityAnalyst } from './cybersecurity-analyst';
+export { aiResearchEngineer } from './ai-research-engineer';
+export { productManager } from './product-manager';
+export { uiuxDesigner } from './ui-ux-designer';
