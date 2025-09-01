@@ -7,8 +7,6 @@ import {
   DialogContent,
   IconButton,
   Slide,
-  TextField,
-  MenuItem,
 } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import CloseIcon from "@mui/icons-material/Close";
@@ -35,6 +33,16 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
     message: "",
   });
 
+  const [errors, setErrors] = React.useState({
+    name: "",
+    email: "",
+    phone: "",
+    projectType: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = React.useState(false);
+
   React.useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -43,12 +51,55 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
   }, [open]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const handleSubmit = async () => {
+  const validate = () => {
+    let tempErrors = { ...errors };
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      tempErrors.name = "Full Name is required";
+      isValid = false;
+    }
+
+    if (!formData.email.trim()) {
+      tempErrors.email = "Email is required";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      tempErrors.email = "Enter a valid email";
+      isValid = false;
+    }
+
+    if (!formData.phone.trim()) {
+      tempErrors.phone = "Phone number is required";
+      isValid = false;
+    } else if (!/^\d{10}$/.test(formData.phone)) {
+      tempErrors.phone = "Enter a valid 10-digit phone number";
+      isValid = false;
+    }
+
+    if (!formData.projectType) {
+      tempErrors.projectType = "Please select a project type";
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      tempErrors.message = "Project details are required";
+      isValid = false;
+    }
+
+    setErrors(tempErrors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
     setLoading(true);
     console.log("Form Submitted:", formData);
     await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -64,26 +115,6 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
     setLoading(false);
     handleClose();
   };
-  const inputStyle = {
-    backgroundColor: "#fff",
-    borderRadius: "12px",
-    marginBottom: "10px",
-    "& .MuiOutlinedInput-root": {
-      fontSize: "0.95rem",
-      "& fieldset": { border: "none" },
-      "&:hover fieldset": { border: "none" },
-      "&.Mui-focused fieldset": { border: "none" },
-      "&.Mui-focused": {
-        boxShadow: "0 0 0 3px rgba(0, 33, 71, 0.18)",
-        backgroundColor: "#fff",
-      },
-    },
-    "& .MuiInputLabel-root": {
-      fontSize: "0.9rem",
-      color: "444",
-    },
-  };
-  const [loading, setLoading] = React.useState(false);
 
   return (
     <Dialog
@@ -118,125 +149,116 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
       </IconButton>
 
       <DialogContent sx={{ p: { xs: 3, sm: 5 } }}>
-        <div
-          style={{
-            margin: "0 auto",
-            width: "100%",
-          }}
-        >
-          <h3
-            style={{
-              color: "#002147",
-              textAlign: "center",
-              marginBottom: "12px",
-              fontSize: "1.5rem",
-              fontWeight: "700",
-            }}
-          >
+        <div className="mx-auto w-full">
+          <h3 className="text-[#002147] text-center mb-3 text-xl font-bold">
             Get a Free Consultation
           </h3>
 
-          <p
-            style={{
-              textAlign: "center",
-              color: "#666",
-              marginBottom: "20px",
-              fontSize: "0.95rem",
-              lineHeight: "1.3",
-            }}
-          >
+          <p className="text-center text-gray-600 mb-5 text-sm leading-5">
             Share your project details and our team will connect with you to
             discuss the best solution for your business.
           </p>
 
-          <form>
-            <TextField
-              name="name"
-              label="Full Name"
-              variant="filled"
-              fullWidth
-              value={formData.name}
-              onChange={handleChange}
-              sx={inputStyle}
-            />
-            <TextField
-              name="email"
-              label="Email"
-              type="email"
-              variant="filled"
-              fullWidth
-              value={formData.email}
-              onChange={handleChange}
-              sx={inputStyle}
-            />
-            <TextField
-              name="phone"
-              label="Phone Number"
-              type="tel"
-              variant="filled"
-              fullWidth
-              value={formData.phone}
-              onChange={handleChange}
-              sx={inputStyle}
-            />
-            <TextField
-              select
-              name="projectType"
-              label="Project Type"
-              variant="filled"
-              fullWidth
-              value={formData.projectType}
-              onChange={handleChange}
-              sx={inputStyle}
-            >
-              <MenuItem value="">Select Project Type</MenuItem>
-              <MenuItem value="Web Development">Web Development</MenuItem>
-              <MenuItem value="Mobile App">Mobile App</MenuItem>
-              <MenuItem value="UI/UX Design">UI/UX Design</MenuItem>
-              <MenuItem value="Custom Software">Custom Software</MenuItem>
-            </TextField>
-            <TextField
-              name="message"
-              label="Project Details"
-              multiline
-              rows={3}
-              variant="filled"
-              fullWidth
-              value={formData.message}
-              onChange={handleChange}
-              sx={inputStyle}
-            />
+          <form className="space-y-3" onSubmit={handleSubmit}>
+            <div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                value={formData.name}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-[5px] border text-sm focus:outline-none focus:ring-1 ${errors.name ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-[#252525]"
+                  }`}
+              />
+              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+            </div>
+
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-[5px] border text-sm focus:outline-none focus:ring-1 ${errors.email ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-[#252525]"
+                  }`}
+              />
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+            </div>
+
+            <div>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-[5px] border text-sm focus:outline-none focus:ring-1 ${errors.phone ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-[#252525]"
+                  }`}
+              />
+              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+            </div>
+
+            <div>
+              <select
+                name="projectType"
+                value={formData.projectType}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-[5px] border text-sm bg-white focus:outline-none focus:ring-1 ${errors.projectType ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-[#252525]"
+                  }`}
+              >
+                <option value="">Select Project Type</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Mobile App">Mobile App</option>
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="Custom Software">Custom Software</option>
+              </select>
+              {errors.projectType && <p className="text-red-500 text-xs mt-1">{errors.projectType}</p>}
+            </div>
+
+            <div>
+              <textarea
+                name="message"
+                placeholder="Project Details"
+                rows={3}
+                value={formData.message}
+                onChange={handleChange}
+                className={`w-full px-4 py-3 rounded-[5px] border text-sm focus:outline-none focus:ring-1 ${errors.message ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-[#252525]"
+                  }`}
+              ></textarea>
+              {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
+            </div>
 
             <Button
+              type="submit"
               sx={{
                 mt: 2,
-                width: "200px",
+                width: "100%",
                 mx: "auto",
                 display: "block",
-                background: "linear-gradient(135deg, #002147, #0056b3)",
+                background: "#252525",
                 color: "#fff",
-                borderRadius: "30px",
-                padding: "12px",
+                borderRadius: "5px",
+                padding: "10px",
                 fontWeight: "600",
                 textTransform: "none",
                 fontSize: "1rem",
                 letterSpacing: "0.5px",
                 transition: "0.3s",
                 "&:hover": {
-                  background: "linear-gradient(135deg, #0056b3, #002147)",
+                  background: "#252526",
+                  color: "#fff",
                   transform: "translateY(-2px)",
                   boxShadow: "0px 8px 18px rgba(0,0,0,0.25)",
                 },
               }}
-              onClick={handleSubmit}
               disabled={loading}
             >
-              {loading ? <CircularProgress size={22} sx={{ color: "white" }} /> : "Submit"}
+              {loading ? <CircularProgress size={22} sx={{ color: "#fff" }} /> : "Submit"}
             </Button>
           </form>
         </div>
       </DialogContent>
-
     </Dialog>
   );
 }

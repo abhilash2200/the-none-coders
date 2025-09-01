@@ -64,7 +64,7 @@ function SupportForm() {
     };
 
     return (
-        <div className="w-full max-w-[650px] mx-auto bg-white rounded-[5px] p-2 shadow-[5px]">
+        <div className="w-full max-w-[650px] mx-auto bg-white rounded-[5px] md:p-2 shadow-[5px]">
             <div className="border border-gray-500 md:p-6 p-2 rounded-[5px]">
                 <div className="text-center mb-6 bg-gray-200 p-2">
                     <h2 className="md:text-2xl text-[20px] mb-1 font-bold text-[#222222]">

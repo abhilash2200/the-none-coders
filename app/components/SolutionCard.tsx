@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ArrowButton from "@/components/ArrowButton";
+import CircleButton from "./CircleButton";
 
 interface expertiseDataProps {
   title: string;
@@ -31,7 +32,7 @@ function SolutionCard({ title, img, desc, href }: expertiseDataProps) {
 
       <div className="mt-3">
         <Link href={href}>
-          <ArrowButton />
+          <CircleButton className={`text-black`} />
         </Link>
       </div>
     </div>

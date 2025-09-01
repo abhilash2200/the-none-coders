@@ -4,9 +4,9 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import HeadingText from "../components/HeadingText";
 import SectionProgress from "../components/SectionProgress";
-import ArrowButton from "@/components/ArrowButton";
 import Link from "next/link";
 import { motion } from "framer-motion"
+import CircleButton from "../components/CircleButton";
 
 interface SectionData {
   id: string;
@@ -104,7 +104,7 @@ function Page() {
                   </div>
                   <div className="mt-3 flex justify-start items-center">
                     <Link href={section.link}>
-                      <ArrowButton />
+                      <CircleButton />
                     </Link>
                   </div>
                 </div>

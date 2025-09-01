@@ -5,12 +5,12 @@ import Link from "next/link";
 import HeadingText from "../components/HeadingText";
 import React, { useEffect, useState } from "react";
 import { updatesList, type UpdateListItem } from "../data/updatesList";
-import ArrowButton from "@/components/ArrowButton";
 import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import SkeletonUpdates from "../components/SkeletonUpdate";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import CircleButton from "../components/CircleButton";
 
 function Page() {
     const [loading, setLoading] = useState(true);
@@ -94,7 +94,7 @@ function Page() {
                                     <p className="text-gray-600 text-sm">{update.description}</p>
                                     <div className="mt-5 flex flex-start">
                                         <Link href={`/updates/${update.slug}`}>
-                                            <ArrowButton />
+                                            <CircleButton />
                                         </Link>
                                     </div>
                                 </div>

@@ -4,9 +4,9 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import HeadingText from "../components/HeadingText";
 import SectionProgress from "../components/SectionProgress";
-import ArrowButton from "@/components/ArrowButton";
 import Link from "next/link";
 import { motion } from "framer-motion"
+import CircleButton from "../components/CircleButton";
 
 interface SectionData {
   id: string;
@@ -74,18 +74,17 @@ function Page() {
       {sections.map((section) => (
         <section id={section.id} key={section.id} className="py-6 lg:py-12">
           <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="container mx-auto px-4">
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="container mx-auto px-4">
             <div
-              className={`flex flex-wrap justify-between gap-y-4 ${
-                section.reverse ? "flex-row-reverse" : ""
-              }`}
+              className={`flex flex-wrap justify-between gap-y-4 ${section.reverse ? "flex-row-reverse" : ""
+                }`}
             >
               <div className="w-full md:w-[50%] flex justify-center items-center">
                 <Image
@@ -104,7 +103,11 @@ function Page() {
                   </div>
                   <div className="mt-3 flex justify-start items-center">
                     <Link href={section.link}>
-                      <ArrowButton />
+                      <CircleButton
+                        ariaLabel="Visit Now"
+                        text="Visit Now"
+                        className="text-black"
+                      />
                     </Link>
                   </div>
                 </div>

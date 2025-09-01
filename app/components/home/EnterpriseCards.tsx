@@ -1,10 +1,11 @@
 "use client";
-
-import { motion, useAnimation } from "framer-motion";
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import "@splidejs/react-splide/css";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import HeadingText from "../HeadingText";
 import EnterpriseCard from "../EnterpriseCard";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import CircleButton from "../CircleButton";
 
 interface ExpertiseData {
@@ -18,130 +19,38 @@ const expertiseData: ExpertiseData[] = [
   {
     title: "Customised Softwares",
     img: "/assets/img/solution.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "/solution",
   },
   {
     title: "E-Learning Applications",
     img: "/assets/img/solution-2.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "#",
   },
   {
     title: "CRM Development",
     img: "/assets/img/solution-3.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "#",
   },
   {
     title: "Networking Applications",
     img: "/assets/img/solution-4.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "#",
   },
 ];
 
 export function EnterpriseCards() {
-  const [items, setItems] = useState(expertiseData);
-  const [step, setStep] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [device, setDevice] = useState<"mobile" | "tablet" | "desktop">("desktop");
-  const controls = useAnimation();
-  const trackRef = useRef<HTMLDivElement>(null);
+  const splideRef = useRef<any>(null);
 
-  // Detect device type
-  useEffect(() => {
-    const checkDevice = () => {
-      if (window.innerWidth < 768) {
-        setDevice("mobile");
-      } else if (window.innerWidth < 1024) {
-        setDevice("tablet");
-      } else {
-        setDevice("desktop");
-      }
-    };
-
-    checkDevice();
-    window.addEventListener("resize", checkDevice);
-
-    return () => {
-      window.removeEventListener("resize", checkDevice);
-    };
-  }, []);
-
-  // Step measurement based on device
-  const measureStep = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-
-    const container = el.parentElement;
-    if (!container) return;
-
-    if (device === "mobile") {
-      // Full width card
-      const style = window.getComputedStyle(container);
-      const padding =
-        parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
-      setStep(container.offsetWidth - padding);
-    } else if (device === "tablet") {
-      // Tablet → 2 cards
-      const c0 = el.children[0] as HTMLElement | undefined;
-      if (c0) setStep(c0.offsetWidth + 24);
-    } else {
-      // Desktop → spacing between first 2 cards
-      const c0 = el.children[0] as HTMLElement | undefined;
-      const c1 = el.children[1] as HTMLElement | undefined;
-      if (c0 && c1) {
-        setStep(c1.offsetLeft - c0.offsetLeft);
-      } else if (c0) {
-        setStep(c0.offsetWidth + 24);
-      }
-    }
-  }, [device]);
-
-  useEffect(() => {
-    measureStep();
-    window.addEventListener("resize", measureStep);
-    return () => window.removeEventListener("resize", measureStep);
-  }, [measureStep]);
-
-  const next = async () => {
-    if (isAnimating || step === 0) return;
-    setIsAnimating(true);
-    await controls.start({
-      x: -step,
-      transition: { type: "spring", stiffness: 120, damping: 20 },
-    });
-    setItems((prev) => {
-      const [first, ...rest] = prev;
-      return [...rest, first];
-    });
-    await controls.set({ x: 0 });
-    setIsAnimating(false);
+  const handlePrev = () => {
+    splideRef.current?.splide.go("<");
   };
 
-  const prev = async () => {
-    if (isAnimating || step === 0) return;
-    setIsAnimating(true);
-    await controls.start({
-      x: step,
-      transition: { type: "spring", stiffness: 120, damping: 20 },
-    });
-
-    setItems((prev) => {
-      const last = prev[prev.length - 1];
-      const rest = prev.slice(0, -1);
-      return [last, ...rest];
-    });
-    await controls.set({ x: 0 });
-    setIsAnimating(false);
-  };
-
-  // Card width classes
-  const getCardWidth = () => {
-    if (device === "mobile") return "min-w-full";
-    if (device === "tablet") return "min-w-[45%]";
-    return "min-w-[300px] md:min-w-[320px] lg:min-w-[350px] [@media(min-width:1024px)]:min-w-[300px] [@media(min-width:1200px)]:min-w-[300px] [@media(min-width:1300px)]:min-w-[350px]";
+  const handleNext = () => {
+    splideRef.current?.splide.go(">");
   };
 
   return (
@@ -154,64 +63,54 @@ export function EnterpriseCards() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative container mx-auto px-4 py-10"
-        onLoadCapture={measureStep}
-      >
+        className="relative container mx-auto px-4 py-10">
         <div className="mb-6 lg:mb-10">
           <HeadingText textalign="text-center" heading="EXPERTISE" />
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden">
-            <motion.div
-              ref={trackRef}
-              className="flex lg:gap-6 md:gap-2"
-              animate={controls}
-              style={{ willChange: "transform" }}
-            >
-              {items.map((ele, i) => (
-                <motion.div
-                  key={ele.title + "-" + i}
-                  layout
-                  animate={{ marginTop: device === "mobile" ? 0 : i * 0 }}
-                  transition={{
-                    duration: 0.45,
-                    ease: [0.22, 0.61, 0.36, 1],
-                  }}
-                  className={getCardWidth()}
-                >
-                  <EnterpriseCard
-                    title={ele.title}
-                    img={ele.img}
-                    desc={ele.desc}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+          <Splide
+            ref={splideRef}
+            options={{
+              type: "slide",
+              perPage: 4,
+              perMove: 1,
+              arrows: false,
+              pagination: false,
+              gap: "1.5rem",
+              breakpoints: {
+                1280: { perPage: 3 },
+                1024: { perPage: 2, gap: "1rem" },
+                640: { perPage: 1, gap: "0.5rem" },
+              },
+            }}
+            aria-label="Enterprise Expertise Slider"
+          >
+            {expertiseData.map((ele, i) => (
+              <SplideSlide key={ele.title + "-" + i}>
+                <EnterpriseCard
+                  title={ele.title}
+                  img={ele.img}
+                  desc={ele.desc}
+                />
+              </SplideSlide>
+            ))}
+          </Splide>
 
-          {/* Navigation Buttons */}
-          <div className="flex md:justify-center justify-start mt-3 md:absolute md:-bottom-8 md:left-4 md:mt-0">
-            <div className="flex flex-row gap-4">
-              <CircleButton
-                onClick={prev}
-                className={`hover:bg-black/10 text-black transition ${
-                  isAnimating || step === 0
-                    ? "opacity-50 cursor-not-allowed"
-                    : ""
-                }`}
-                disabled={isAnimating || step === 0}
-              />
-              <CircleButton
-                onClick={next}
-                className={`hover:bg-black/10 text-black transition ${
-                  isAnimating || step === 0
-                    ? "opacity-50 cursor-not-allowed"
-                    : ""
-                }`}
-                disabled={isAnimating || step === 0}
-              />
-            </div>
+          {/* Custom Buttons */}
+          <div className="flex gap-4 mt-6 md:absolute md:-bottom-10 md:left-0">
+            <CircleButton
+              onClick={handlePrev}
+              ariaLabel="Previous"
+              text="Previous"
+              className="hover:bg-black/10 text-black transition"
+            />
+            <CircleButton
+              onClick={handleNext}
+              ariaLabel="Next"
+              text="Next"
+              className="hover:bg-black/10 text-black transition"
+            />
           </div>
         </div>
       </motion.div>

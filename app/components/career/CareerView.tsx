@@ -7,8 +7,6 @@ import { Pagination } from "@mui/material";
 import SliderPopup from "@/components/SliderPopup";
 import SkeletonCareerView from "../SkeletonCareerView";
 import { jobsList, JobItem } from "@/app/data/jobsList";
-
-// Centralized JobDetails type
 import {
   seniorBusinessDevelopmentManager,
   businessdevelopmentmanager,
@@ -45,7 +43,6 @@ export interface JobDetails {
   diversityStatement?: string;
 }
 
-// Map job details by id
 const jobDetailsArray: JobDetails[] = [
   seniorBusinessDevelopmentManager,
   businessdevelopmentmanager,
@@ -72,22 +69,21 @@ export default function CareerView() {
 
   const jobsPerPage = 40;
 
-// Sorting logic simplified
-const sortedJobs = useMemo(() => {
-  const list = [...jobsList];
-  if (filter === "new") {
-    list.sort(
-      (a, b) => new Date(b.posted).getTime() - new Date(a.posted).getTime()
-    );
-  } else if (filter === "old") {
-    list.sort(
-      (a, b) => new Date(a.posted).getTime() - new Date(b.posted).getTime()
-    );
-  }
-  return list;
-}, [filter]);
+  // Sorting logic simplified
+  const sortedJobs = useMemo(() => {
+    const list = [...jobsList];
+    if (filter === "new") {
+      list.sort(
+        (a, b) => new Date(b.posted).getTime() - new Date(a.posted).getTime()
+      );
+    } else if (filter === "old") {
+      list.sort(
+        (a, b) => new Date(a.posted).getTime() - new Date(b.posted).getTime()
+      );
+    }
+    return list;
+  }, [filter]);
 
-  // Pagination logic
   const pageCount = Math.ceil(sortedJobs.length / jobsPerPage);
   const startIndex = (page - 1) * jobsPerPage;
   const currentJobs = sortedJobs.slice(startIndex, startIndex + jobsPerPage);
@@ -222,13 +218,31 @@ const sortedJobs = useMemo(() => {
               >
                 <div className="relative flex items-center justify-center gap-2">
                   <span className="relative inline-block overflow-hidden">
-                    <span className="block transition-transform duration-300 group-hover:-translate-y-full">
+                    <span
+                      className="block transition-transform duration-300 group-hover:-translate-y-full"
+                    >
                       Get Started
                     </span>
-                    <span className="absolute inset-0 transition-transform duration-300 translate-y-full group-hover:translate-y-0">
-                      Apply Now
+                    <span
+                      className="absolute inset-0 transition-transform duration-300 translate-y-full group-hover:translate-y-0"
+                    >
+                      Right Now
                     </span>
                   </span>
+
+                  <svg
+                    className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle fill="currentColor" r="11" cy="12" cx="12"></circle>
+                    <path
+                      strokeLinejoin="round"
+                      strokeLinecap="round"
+                      strokeWidth="2"
+                      stroke="white"
+                      d="M7.5 16.5L16.5 7.5M16.5 7.5H10.5M16.5 7.5V13.5"
+                    ></path>
+                  </svg>
                 </div>
               </button>
               <SliderPopup open={open} handleClose={() => setOpen(false)} />

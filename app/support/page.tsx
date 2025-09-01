@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import HeadingText from "../components/HeadingText";
 import SupportForm from "../components/support/SupportForm";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 
 function Page() {
     useEffect(() => {
@@ -36,50 +36,64 @@ function Page() {
                     />
                 </div>
                 <div className="container mx-auto px-4 py-12">
-                    <div className="flex flex-wrap justify-between gap-6">
-                        <div className="w-full md:w-[35%] mt-[50px] p-6 flex flex-col justify-center">
-                            <div className="md:mb-6 mb-3 group">
-                                <h3 className="text-[20px] font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">
-                                    Address
-                                </h3>
-                                <div className="flex items-start space-x-3 text-gray-700">
-                                    <MapPin className="w-5 h-5 text-gray-600 mt-1" />
-                                    <p className="md:text-lg text-md leading-relaxed">
-                                        22/263, Jodhpur Park, Tagore Park Road, <br />
-                                        Kolkata, West Bengal 700045
-                                    </p>
-                                </div>
+                    <div className="flex flex-wrap justify-between gap-y-8 gap-x-2">
+                        <div className="w-full md:w-[49%] mt-[50px] md:p-6 flex flex-col gap-y-4 justify-center">
+                            <div className="md:mb-8 mb-3">
+                                <h2 className="text-[20px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">
+                                    contact us
+                                </h2>
+                                <p className="md:text-lg text-md leading-relaxed">
+                                    At Beyuvana, we are committed to providing high-quality, plant-based collagen
+                                    products that support your health and beauty goals. At Beyuvana, we are committed to providing high-quality, plant-based collagen products that support your health and beauty goals.
+                                </p>
                             </div>
-                            <div className="md:mb-6 mb-3 group">
-                                <h3 className="text-[20px] font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">
-                                    Call
-                                </h3>
-                                <div className="flex items-center space-x-3 text-gray-700">
-                                    <Phone className="w-5 h-5 text-gray-600" />
-                                    <a
-                                        href="tel:+918250054478"
-                                        className="md:text-lg text-md hover:underline"
-                                    >
-                                        +91 82500 54478
-                                    </a>
+                            <div className="flex flex-wrap gap-2 gap-y-4">
+                                <div className="w-full md:w-[49%] border-r-1 border-gray-300">
+                                    <h2 className="text-[18px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">Get in touch with us:</h2>
+                                    <div className="flex flex-col gap-y-2">
+                                        <div className="flex items-center space-x-3 text-gray-700">
+                                            <Phone className="w-5 h-5 text-gray-600" />
+                                            <a
+                                                href="tel:+918250054478"
+                                                className="md:text-lg text-md hover:underline"
+                                            >
+                                                +91 82500 54478
+                                            </a>
+                                        </div>
+                                        <div className="flex items-center space-x-3 text-gray-700">
+                                            <Mail className="w-5 h-5 text-gray-600" />
+                                            <a
+                                                href="mailto:marketing@digitalwolf.co.in"
+                                                className="md:text-lg text-md hover:underline"
+                                            >
+                                                marketing@digitalwolf.co.in
+                                            </a>
+                                        </div>
+                                        <div className="flex items-center space-x-3 text-gray-700">
+                                            <MapPin className="w-5 h-5 text-gray-600 mt-1" />
+                                            <p className="md:text-lg text-md leading-relaxed">
+                                                Kolkata, West Bengal 700045.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="group">
-                                <h3 className="text-[20px] font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">
-                                    Mail
-                                </h3>
-                                <div className="flex items-center space-x-3 text-gray-700">
-                                    <Mail className="w-5 h-5 text-gray-600" />
-                                    <a
-                                        href="mailto:marketing@digitalwolf.co.in"
-                                        className="md:text-lg text-md hover:underline"
-                                    >
-                                        marketing@digitalwolf.co.in
-                                    </a>
+                                <div className="w-full md:w-[49%]">
+                                    <h2 className="text-[18px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">For more queries:</h2>
+                                    <div className="flex flex-col">
+                                        <div className="flex items-center space-x-3 text-gray-700">
+                                            <Mail className="w-5 h-5 text-gray-600" />
+                                            <a
+                                                href="https://calendly.com/digitalwolf/support"
+                                                className="md:text-lg text-md hover:underline flex items-center gap-2"
+                                            >
+                                                Open A Support Ticket <ArrowRight className="w-5 h-5 text-gray-600" />
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full md:w-[63%]">
+                        <div className="w-full md:w-[50%]">
                             <SupportForm />
                         </div>
                     </div>
