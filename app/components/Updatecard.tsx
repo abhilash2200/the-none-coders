@@ -14,7 +14,7 @@ function Updatecard({ title, img, desc, href }: expertiseDataProps) {
         <div className="flex flex-wrap gap-y-4">
             <div className="px-1.5">
                 <Image
-                    className="w-full h-[320px]"
+                    className="w-full md:h-[320px] h-auto"
                     src={img}
                     alt={title}
                     width={405}
