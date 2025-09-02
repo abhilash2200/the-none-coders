@@ -6,9 +6,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogDescription,
-    DialogClose,
 } from "@/components/ui/dialog";
-import { X } from "lucide-react";
 import ApplicationForm from "./ApplictionForm";
 
 interface ApplicationDialogProps {

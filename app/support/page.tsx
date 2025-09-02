@@ -17,7 +17,7 @@ function Page() {
                     <HeadingText textalign="text-start" heading="SUPPORT" />
                     <div className="flex flex-wrap gap-y-4">
                         <div className="w-full lg:w-[50%] flex flex-col justify-center">
-                            <p className="md:text-[20px] text-[18px] mt-3 md:mt-0">
+                            <p className="md:text-[19px] text-[#414141] text-[18px] mt-3 md:mt-0">
                                 Fill out the form and a Databricks team member will reach out.
                             </p>
                         </div>
@@ -42,7 +42,7 @@ function Page() {
                                 <h2 className="text-[20px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">
                                     contact us
                                 </h2>
-                                <p className="md:text-lg text-md leading-relaxed">
+                                <p className="md:text-[19px] text-[18px] text-[#414141] leading-relaxed">
                                     At Beyuvana, we are committed to providing high-quality, plant-based collagen
                                     products that support your health and beauty goals. At Beyuvana, we are committed to providing high-quality, plant-based collagen products that support your health and beauty goals.
                                 </p>
@@ -52,7 +52,7 @@ function Page() {
                                     <h2 className="text-[18px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">Get in touch with us:</h2>
                                     <div className="flex flex-col gap-y-2">
                                         <div className="flex items-center space-x-3 text-gray-700">
-                                            <Phone className="w-5 h-5 text-gray-600" />
+                                            <Phone className="w-5 h-5 text-[#414141]" />
                                             <a
                                                 href="tel:+918250054478"
                                                 className="md:text-lg text-md hover:underline"
@@ -61,7 +61,7 @@ function Page() {
                                             </a>
                                         </div>
                                         <div className="flex items-center space-x-3 text-gray-700">
-                                            <Mail className="w-5 h-5 text-gray-600" />
+                                            <Mail className="w-5 h-5 text-[#414141]" />
                                             <a
                                                 href="mailto:marketing@digitalwolf.co.in"
                                                 className="md:text-lg text-md hover:underline"
@@ -70,7 +70,7 @@ function Page() {
                                             </a>
                                         </div>
                                         <div className="flex items-center space-x-3 text-gray-700">
-                                            <MapPin className="w-5 h-5 text-gray-600 mt-1" />
+                                            <MapPin className="w-5 h-5 text-[#414141] mt-1" />
                                             <p className="md:text-lg text-md leading-relaxed">
                                                 Kolkata, West Bengal 700045.
                                             </p>

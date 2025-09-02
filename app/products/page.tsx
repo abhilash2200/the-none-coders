@@ -99,7 +99,7 @@ function Page() {
                 <div className="flex flex-col justify-center">
                   <HeadingText textalign="text-start" heading={section.title} />
                   <div className="mt-3">
-                    <p className="md:text-[20px] text-[18px]">{section.description}</p>
+                    <p className="md:text-[19px] text-[#414141] text-[18px]">{section.description}</p>
                   </div>
                   <div className="mt-3 flex justify-start items-center">
                     <Link href={section.link}>

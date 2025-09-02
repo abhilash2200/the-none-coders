@@ -24,7 +24,7 @@ const CircleButton: React.FC<CircleButtonProps> = ({
       disabled={disabled}
       aria-label={ariaLabel}
       className={`group relative flex items-center justify-start w-11 h-12 border-2 border-gray-600 rounded-full 
-                  cursor-pointer overflow-hidden transition-all duration-200 shadow-lg
+                  cursor-pointer overflow-hidden transition-all duration-500 shadow-lg
                   hover:w-36 hover:rounded-[30px] active:translate-x-1 active:translate-y-1 ${className}`}
     >
       {/* Arrow container */}

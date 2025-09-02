@@ -7,7 +7,7 @@ interface heading{
 
 function HeadingText({heading, textalign} : heading) {
   return (
-    <h2 className={`text-[#000000] text-[25px] lg:text-[37px] font-[400] leading-tight ${textalign}`}>
+    <h2 className={`text-[#414141] text-[25px] lg:text-[37px] font-[400] leading-tight ${textalign}`}>
       {heading}
     </h2>
   )

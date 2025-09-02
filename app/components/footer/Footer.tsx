@@ -65,7 +65,7 @@ function Footer() {
                             transition={{ duration: 0.5, delay: idx * 0.2 }}
                         >
                             <motion.h3
-                                className="text-[22px] font-bold mb-3 relative inline-block"
+                                className="text-[22px] text-[#414141] font-bold mb-3 relative inline-block"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
@@ -147,7 +147,7 @@ function Footer() {
                                                 whileTap={{ scale: 0.9 }}
                                             >
                                                 <Link href={item.href}>
-                                                    <Icon className="w-6 h-6 text-gray-700 hover:text-[#19d442]" />
+                                                    <Icon className="w-6 h-6 text-[#3A3A3A] hover:text-[#19d442]" />
                                                 </Link>
                                             </motion.li>
                                         );

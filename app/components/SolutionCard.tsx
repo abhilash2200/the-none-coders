@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import ArrowButton from "@/components/ArrowButton";
 import CircleButton from "./CircleButton";
 
 interface expertiseDataProps {

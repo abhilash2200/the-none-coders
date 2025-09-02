@@ -45,11 +45,6 @@ export default function ApplicationForm({
                 setForm((p) => ({ ...p, [key]: e.target.value }));
             };
 
-    const onResume = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0] ?? null;
-        setForm((p) => ({ ...p, resume: file }));
-    };
-
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -104,7 +99,7 @@ export default function ApplicationForm({
             <label className="text-sm block">
                 Full Name
                 <input
-                    className="mt-1 w-full rounded-[5px] border-1 border-gray-700 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
+                    className="mt-1 w-full rounded-[1px] border-[1px] border-gray-500 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
                     value={form.name}
                     onChange={onInput("name")}
                     required
@@ -117,7 +112,7 @@ export default function ApplicationForm({
                     type="email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                     title="Enter a valid email address"
-                    className="mt-1 w-full rounded-[5px] border-1 border-gray-700 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
+                    className="mt-1 w-full rounded-[1px] border-[1px] border-gray-500 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
                     value={form.email}
                     onChange={onInput("email")}
                     required
@@ -130,7 +125,7 @@ export default function ApplicationForm({
                     type="tel"
                     pattern="[0-9]{10}"
                     title="Enter a valid 10-digit phone number"
-                    className="mt-1 w-full rounded-[5px] border-1 border-gray-700 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
+                    className="mt-1 w-full rounded-[1px] border-[1px] border-gray-500 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
                     value={form.phone}
                     onChange={onInput("phone")}
                 />
@@ -141,7 +136,7 @@ export default function ApplicationForm({
                 <input
                     type="file"
                     accept=".pdf"
-                    className="mt-1 w-full rounded-[5px] border-1 border-gray-700 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
+                    className="mt-1 w-full rounded-[1px] border-[1px] border-gray-500 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
                     onChange={(e) => {
                         const file = e.target.files?.[0];
                         if (file && file.size > 2 * 1024 * 1024) { // > 2MB
@@ -157,7 +152,7 @@ export default function ApplicationForm({
             <label className="text-sm block">
                 Cover Letter
                 <textarea
-                    className="mt-1 w-full rounded-[5px] border-1 border-gray-700 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
+                    className="mt-1 w-full rounded-[1px] border-[1px] border-gray-700 p-2 focus:outline-none focus:ring-1 focus:ring-gray-500"
                     rows={4}
                     value={form.coverLetter}
                     onChange={onInput("coverLetter")}
@@ -176,7 +171,7 @@ export default function ApplicationForm({
                 </button>
                 <button
                     type="submit"
-                    className="px-4 py-2 rounded-[5px] bg-black text-white hover:cursor-pointer hover:scale-101 transition-transform ease-in"
+                    className="px-4 py-2 rounded-[5px] bg-[#1d1d1d] text-white hover:bg-[#414141] hover:cursor-pointer hover:scale-101 transition-transform ease-in"
                 >
                     Submit application
                 </button>

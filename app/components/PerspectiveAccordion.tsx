@@ -58,7 +58,7 @@ const PerspectiveAccordion = () => {
               isOpen ? 'md:max-h-40 max-h-80 opacity-100' : 'max-h-0 opacity-0'
             }`}
           >
-            <p className="px-4 py-2 bg-white text-[16px] md:text-[18px]">{item.content}</p>
+            <p className="px-4 py-2 bg-white text-[16px] md:text-[18px] text-[#414141]">{item.content}</p>
           </div>
         </div>
       );
