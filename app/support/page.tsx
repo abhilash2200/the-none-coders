@@ -37,7 +37,7 @@ function Page() {
                 </div>
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap justify-between gap-y-8 gap-x-2">
-                        <div className="w-full md:w-[49%] mt-[50px] md:p-6 flex flex-col gap-y-4 justify-center">
+                        <div className="w-full md:w-[49%] md:mt-[50px] mt-[120px] md:p-6 flex flex-col gap-y-4 justify-center">
                             <div className="md:mb-8 mb-3">
                                 <h2 className="text-[20px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">
                                     contact us
