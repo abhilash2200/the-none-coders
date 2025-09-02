@@ -42,7 +42,7 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
   };
 
   const validate = () => {
-    let tempErrors = { ...errors };
+    const tempErrors = { ...errors };
     let isValid = true;
 
     if (!formData.name.trim()) {
