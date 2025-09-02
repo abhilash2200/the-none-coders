@@ -64,9 +64,9 @@ function SupportForm() {
     };
 
     return (
-        <div className="w-full max-w-[650px] mx-auto bg-white rounded-[5px] md:p-2 shadow-[5px]">
-            <div className="border border-gray-500 md:p-6 p-2 rounded-[5px]">
-                <div className="text-center mb-6 bg-gray-200 p-2">
+        <div className="w-full max-w-[650px] mx-auto bg-[#fafafa] rounded-[5px] md:p-2 shadow-lg">
+            <div className="md:p-6 p-2 rounded-[5px]">
+                <div className="text-center mb-6 bg-[#fafafa] p-2">
                     <h2 className="md:text-2xl text-[20px] mb-1 font-bold text-[#222222]">
                         Get a Free Consultation
                     </h2>
@@ -83,7 +83,7 @@ function SupportForm() {
                             placeholder="Full Name"
                             value={formData.name}
                             onChange={handleChange}
-                            className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.name
+                            className={`w-full bg-white rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.name
                                     ? "border-red-500 focus:ring-red-500"
                                     : "border-gray-300 focus:ring-[#150e27]"
                                 }`}
@@ -99,7 +99,7 @@ function SupportForm() {
                             placeholder="Email Address"
                             value={formData.email}
                             onChange={handleChange}
-                            className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.email
+                            className={`w-full bg-white rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.email
                                     ? "border-red-500 focus:ring-red-500"
                                     : "border-gray-300 focus:ring-[#150e27]"
                                 }`}
@@ -115,7 +115,7 @@ function SupportForm() {
                             placeholder="Phone Number"
                             value={formData.phone}
                             onChange={handleChange}
-                            className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.phone
+                            className={`w-full bg-white rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.phone
                                     ? "border-red-500 focus:ring-red-500"
                                     : "border-gray-300 focus:ring-[#150e27]"
                                 }`}
@@ -131,7 +131,7 @@ function SupportForm() {
                             value={formData.location}
                             onChange={handleChange}
                             placeholder="City, Country"
-                            className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.location
+                            className={`w-full bg-white rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.location
                                     ? "border-red-500 focus:ring-red-500"
                                     : "border-gray-300 focus:ring-[#150e27]"
                                 }`}
@@ -145,7 +145,7 @@ function SupportForm() {
                             name="services"
                             value={formData.services}
                             onChange={handleChange}
-                            className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.services
+                            className={`w-full bg-white rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.services
                                     ? "border-red-500 focus:ring-red-500"
                                     : "border-gray-300 focus:ring-[#150e27]"
                                 }`}
@@ -169,7 +169,7 @@ function SupportForm() {
                             value={formData.message}
                             onChange={handleChange}
                             rows={4}
-                            className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.message
+                            className={`w-full bg-white rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${errors.message
                                     ? "border-red-500 focus:ring-red-500"
                                     : "border-gray-300 focus:ring-[#150e27]"
                                 }`}

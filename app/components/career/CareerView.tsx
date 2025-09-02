@@ -4,7 +4,6 @@ import * as React from "react";
 import { useState, useEffect, useMemo } from "react";
 import { Calendar, Briefcase, MapPin } from "lucide-react";
 import { Pagination } from "@mui/material";
-import SliderPopup from "@/components/SliderPopup";
 import SkeletonCareerView from "../SkeletonCareerView";
 import { jobsList, JobItem } from "@/app/data/jobsList";
 import {
@@ -19,6 +18,7 @@ import {
   productManager,
   uiuxDesigner,
 } from "../../data/jobDetails";
+import ApplicationDialog from "./ApplicationDialog";
 
 export interface JobDetails {
   id: number;
@@ -202,7 +202,6 @@ export default function CareerView() {
           <SkeletonCareerView />
         ) : details ? (
           <>
-            {/* Job Details Header */}
             <div className="mb-4 pb-4">
               <h2 className="text-2xl font-bold text-gray-900">{details.title}</h2>
               <p className="text-gray-600 flex items-center gap-1">
@@ -218,14 +217,10 @@ export default function CareerView() {
               >
                 <div className="relative flex items-center justify-center gap-2">
                   <span className="relative inline-block overflow-hidden">
-                    <span
-                      className="block transition-transform duration-300 group-hover:-translate-y-full"
-                    >
+                    <span className="block transition-transform duration-300 group-hover:-translate-y-full">
                       Get Started
                     </span>
-                    <span
-                      className="absolute inset-0 transition-transform duration-300 translate-y-full group-hover:translate-y-0"
-                    >
+                    <span className="absolute inset-0 transition-transform duration-300 translate-y-full group-hover:translate-y-0">
                       Right Now
                     </span>
                   </span>
@@ -245,7 +240,15 @@ export default function CareerView() {
                   </svg>
                 </div>
               </button>
-              <SliderPopup open={open} handleClose={() => setOpen(false)} />
+
+              <ApplicationDialog
+                open={open}
+                onClose={() => setOpen(false)}
+                jobId={details?.id}
+                jobTitle={details?.title}
+                jobNumber={details?.jobNumber}
+                location={details?.location}
+              />
             </div>
 
             {/* Job Info Grid */}

@@ -22,7 +22,7 @@ import {
     productManager,
     uiuxDesigner,
 } from "../../data/jobDetails";
-import SliderPopup from "@/components/SliderPopup";
+import ApplicationDialog from "./ApplicationDialog";
 
 export interface JobDetails {
     id: number;
@@ -303,6 +303,7 @@ export default function ResponsiveCareerView() {
                     </div>
 
                     {/* Footer */}
+                    {/* Footer */}
                     <div className="sticky bottom-0 bg-white border-t border-gray-300 p-4">
                         <button
                             onClick={() => setOpen(true)}
@@ -311,8 +312,18 @@ export default function ResponsiveCareerView() {
                         >
                             Apply Now
                         </button>
-                        <SliderPopup open={open} handleClose={() => setOpen(false)} />
                     </div>
+
+                    {/* Always keep dialog outside */}
+                    <ApplicationDialog
+                        open={open}
+                        onClose={() => setOpen(false)}
+                        jobId={selectedJob?.id}
+                        jobTitle={selectedJob?.title}
+                        jobNumber={selectedJob?.jobNumber}
+                        location={selectedJob?.location}
+                    />
+
                 </div>
             )}
         </div>

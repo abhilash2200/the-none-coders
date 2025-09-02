@@ -35,7 +35,7 @@ function Page() {
                         priority
                     />
                 </div>
-                <div className="container mx-auto px-4 py-12">
+                <div className="container mx-auto px-4">
                     <div className="flex flex-wrap justify-between gap-y-8 gap-x-2">
                         <div className="w-full md:w-[49%] mt-[50px] md:p-6 flex flex-col gap-y-4 justify-center">
                             <div className="md:mb-8 mb-3">
@@ -80,13 +80,13 @@ function Page() {
                                 <div className="w-full md:w-[49%]">
                                     <h2 className="text-[18px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">For more queries:</h2>
                                     <div className="flex flex-col">
-                                        <div className="flex items-center space-x-3 text-gray-700">
+                                        <div className="flex items-center space-x-3 text-gray-700 group">
                                             <Mail className="w-5 h-5 text-gray-600" />
                                             <a
                                                 href="https://calendly.com/digitalwolf/support"
                                                 className="md:text-lg text-md hover:underline flex items-center gap-2"
                                             >
-                                                Open A Support Ticket <ArrowRight className="w-5 h-5 text-gray-600" />
+                                                Open A Support Ticket <ArrowRight className="w-5 h-5 group-hover:text-[#477951] group-hover:translate-x-1 duration-300" />
                                             </a>
                                         </div>
                                     </div>

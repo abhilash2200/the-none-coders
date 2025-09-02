@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import ArrowButton from "@/components/ArrowButton";
+import CircleButton from "./CircleButton";
 
 interface expertiseDataProps {
     title: string;
@@ -14,7 +14,7 @@ function Updatecard({ title, img, desc, href }: expertiseDataProps) {
         <div className="flex flex-wrap gap-y-4">
             <div className="px-1.5">
                 <Image
-                    className="w-full h-auto"
+                    className="w-full h-[320px]"
                     src={img}
                     alt={title}
                     width={405}
@@ -27,7 +27,7 @@ function Updatecard({ title, img, desc, href }: expertiseDataProps) {
 
                 <div className="mt-3">
                     <Link href={href}>
-                        <ArrowButton />
+                        <CircleButton />
                     </Link>
                 </div>
             </div>

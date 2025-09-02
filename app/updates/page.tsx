@@ -70,7 +70,7 @@ function Page() {
                                         alt={update.title}
                                         width={450}
                                         height={250}
-                                        className="rounded-md mb-2 transition-transform duration-300 ease-in-out group-hover:scale-101 group-hover:shadow-md"
+                                        className="rounded-md h-[300px] mb-2 transition-transform duration-300 ease-in-out group-hover:scale-101 group-hover:shadow-md"
                                     />
                                     <div className="flex justify-between items-center mb-4">
                                         <p className="text-gray-500 text-sm inline-flex justify-center items-center gap-x-1">

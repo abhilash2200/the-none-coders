@@ -28,7 +28,7 @@ const CircleButton: React.FC<CircleButtonProps> = ({
                   hover:w-36 hover:rounded-[30px] active:translate-x-1 active:translate-y-1 ${className}`}
     >
       {/* Arrow container */}
-      <div className="flex items-center justify-center w-full transition-all duration-300 group-hover:justify-start group-hover:px-3">
+      <div className="flex items-center justify-center w-full transition-all duration-400 group-hover:justify-start group-hover:px-3">
         <svg
           className="w-5 h-5 stroke-gray ml-2 group-hover:ml-0"
           viewBox="0 0 24 24"
