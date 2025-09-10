@@ -30,13 +30,25 @@ const solution: Solution[] = [
     href: "/solution#mobile-app-development",
   },
   {
-    title: "OTT PLATFORM DEVELOPMENT",
+    title: "College Management Software",
     img: "/assets/img/solution-3.jpg",
     desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
     href: "/products/app-development#ott-platforms",
   },
   {
+    title: "WEB DEVELOPMENT",
+    img: "/assets/img/solution-4.jpg",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: "/solution#",
+  },
+  {
     title: "ERP DEVELOPMENT",
+    img: "/assets/img/solution-4.jpg",
+    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
+    href: "/solution#",
+  },
+  {
+    title: "UI & UX DESIGNING",
     img: "/assets/img/solution-4.jpg",
     desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and",
     href: "/solution#",
@@ -71,7 +83,7 @@ export function SolutionCards() {
               perPage: 4,
               arrows: false,
               pagination: false,
-              gap: "1.5rem",
+              gap: "1rem",
               breakpoints: {
                 1280: { perPage: 3 },
                 1024: { perPage: 2, gap: "1rem" },

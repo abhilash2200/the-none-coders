@@ -30,13 +30,13 @@ const expertiseData: ExpertiseData[] = [
     href: "#",
   },
   {
-    title: "CRM Development",
+    title: "OTT Platform Development",
     img: "/assets/img/solution-3.jpg",
     desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "#",
   },
   {
-    title: "Networking Applications",
+    title: "ML Networking Applications",
     img: "/assets/img/solution-4.jpg",
     desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
     href: "#",
