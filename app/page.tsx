@@ -66,7 +66,7 @@ export default function Home() {
   };
   return (
     <main className={`pt-12 transition-colors duration-300 ${
-      theme === "light" ? "bg-[#FAFAFA] text-[#3A3A3A]" : "bg-[#111] text-white"
+      theme === "light" ? "bg-[#fff] text-[#3A3A3A]" : "bg-[#111] text-white"
     }`}>
 
       <section className="py-6 lg:py-12">

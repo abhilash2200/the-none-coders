@@ -25,7 +25,7 @@ export default function Page() {
 
     return (
         <main className={`transition-colors duration-300 ${
-            theme === "light" ? "bg-[#FAFAFA] text-[#3A3A3A]" : "bg-[#111] text-white"
+            theme === "light" ? "bg-[#FFF] text-[#3A3A3A]" : "bg-[#111] text-white"
           }`}>
             <SectionProgress sections={sections} headerOffset={72} />
             <section id="about-us" className="py-6 lg:py-12">

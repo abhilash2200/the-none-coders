@@ -14,7 +14,7 @@ function Page() {
 
   return (
     <main  className={`transition-colors duration-300 ${
-      theme === "light" ? "bg-[#FAFAFA] text-[#3A3A3A]" : "bg-[#111] text-white"
+      theme === "light" ? "bg-[#FFF] text-[#3A3A3A]" : "bg-[#111] text-white"
     }`}>
       <section className="py-6 lg:py-12">
         <div className="container mx-auto px-4">
