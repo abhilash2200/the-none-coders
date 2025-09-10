@@ -44,7 +44,7 @@ const whatwedeliverData: WhatWeDeliverData[] = [
 
 
 export default function Home() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

@@ -52,7 +52,7 @@ const socialIcons = [
 ];
 
 function Footer() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <footer

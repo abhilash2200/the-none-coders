@@ -33,7 +33,7 @@ const accordionData = [
 ];
 
 const PerspectiveAccordion = () => {
-  const{ theme, toggleTheme } = useTheme()
+  const{ theme } = useTheme()
   const [activeIndex, setActiveIndex] = useState(0);
 
   const toggleAccordion = (index: number) => {

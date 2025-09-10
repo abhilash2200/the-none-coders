@@ -20,7 +20,7 @@ export default function Page() {
         window.scrollTo(0, 0);
     }, []);
 
-    const {theme, toggleTheme} = useTheme()
+    const {theme} = useTheme()
 
 
     return (

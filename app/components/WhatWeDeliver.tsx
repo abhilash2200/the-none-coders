@@ -9,7 +9,7 @@ interface cardData{
 }
 
 function WhatWeDeliver({title, desc, icon}: cardData) {
-  const {theme, toggleTheme}= useTheme()
+  const {theme}= useTheme()
   return (
     <div className='max-w-full w-[350px] mx-auto'>
       <Image src={icon} alt='octicon-codescan' width={70} height={70}/>
