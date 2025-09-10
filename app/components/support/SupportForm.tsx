@@ -59,7 +59,7 @@ function SupportForm() {
             console.log("Form Submitted:", formData);
             setFormData(initialState);
             setLoading(false);
-            router.push("/thank-you");
+            router.push("/thankyou");
         }, 2000);
     };
 

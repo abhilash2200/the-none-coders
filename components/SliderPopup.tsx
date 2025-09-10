@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 type PopupFormProps = {
   open: boolean;
@@ -16,6 +17,7 @@ type PopupFormProps = {
 };
 
 export default function SliderPopup({ open, handleClose }: PopupFormProps) {
+  const router = useRouter();
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -86,6 +88,7 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
 
     setLoading(true);
     console.log("Form Submitted:", formData);
+    router.push("/thankyou");
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     setFormData({

@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
 import { PT_Sans } from "next/font/google";
 import "./globals.css";
-import '@splidejs/react-splide/css';
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import LoaderWrapper from "./components/Loader";
-import CustomSpeedDial from "./components/CustomSpeedDial";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import "@splidejs/react-splide/css";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import LayoutClient from "./layout.client";
 
 const PTSans = PT_Sans({
-  weight: ["400","700"],
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -29,13 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${PTSans.className} antialiased`}>
         <AppRouterCacheProvider>
-          <LoaderWrapper fadeDuration={1500} showDuration={3000}>
-            <Header />
-            {children}
-            <ToastContainer position="top-right" autoClose={3000} />
-            <CustomSpeedDial />
-            <Footer />
-          </LoaderWrapper>
+          <LayoutClient>{children}</LayoutClient>
         </AppRouterCacheProvider>
       </body>
     </html>
