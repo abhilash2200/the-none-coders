@@ -4,6 +4,7 @@ import "./globals.css";
 import "@splidejs/react-splide/css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import LayoutClient from "./layout.client";
+import { ThemeProvider } from "./context/ThemeContext"; // 👈 import context
 
 const PTSans = PT_Sans({
   weight: ["400", "700"],
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${PTSans.className} antialiased`}>
         <AppRouterCacheProvider>
-          <LayoutClient>{children}</LayoutClient>
+          <ThemeProvider>   {/* 👈 wrap here */}
+            <LayoutClient>{children}</LayoutClient>
+          </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

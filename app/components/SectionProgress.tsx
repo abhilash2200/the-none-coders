@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 type SectionItem = { id: string; title: string };
 
@@ -13,6 +14,7 @@ const SectionProgress: React.FC<SectionProgressProps> = ({
     sections,
     headerOffset = 0,
 }) => {
+    const { theme, toggleThem } = useTheme()
     const [active, setActive] = useState(0);
     const ticking = useRef(false);
     const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -39,10 +41,10 @@ const SectionProgress: React.FC<SectionProgressProps> = ({
                 currentActive = i;
             }
         });
-    
+
         setActive(currentActive);
     };
-    
+
 
     const onScroll = () => {
         if (ticking.current) return;
@@ -81,10 +83,10 @@ const SectionProgress: React.FC<SectionProgressProps> = ({
         : { left: 0, width: 0 };
 
     return (
-        <div className="sticky top-0 z-30 bg-[#FAFAFA] hidden md:block">
+        <div className={`sticky top-0 z-30 ${theme === "light" ? "bg-[#FAFAFA]" : "bg-[#333]"} hidden md:block`}>
             <div className="relative w-full mx-auto flex justify-start">
                 <motion.div
-                    className="absolute top-0 bottom-0 bg-[#EFEFEF] z-0 rounded"
+                    className={`absolute top-0 bottom-0  ${theme === "light" ? "bg-[#EFEFEF]" : "bg-[#818181]"} z-0`}
                     initial={false}
                     animate={progressStyle}
                     transition={{ type: "spring", stiffness: 80, damping: 20 }}
@@ -96,11 +98,20 @@ const SectionProgress: React.FC<SectionProgressProps> = ({
                             btnRefs.current[i] = el;
                         }}
                         onClick={() => handleJump(s.id)}
-                        className={`relative z-10 px-6 py-4 text-[12px] md:text-[15px] uppercase tracking-wide text-left transition-colors ${i === active ? "text-gray-900" : "text-gray-600"
-                            }`}
+                        className={`relative z-10 px-6 py-4 text-[12px] md:text-[15px] uppercase tracking-wide text-left transition-colors
+                      ${theme === "light"
+                                ? i === active
+                                    ? "text-gray-900"
+                                    : "text-gray-600"
+                                : i === active
+                                    ? "text-white"
+                                    : "text-gray-400"
+                            }
+                    `}
                     >
                         {s.title}
                     </button>
+
                 ))}
             </div>
         </div>

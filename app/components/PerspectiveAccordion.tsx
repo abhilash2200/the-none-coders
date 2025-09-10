@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { useTheme } from '../context/ThemeContext';
 
 const accordionData = [
   {
@@ -32,6 +33,7 @@ const accordionData = [
 ];
 
 const PerspectiveAccordion = () => {
+  const{ theme, toggleTheme } = useTheme()
   const [activeIndex, setActiveIndex] = useState(0);
 
   const toggleAccordion = (index: number) => {
@@ -47,10 +49,12 @@ const PerspectiveAccordion = () => {
         <div key={index} className="md:border-t-3 border-t-2 border-[#5379F6] mb-5">
           <button
             onClick={() => toggleAccordion(index)}
-            className="w-full flex justify-between items-center text-[20px] text-left px-4 py-3 font-bold hover:bg-gray-100 hover:cursor-pointer transition"
+            className={`w-full flex justify-between items-center text-[20px] text-left px-4 py-3 font-bold  hover:cursor-pointer transition ${
+            theme === "light" ? "hover:bg-gray-100" : "hover:bg-gray-900"
+          }`}
           >
-            <span className='text-[16px] md:text-[20px]'>{item.title}</span>
-            <span className="text-[16px] md:text-[20px]">{isOpen ? <RemoveIcon/> : <AddIcon/>}</span>
+            <span className={`text-[16px] md:text-[20px] ${ theme === "light" ? "text-black" : "text-white" }`}>{item.title}</span>
+            <span className={`text-[16px] md:text-[20px] ${ theme === "light" ? "text-black" : "text-white" }`}>{isOpen ? <RemoveIcon/> : <AddIcon/>}</span>
           </button>
 
           <div
@@ -58,7 +62,7 @@ const PerspectiveAccordion = () => {
               isOpen ? 'md:max-h-40 max-h-80 opacity-100' : 'max-h-0 opacity-0'
             }`}
           >
-            <p className="px-4 py-2 bg-white text-[16px] md:text-[18px] text-[#414141]">{item.content}</p>
+            <p className={`px-4 py-2 text-[16px] md:text-[18px]  ${theme === "light" ? "bg-white text-[#414141]" : "bg-dark text-white"}`}>{item.content}</p>
           </div>
         </div>
       );

@@ -7,6 +7,7 @@ import SectionProgress from "../components/SectionProgress";
 import Link from "next/link";
 import { motion } from "framer-motion"
 import CircleButton from "../components/CircleButton";
+import { useTheme } from "../context/ThemeContext";
 
 interface SectionData {
   id: string;
@@ -18,6 +19,7 @@ interface SectionData {
 }
 
 function Page() {
+  const { theme } = useTheme()
   const sections: SectionData[] = [
     {
       id: "crm-development",
@@ -68,7 +70,9 @@ function Page() {
   }, []);
 
   return (
-    <main>
+    <main className={`transition-colors duration-300 ${
+      theme === "light" ? "bg-[#FAFAFA] text-[#3A3A3A]" : "bg-[#111] text-white"
+    }`}>
       <SectionProgress sections={sections} headerOffset={72} />
 
       {sections.map((section) => (
@@ -100,7 +104,7 @@ function Page() {
                 <div className="flex flex-col justify-center">
                   <HeadingText textalign="text-start" heading={section.title} />
                   <div className="mt-3">
-                    <p className="md:text-[19px] text-[#414141] text-[18px]">{section.description}</p>
+                    <p className={`md:text-[19px] ${theme === "light" ? "text-[#414141] " : "text-white"} text-[18px]`}>{section.description}</p>
                   </div>
                   <div className="mt-3 flex justify-start items-center">
                     <Link href={section.link}>

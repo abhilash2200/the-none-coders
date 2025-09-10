@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTheme } from "../context/ThemeContext";
 
 interface CircleButtonProps {
   onClick?: () => void;
@@ -17,15 +18,17 @@ const CircleButton: React.FC<CircleButtonProps> = ({
   ariaLabel = "Next",
   text = "Read More",
 }) => {
+
+  const { theme } = useTheme()
   return (
     <button
       type="button"
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel}
-      className={`group relative flex items-center justify-start w-11 h-12 border-2 border-gray-600 rounded-full 
+      className={`group relative flex items-center justify-start w-11 h-12 border-2 rounded-full 
                   cursor-pointer overflow-hidden transition-all duration-500 shadow-lg
-                  hover:w-36 hover:rounded-[30px] active:translate-x-1 active:translate-y-1 ${className}`}
+                  hover:w-36 hover:rounded-[30px] active:translate-x-1 active:translate-y-1 ${className} ${theme === "light" ? "border-gray-600" : "border-gray-20"}`}
     >
       {/* Arrow container */}
       <div className="flex items-center justify-center w-full transition-all duration-400 group-hover:justify-start group-hover:px-3">
@@ -41,7 +44,7 @@ const CircleButton: React.FC<CircleButtonProps> = ({
 
 
       {/* Text on hover */}
-      <div className="absolute right-5 transform translate-x-full opacity-0 text-gray-800 text-[16px] font-medium transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+      <div className={`absolute right-5 transform translate-x-full opacity-0  text-[16px] font-medium transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 ${theme === "light" ? "text-gray-800" : "text-gray-20"}`}>
         {text}
       </div>
     </button>

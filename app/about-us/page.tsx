@@ -6,6 +6,7 @@ import PerspectiveAccordion from "../components/PerspectiveAccordion";
 import SectionProgress from "../components/SectionProgress";
 import { motion } from "framer-motion"
 import EmployeeCard from "../components/about/EmployeeCard";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Page() {
     const sections = [
@@ -19,16 +20,20 @@ export default function Page() {
         window.scrollTo(0, 0);
     }, []);
 
+    const {theme, toggleTheme} = useTheme()
+
 
     return (
-        <main>
+        <main className={`transition-colors duration-300 ${
+            theme === "light" ? "bg-[#FAFAFA] text-[#3A3A3A]" : "bg-[#111] text-white"
+          }`}>
             <SectionProgress sections={sections} headerOffset={72} />
             <section id="about-us" className="py-6 lg:py-12">
                 <div className="container mx-auto px-4">
                     <HeadingText textalign="text-start" heading="ABOUT US" />
                     <div className="flex flex-wrap gap-y-4">
                         <div className="w-full lg:w-[50%] flex flex-col justify-center">
-                            <p className="md:text-[19px] text-[18px] text-[#414141] mt-3 md:mt-0 leaing-tight">
+                            <p className={`md:text-[19px] text-[18px] ${ theme === "light" ? "text-[#000]" : "text-[white]"} mt-3 md:mt-0 leaing-tight`}>
                                 A vision to incorporate THE NON CODERS started with a journey of 7 Years in the Digital Marketing Industry by
                                 the parent company DIGITAL WOLF. While achieving the milestones of advertising and generating leads for the
                                 brands we found a huge gap between the administration level and the operation level of members related to the

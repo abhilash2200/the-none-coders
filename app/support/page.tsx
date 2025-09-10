@@ -4,20 +4,35 @@ import Image from "next/image";
 import HeadingText from "../components/HeadingText";
 import SupportForm from "../components/support/SupportForm";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 function Page() {
+    const { theme } = useTheme();
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
     return (
-        <main>
-            <section className="py-6 lg:py-20 lg:pb-30 bg-[#FAFAFAFA] bgclipPath">
+        <main
+            className={`transition-colors duration-300 ${theme === "light"
+                    ? "bg-[#FAFAFA] text-[#3A3A3A]"
+                    : "bg-[#111] text-white"
+                }`}
+        >
+            {/* Top Section */}
+            <section
+                className={`py-6 lg:py-20 lg:pb-30 ${theme === "light" ? "bg-[#FAFAFA]" : "bg-[#222]"
+                    } bgclipPath`}
+            >
                 <div className="container mx-auto px-4">
                     <HeadingText textalign="text-start" heading="SUPPORT" />
                     <div className="flex flex-wrap gap-y-4">
                         <div className="w-full lg:w-[50%] flex flex-col justify-center">
-                            <p className="md:text-[19px] text-[#414141] text-[18px] mt-3 md:mt-0">
+                            <p
+                                className={`md:text-[19px] text-[18px] mt-3 md:mt-0 ${theme === "light" ? "text-[#414141]" : "text-gray-300"
+                                    }`}
+                            >
                                 Fill out the form and a Databricks team member will reach out.
                             </p>
                         </div>
@@ -25,6 +40,7 @@ function Page() {
                 </div>
             </section>
 
+            {/* Contact + Form Section */}
             <section className="relative mt-[-100px]">
                 <div className="absolute inset-0 -z-10">
                     <Image
@@ -37,22 +53,42 @@ function Page() {
                 </div>
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap justify-between gap-y-8 gap-x-2">
+                        {/* Contact Info */}
                         <div className="w-full md:w-[49%] md:mt-[50px] mt-[120px] md:p-6 flex flex-col gap-y-4 justify-center">
                             <div className="md:mb-8 mb-3">
-                                <h2 className="text-[20px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">
+                                <h2
+                                    className={`text-[20px] capitalize font-semibold underline underline-offset-5 pb-1 mb-3 ${theme === "light" ? "text-gray-900" : "text-white"
+                                        }`}
+                                >
                                     contact us
                                 </h2>
-                                <p className="md:text-[19px] text-[18px] text-[#414141] leading-relaxed">
-                                    At Beyuvana, we are committed to providing high-quality, plant-based collagen
-                                    products that support your health and beauty goals. At Beyuvana, we are committed to providing high-quality, plant-based collagen products that support your health and beauty goals.
+                                <p
+                                    className={`md:text-[19px] text-[18px] leading-relaxed ${theme === "light" ? "text-[#414141]" : "text-gray-300"
+                                        }`}
+                                >
+                                    At Beyuvana, we are committed to providing high-quality,
+                                    plant-based collagen products that support your health and
+                                    beauty goals. At Beyuvana, we are committed to providing
+                                    high-quality, plant-based collagen products that support your
+                                    health and beauty goals.
                                 </p>
                             </div>
+
                             <div className="flex flex-wrap gap-2 gap-y-4">
-                                <div className="w-full md:w-[49%] border-r-1 border-gray-300">
-                                    <h2 className="text-[18px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">Get in touch with us:</h2>
+                                {/* Contact details */}
+                                <div className="w-full md:w-[49%] border-r md:border-gray-300 pr-3">
+                                    <h2
+                                        className={`text-[18px] capitalize font-semibold underline underline-offset-5 pb-1 mb-3 ${theme === "light" ? "text-gray-900" : "text-white"
+                                            }`}
+                                    >
+                                        Get in touch with us:
+                                    </h2>
                                     <div className="flex flex-col gap-y-2">
-                                        <div className="flex items-center space-x-3 text-gray-700">
-                                            <Phone className="w-5 h-5 text-[#414141]" />
+                                        <div
+                                            className={`flex items-center space-x-3 ${theme === "light" ? "text-gray-700" : "text-gray-300"
+                                                }`}
+                                        >
+                                            <Phone className="w-5 h-5 text-[#477951]" />
                                             <a
                                                 href="tel:+918250054478"
                                                 className="md:text-lg text-md hover:underline"
@@ -60,8 +96,11 @@ function Page() {
                                                 +91 82500 54478
                                             </a>
                                         </div>
-                                        <div className="flex items-center space-x-3 text-gray-700">
-                                            <Mail className="w-5 h-5 text-[#414141]" />
+                                        <div
+                                            className={`flex items-center space-x-3 ${theme === "light" ? "text-gray-700" : "text-gray-300"
+                                                }`}
+                                        >
+                                            <Mail className="w-5 h-5 text-[#477951]" />
                                             <a
                                                 href="mailto:marketing@digitalwolf.co.in"
                                                 className="md:text-lg text-md hover:underline"
@@ -69,30 +108,46 @@ function Page() {
                                                 marketing@digitalwolf.co.in
                                             </a>
                                         </div>
-                                        <div className="flex items-center space-x-3 text-gray-700">
-                                            <MapPin className="w-5 h-5 text-[#414141] mt-1" />
+                                        <div
+                                            className={`flex items-center space-x-3 ${theme === "light" ? "text-gray-700" : "text-gray-300"
+                                                }`}
+                                        >
+                                            <MapPin className="w-5 h-5 text-[#477951] mt-1" />
                                             <p className="md:text-lg text-md leading-relaxed">
                                                 Kolkata, West Bengal 700045.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* Support Ticket */}
                                 <div className="w-full md:w-[49%]">
-                                    <h2 className="text-[18px] capitalize font-semibold underline underline-offset-5 text-gray-900 pb-1 mb-3">For more queries:</h2>
+                                    <h2
+                                        className={`text-[18px] capitalize font-semibold underline underline-offset-5 pb-1 mb-3 ${theme === "light" ? "text-gray-900" : "text-white"
+                                            }`}
+                                    >
+                                        For more queries:
+                                    </h2>
                                     <div className="flex flex-col">
-                                        <div className="flex items-center space-x-3 text-gray-700 group">
-                                            <Mail className="w-5 h-5 text-gray-600" />
+                                        <div
+                                            className={`flex items-center space-x-3 group ${theme === "light" ? "text-gray-700" : "text-gray-300"
+                                                }`}
+                                        >
+                                            <Mail className="w-5 h-5 text-[#477951]" />
                                             <a
                                                 href="https://calendly.com/digitalwolf/support"
                                                 className="md:text-lg text-md hover:underline flex items-center gap-2"
                                             >
-                                                Open A Support Ticket <ArrowRight className="w-5 h-5 group-hover:text-[#477951] group-hover:translate-x-1 duration-300" />
+                                                Open A Support Ticket{" "}
+                                                <ArrowRight className="w-5 h-5 group-hover:text-[#477951] group-hover:translate-x-1 duration-300" />
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        {/* Support Form */}
                         <div className="w-full md:w-[50%]">
                             <SupportForm />
                         </div>
@@ -100,6 +155,7 @@ function Page() {
                 </div>
             </section>
 
+            {/* Map Section */}
             <section className="pt-6 lg:pt-12">
                 <div className="w-full h-[400px] lg:h-[500px]">
                     <iframe

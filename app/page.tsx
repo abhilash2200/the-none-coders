@@ -10,6 +10,7 @@ import { UpdateCards } from "./components/home/UpdateCards";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion"
 import SliderPopup from "@/components/SliderPopup";
+import { useTheme } from "./context/ThemeContext";
 
 interface WhatWeDeliverData {
   title: string;
@@ -43,6 +44,7 @@ const whatwedeliverData: WhatWeDeliverData[] = [
 
 
 export default function Home() {
+  const { theme, toggleTheme } = useTheme();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -63,7 +65,9 @@ export default function Home() {
     });
   };
   return (
-    <main>
+    <main className={`pt-12 transition-colors duration-300 ${
+      theme === "light" ? "bg-[#FAFAFA] text-[#3A3A3A]" : "bg-[#111] text-white"
+    }`}>
 
       <section className="py-6 lg:py-12">
         <div className="container mx-auto px-4">
@@ -73,7 +77,7 @@ export default function Home() {
                 <div className="mb-1 md:mb-0">
                   <span className="text-[25px] md:text-[45px] border-b-4 border-[#61FB83]">LET US</span>
                 </div>
-                <div className="overflow-hidden text-[35px] leading-[40px] text-[#000] py-1 md:py-3 mb-2 md:mb-0">
+                <div className="overflow-hidden text-[35px] leading-[40px] py-1 md:py-3 mb-2 md:mb-0">
                   <div className="relative flex items-start gap-x-1 h-[40px] overflow-hidden">
                     <p className="inline m-0 text-[19px] md:text-[30px]">Help you build something</p>
                     {/* <ul className="mt-0 text-left list-none animate-change text-[#19d442] text-[19px] md:text-[30px]">
@@ -131,7 +135,7 @@ export default function Home() {
         <SliderPopup open={open} handleClose={handleClose} />
       </section>
 
-      <section className="py-6 lg:py-12 bg-[#FAFAFA]">
+      <section className={`py-6 lg:py-12 ${ theme === "light" ? "bg-[#FAFAFA]" : "bg-[#111]" }`}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
