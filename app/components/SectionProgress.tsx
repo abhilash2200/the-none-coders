@@ -14,7 +14,7 @@ const SectionProgress: React.FC<SectionProgressProps> = ({
     sections,
     headerOffset = 0,
 }) => {
-    const { theme, toggleThem } = useTheme()
+    const { theme } = useTheme()
     const [active, setActive] = useState(0);
     const ticking = useRef(false);
     const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
