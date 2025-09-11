@@ -28,7 +28,7 @@ const UpdatesForm = () => {
     };
 
     const validateForm = () => {
-        let newErrors: { [key: string]: string } = {};
+        const newErrors: { [key: string]: string } = {};
         if (!formData.name.trim()) newErrors.name = "Name is required";
         if (!formData.email.trim()) {
             newErrors.email = "Email is required";
@@ -44,6 +44,7 @@ const UpdatesForm = () => {
             newErrors.service = "Please select a service";
         return newErrors;
     };
+    
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

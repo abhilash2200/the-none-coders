@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import type { Splide as SplideInstance } from "@splidejs/splide";
 import "@splidejs/react-splide/css";
@@ -56,7 +56,6 @@ const solution: Solution[] = [
 
 export function SolutionCards() {
   const splideRef = useRef<SplideInstance | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
     <motion.div
@@ -69,7 +68,6 @@ export function SolutionCards() {
       }}
       className="relative container mx-auto px-4 bg-transparent"
     >
-
       <div className="mb-6 lg:mb-10 relative z-10">
         <HeadingText textalign="text-center" heading="SOLUTIONS" />
       </div>
@@ -89,9 +87,6 @@ export function SolutionCards() {
               640: { perPage: 1, gap: "0.5rem" },
             },
           }}
-          onMoved={(_splide: SplideInstance, index: number) => {
-            setCurrentSlide(index);
-          }}
         >
           {solution.map((ele, i) => (
             <SplideSlide key={i}>
@@ -104,8 +99,6 @@ export function SolutionCards() {
             </SplideSlide>
           ))}
         </Splide>
-
-        
       </div>
     </motion.div>
   );

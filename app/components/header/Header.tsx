@@ -13,8 +13,7 @@ import { usePathname } from "next/navigation";
 import { List, ListItem, Collapse, ListItemButton } from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { Inter } from "next/font/google";
-import { useTheme } from "../../context/ThemeContext"; // 👈 context import
-import StickyHeader from "./StickyHeader";
+import { useTheme } from "../../context/ThemeContext";
 
 interface DropItem {
   name: string;
