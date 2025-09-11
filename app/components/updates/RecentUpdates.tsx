@@ -7,7 +7,6 @@ import Link from "next/link";
 
 const RecentUpdates = () => {
     const [updates, setUpdates] = useState<UpdateListItem[]>([]);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // ---- API call ko filhaal comment kiya ----
@@ -27,7 +26,6 @@ const RecentUpdates = () => {
         // ---- Filhaal local data se updates load karenge ----
         const timer = setTimeout(() => {
             setUpdates(updatesList.slice(0, 5)); // sirf latest 5 updates
-            setLoading(false);
         }, 0);
 
         return () => clearTimeout(timer);
