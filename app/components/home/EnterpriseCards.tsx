@@ -19,25 +19,25 @@ const expertiseData: ExpertiseData[] = [
   {
     title: "Customised Software",
     img: "/assets/img/solution.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
+    desc: "Customised software is a trusted tool made only for your work. It suits your business to perfection, keeping work easy, quick, and hassle-free. Developed solely for you, it expands with your aspirations.",
     href: "/solution",
   },
   {
     title: "E-Learning Applications",
     img: "/assets/img/solution-2.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
+    desc: "E-learning apps allow carrying classrooms in your pocket. Learn anywhere, anytime. Easy lessons, videos, and quizzes make learning enjoyable, effortless, and accessible to all. Learning becomes more intimate and within reach.",
     href: "#",
   },
   {
     title: "OTT Platform Development",
     img: "/assets/img/solution-3.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
+    desc: "OTT platforms are about entertainment at home. Films, music, and television shows, anytime, anywhere. No queues, no restrictions. Just pure happiness, laughter, and stories that join hearts together across friends and family.",
     href: "#",
   },
   {
     title: "ML Networking Applications",
     img: "/assets/img/solution-4.jpg",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.",
+    desc: "ML-driven networking apps learn from each and every connection. They make communication smarter, faster, and more meaningful. With the ability to see patterns, they connect people and businesses easily and intelligently.",
     href: "#",
   },
 ];

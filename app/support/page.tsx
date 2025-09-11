@@ -33,7 +33,7 @@ function Page() {
                                 className={`md:text-[19px] text-[18px] mt-3 md:mt-0 ${theme === "light" ? "text-[#414141]" : "text-gray-300"
                                     }`}
                             >
-                                Fill out the form and a Databricks team member will reach out.
+                                Fill out the form, and a Non Coders team member will reach out.
                             </p>
                         </div>
                     </div>
@@ -66,11 +66,7 @@ function Page() {
                                     className={`md:text-[19px] text-[18px] leading-relaxed ${theme === "light" ? "text-[#414141]" : "text-gray-300"
                                         }`}
                                 >
-                                    At Beyuvana, we are committed to providing high-quality,
-                                    plant-based collagen products that support your health and
-                                    beauty goals. At Beyuvana, we are committed to providing
-                                    high-quality, plant-based collagen products that support your
-                                    health and beauty goals.
+                                    We at Non Coders are always here to listen, help, and guide you and your business. Whether it’s a query, idea, or partnership, reach out today. Together, let’s build solutions that matter and create stories of growth.
                                 </p>
                             </div>
 

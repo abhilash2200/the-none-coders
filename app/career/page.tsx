@@ -20,9 +20,7 @@ function Page() {
         <div className="container mx-auto px-4">
           <HeadingText textalign="text-start" heading="CAREER" />
           <p className="md:text-[20px] text-[18px] mt-3 md:mt-0">
-            A vision to incorporate THE NONE CODERS started with a journey of 7
-            Years in the Digital Marketing Industry by the parent company DIGITAL
-            WOLF.
+          Join us to grow, learn, and shine. At Non Coders, every position counts. Grow your future with passion, purpose, and limitless possibilities together.
           </p>
         </div>
 

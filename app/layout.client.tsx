@@ -7,7 +7,6 @@ import LoaderWrapper from "./components/Loader";
 import CustomSpeedDial from "./components/CustomSpeedDial";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import StickyHeader from "./components/header/StickyHeader";
 
 export default function LayoutClient({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -37,7 +36,6 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
 
   return (
     <LoaderWrapper fadeDuration={1500} showDuration={3000}>
-      <StickyHeader onOpenForm={() => { }} />
       <Header />
       {children}
       <ToastContainer position="top-right" autoClose={3000} />

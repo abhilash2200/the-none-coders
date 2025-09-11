@@ -25,7 +25,7 @@ function Page() {
       id: "e-learning-apps",
       title: "E-LEARNING APPS",
       description:
-        "A vision to incorporate THE NON CODERS started with a journey of 7 Years in the Digital Marketing Industry by the parent company DIGITAL WOLF. While achieving the milestones of advertising and generating leads for the brands we found a huge gap between the administration level",
+        "E-learning apps unlock doors to knowledge anywhere and anytime. They convert phones into classrooms and learning into fun, easy, and personalised experiences. With videos, notes, and tests, learning becomes interesting, developing students' confidence, happiness, and brighter futures.",
       image: "/assets/img/Bair-M.jpg",
       link: "/crm",
     },
@@ -33,7 +33,7 @@ function Page() {
       id: "student-management-system",
       title: "STUDENT MANAGEMENT SYSTEM",
       description:
-        "A vision to incorporate THE NON CODERS started with a journey of 7 Years in the Digital Marketing Industry by the parent company DIGITAL WOLF. While achieving the milestones of advertising and generating leads for the brands we found a huge gap between the administration level.",
+        "A student management system is a guiding light for schools and colleges. It monitors attendance, exams, fees, and performance. Teachers teach better, students learn better, and parents stay updated. It establishes harmony, saves time, and fosters trust.",
       image: "/assets/img/Bair-M.jpg",
       link: "/mobile-apps",
       reverse: true,
@@ -42,7 +42,7 @@ function Page() {
       id: "ott-platforms",
       title: "OTT PLATFORMS",
       description:
-        "A vision to incorporate THE NON CODERS started with a journey of 7 Years in the Digital Marketing Industry by the parent company DIGITAL WOLF. While achieving the milestones of advertising and generating leads for the brands we found a huge gap between the administration level.",
+        "OTT platforms place entertainment in your own hands. Films, television shows, and live events await streaming at any time. They unite families, bring laughter to empty hours, and cause stories to travel through hearts without limits. Entertainment becomes freedom, happiness, and togetherness.",
       image: "/assets/img/ai-ml.gif",
       link: "/ai-ml",
     },
@@ -50,7 +50,7 @@ function Page() {
       id: "crm-billing-system",
       title: "CRM & BILLING SYSTEM",
       description:
-        "A vision to incorporate THE NON CODERS started with a journey of 7 Years in the Digital Marketing Industry by the parent company DIGITAL WOLF. While achieving the milestones of advertising and generating leads for the brands we found a huge gap between the administration level.",
+        "A CRM and billing system is a nurturing partner to businesses. It remembers each customer, makes billing easy, and does not make mistakes. Work is easier, relationships become deeper, and trust becomes stronger. Customers feel appreciated, businesses feel enabled, and growth comes naturally without tension.",
       image: "/assets/img/Bair-M.jpg",
       link: "/websites",
       reverse: true,
@@ -59,7 +59,7 @@ function Page() {
       id: "project-management-tool",
       title: "PROJECT MANAGEMENT TOOL",
       description:
-        "A vision to incorporate THE NON CODERS started with a journey of 7 Years in the Digital Marketing Industry by the parent company DIGITAL WOLF. While achieving the milestones of advertising and generating leads for the brands we found a huge gap between the administration level.",
+        "A project management tool is the pulse of collaboration. It structures tasks, makes deadlines, and monitors progress. Teams are cohesive, confusion vanishes, and objectives become attainable. Projects seem smoother, tensions subside, and success tastes like a collective journey amid pride.",
       image: "/assets/img/Bair-M.jpg",
       link: "/ui-ux",
     },
