@@ -46,7 +46,7 @@ const RecentUpdates = () => {
                         key={update.slug}
                         className="border-b pb-2 flex gap-2 items-center hover:bg-gray-20 transition rounded-md"
                     >
-                        <Link href={`/blog/${update.slug}`} className="flex gap-2 items-center w-full">
+                        <Link href={`/updates/${update.slug}`} className="flex gap-2 items-center w-full">
                             <div>
                                 <Image
                                     src={update.image}
