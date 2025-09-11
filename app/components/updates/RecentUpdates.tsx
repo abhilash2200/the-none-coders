@@ -28,14 +28,12 @@ const RecentUpdates = () => {
         const timer = setTimeout(() => {
             setUpdates(updatesList.slice(0, 5)); // sirf latest 5 updates
             setLoading(false);
-        }, 1000);
+        }, 0);
 
         return () => clearTimeout(timer);
     }, []);
 
-    if (loading) {
-        return <p className="text-center text-gray-500">Loading updates...</p>;
-    }
+    
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
