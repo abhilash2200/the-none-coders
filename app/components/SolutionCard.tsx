@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CircleButton from "./CircleButton";
+import { useTheme } from "../context/ThemeContext";
 
 interface expertiseDataProps {
   title: string;
@@ -10,6 +11,7 @@ interface expertiseDataProps {
 }
 
 function SolutionCard({ title, img, desc, href }: expertiseDataProps) {
+  const {theme} = useTheme()
   return (
     <div className="max-w-full lg:w-[250px] xl:w-[300px] mx-auto py-6">
       <div className="relative">
@@ -26,12 +28,12 @@ function SolutionCard({ title, img, desc, href }: expertiseDataProps) {
       </div>
 
       <div className="mt-5">
-        <p className="text-gray-600 text-[15px]">{desc}</p>
+        <p className={`${theme === "light" ? "text-gray-600" : "text-gray-200"} text-[15px]`}>{desc}</p>
       </div>
 
       <div className="mt-3">
         <Link href={href}>
-          <CircleButton className={`text-black`} />
+          <CircleButton />
         </Link>
       </div>
     </div>

@@ -14,6 +14,7 @@ import { List, ListItem, Collapse, ListItemButton } from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { Inter } from "next/font/google";
 import { useTheme } from "../../context/ThemeContext"; // 👈 context import
+import StickyHeader from "./StickyHeader";
 
 interface DropItem {
   name: string;
@@ -121,9 +122,8 @@ function Header() {
                   <ListItem sx={{ p: 0 }}>
                     <Link
                       href={list.href}
-                      className={`text-[14px] px-4 py-4 block transition-colors duration-300 ${
-                        inter.className
-                      } ${theme === "light" ? "text-[#3A3A3A]" : "text-white"}`}
+                      className={`text-[14px] px-4 py-4 block transition-colors duration-300 ${inter.className
+                        } ${theme === "light" ? "text-[#3A3A3A]" : "text-white"}`}
                     >
                       {list.name}
                     </Link>
@@ -147,11 +147,10 @@ function Header() {
                         <ListItem key={j} sx={{ px: 2, py: 1 }}>
                           <Link
                             href={drop.href}
-                            className={`transition-colors duration-300 ${inter.className} ${
-                              theme === "light"
-                                ? "text-[#3A3A3A] hover:text-[#19d442]"
-                                : "text-white hover:text-[#19d442]"
-                            }`}
+                            className={`transition-colors duration-300 ${inter.className} ${theme === "light"
+                              ? "text-[#3A3A3A] hover:text-[#19d442]"
+                              : "text-white hover:text-[#19d442]"
+                              }`}
                           >
                             {drop.name}
                           </Link>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTheme } from "../context/ThemeContext";
 
 interface expertiseDataProps {
   title: string;
@@ -7,6 +8,7 @@ interface expertiseDataProps {
 }
 
 function EnterpriseCard({ title, img, desc }: expertiseDataProps) {
+  const {theme} = useTheme()
   return (
     <div className="max-w-full lg:w-[250px] xl:w-[300px] mx-auto py-6">
       <div className="relative">
@@ -23,7 +25,7 @@ function EnterpriseCard({ title, img, desc }: expertiseDataProps) {
       </div>
 
       <div className="mt-5">
-        <p className="text-gray-600 text-[15px]">{desc}</p>
+        <p className={`${theme === "light" ? "text-gray-600" : "text-gray-200"} text-[15px]`}>{desc}</p>
       </div>
     </div>
   );

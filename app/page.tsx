@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion"
 import SliderPopup from "@/components/SliderPopup";
 import { useTheme } from "./context/ThemeContext";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 interface WhatWeDeliverData {
   title: string;
@@ -168,7 +169,8 @@ export default function Home() {
       </section>
 
 
-      <section className="py-6 lg:py-12">
+      <section className="py-6 lg:py-12 relative">
+      {theme === "light" && <AnimatedBackground />}
         <EnterpriseCards />
       </section>
 
@@ -179,7 +181,8 @@ export default function Home() {
         <TechnologiesUsed />
       </section>
 
-      <section className="py-6 lg:py-12">
+      <section className="py-6 lg:py-12 relative">
+      {theme === "light" && <AnimatedBackground side="left" />}
         <SolutionCards />
       </section>
 
