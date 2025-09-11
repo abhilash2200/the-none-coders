@@ -21,17 +21,17 @@ const footerSections: FooterSection[] = [
     links: [
       { label: "CRM Development", href: "/solution" },
       { label: "Mobile App Development", href: "/solution" },
-      { label: "OTT Platform Development", href: "/solution" },
+      { label: "AI & ML Application", href: "/solution" },
       { label: "Artificial Intelligence", href: "/solution" },
     ],
   },
   {
     title: "SERVICES",
     links: [
-      { label: "Web Development", href: "/products/app-development" },
-      { label: "UI/UX Design", href: "/products/app-development" },
-      { label: "Cloud Solutions", href: "/products/app-development" },
-      { label: "E-commerce Development", href: "/products/app-development" },
+      { label: "E-Learning Apps", href: "/products" },
+      { label: "Student Managemnt System", href: "/products" },
+      { label: "OTT Platforms", href: "/products" },
+      { label: "CRM & Billing System", href: "/products" },
     ],
   },
   {
