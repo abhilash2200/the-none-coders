@@ -44,7 +44,7 @@ const CircleButton: React.FC<CircleButtonProps> = ({
 
 
       {/* Text on hover */}
-      <div className={`absolute right-5 transform translate-x-full opacity-0  text-[16px] font-medium transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 ${theme === "light" ? "text-gray-800" : "text-gray-20"}`}>
+      <div className={`absolute right-5 transform translate-x-full opacity-0 whitespace-nowrap text-[16px] font-medium transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 ${theme === "light" ? "text-gray-800" : "text-gray-20"}`}>
         {text}
       </div>
     </button>
