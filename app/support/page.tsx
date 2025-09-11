@@ -84,7 +84,7 @@ function Page() {
                                             className={`flex items-center space-x-3 ${theme === "light" ? "text-gray-700" : "text-gray-300"
                                                 }`}
                                         >
-                                            <Phone className="w-5 h-5 text-[#477951]" />
+                                            <Phone className="w-5 h-5 hover:text-[#477951]" />
                                             <a
                                                 href="tel:+918250054478"
                                                 className="md:text-lg text-md hover:underline"
@@ -96,7 +96,7 @@ function Page() {
                                             className={`flex items-center space-x-3 ${theme === "light" ? "text-gray-700" : "text-gray-300"
                                                 }`}
                                         >
-                                            <Mail className="w-5 h-5 text-[#477951]" />
+                                            <Mail className="w-5 h-5 hover:text-[#477951]" />
                                             <a
                                                 href="mailto:marketing@digitalwolf.co.in"
                                                 className="md:text-lg text-md hover:underline"
@@ -108,7 +108,7 @@ function Page() {
                                             className={`flex items-center space-x-3 ${theme === "light" ? "text-gray-700" : "text-gray-300"
                                                 }`}
                                         >
-                                            <MapPin className="w-5 h-5 text-[#477951] mt-1" />
+                                            <MapPin className="w-5 h-5 hover:text-[#477951] mt-1" />
                                             <p className="md:text-lg text-md leading-relaxed">
                                                 Kolkata, West Bengal 700045.
                                             </p>
@@ -129,7 +129,7 @@ function Page() {
                                             className={`flex items-center space-x-3 group ${theme === "light" ? "text-gray-700" : "text-gray-300"
                                                 }`}
                                         >
-                                            <Mail className="w-5 h-5 text-[#477951]" />
+                                            <Mail className="w-5 h-5 hover:text-[#477951]" />
                                             <a
                                                 href="https://calendly.com/digitalwolf/support"
                                                 className="md:text-lg text-md hover:underline flex items-center gap-2"

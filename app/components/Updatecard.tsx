@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CircleButton from "./CircleButton";
+import { useTheme } from "../context/ThemeContext";
 
 interface expertiseDataProps {
     title: string;
@@ -10,6 +11,7 @@ interface expertiseDataProps {
 }
 
 function Updatecard({ title, img, desc, href }: expertiseDataProps) {
+    const {theme} = useTheme()
     return (
         <div className="flex flex-wrap gap-y-4">
             <div className="px-1.5">
@@ -23,7 +25,7 @@ function Updatecard({ title, img, desc, href }: expertiseDataProps) {
                 <h3 className="my-3 text-[22px] leading-tight">
                     {title}
                 </h3>
-                <p className="text-gray-600 text-[15px]">{desc}</p>
+                <p className={`${theme === "light" ? "text-gray-600" : "text-gray-200"} text-[15px]`}>{desc}</p>
 
                 <div className="mt-3">
                     <Link href={href}>
