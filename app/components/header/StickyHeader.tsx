@@ -32,7 +32,7 @@ const StickyHeader: React.FC<StickyHeaderProps> = ({ onOpenForm }) => {
                 <div className="flex items-center">
                     <button
                         onClick={() => setVisible(false)}
-                        className="text-white hover:text-gray-200 text-lg font-bold absolute right-0 top-0 w-6 h-6 cursor-pointer ml-auto mt-1"
+                        className="text-white hover:text-gray-200 text-lg font-bold absolute right-0 top-0 w-6 h-6 cursor-pointer ml-auto "
                     >
                         <CircleX />
                     </button>
