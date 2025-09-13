@@ -62,7 +62,7 @@ const jobDetailsMap: Record<number, JobDetails> = Object.fromEntries(
 );
 
 export default function CareerView() {
-  const {theme} = useTheme()
+  const { theme } = useTheme()
   const [loading, setLoading] = useState(false);
   const [selectedJob, setSelectedJob] = useState<number | null>(null);
   const [open, setOpen] = useState(false);
@@ -123,8 +123,8 @@ export default function CareerView() {
     <div className="container mx-auto py-10 px-4 flex gap-6">
       {/* Left Column - Job List */}
       <div className="w-[600px] border-r border-gray-200 pr-4 sticky top-0 self-start max-h-screen overflow-y-auto custom-scrollbar">
-        <div className="sticky top-0 z-10 bg-white border border-gray-200 shadow-sm px-4 py-3 flex justify-between items-center">
-          <p className="text-sm text-gray-700 font-medium">
+        <div className={`sticky top-0 z-10 border shadow-sm px-4 py-3 flex justify-between items-center ${theme === "light" ? "bg-white border-gray-200" : "bg-[#111] border-gray-200"}`}>
+          <p className={`text-sm  ${theme === "light" ? "text-gray-700" : "text-gray-200"} font-medium`}>
             Showing{" "}
             <span className="font-semibold">
               {startIndex + 1}–{Math.min(startIndex + currentJobs.length, sortedJobs.length)}
@@ -132,14 +132,14 @@ export default function CareerView() {
             of <span className="font-semibold">{jobsList.length}</span> results
           </p>
           <div className="flex items-center gap-2">
-            <label htmlFor="sort" className="text-sm text-gray-600">
+            <label htmlFor="sort" className={`text-sm ${theme === "light" ? "text-gray-600" : "text-gray-200"}`}>
               Sort by
             </label>
             <select
               id="sort"
               value={filter}
               onChange={(e) => setFilter(e.target.value as typeof filter)}
-              className="text-sm border border-gray-300 rounded-md px-2 py-1 bg-white hover:border-gray-400 transition focus:ring-0"
+              className={`text-sm border rounded-md px-2 py-1 transition focus:ring-0 ${theme === "light" ? "bg-white hover:border-gray-400 border-gray-300" : "bg-[#111] hover:border-gray-400 border-gray-300"}`}
             >
               <option value="all">All</option>
               <option value="new">Most recent</option>
@@ -154,35 +154,63 @@ export default function CareerView() {
             <div
               key={job.id}
               className={`p-5 mb-3 cursor-pointer rounded-xl transition border shadow-sm hover:shadow-md group ${selectedJob === job.id
-                ? "border-gray-200 bg-gray-50"
-                : "border-gray-200 bg-white hover:border-gray-200"
+                ? theme === "light"
+                  ? "border-gray-200 bg-gray-50"
+                  : "border-gray-700 bg-[#1a1a1a]"
+                : theme === "light"
+                  ? "border-gray-200 bg-white hover:border-gray-300"
+                  : "border-gray-700 bg-[#111] hover:border-gray-600"
                 }`}
               onClick={() => setSelectedJob(job.id)}
             >
               <h3
                 className={`font-semibold text-lg ${selectedJob === job.id
-                  ? "text-[#190849]"
-                  : "text-gray-900 group-hover:text-[#4d4d4d]"
+                  ? theme === "light"
+                    ? "text-[#190849]"
+                    : "text-yellow-300"
+                  : theme === "light"
+                    ? "text-gray-900 group-hover:text-[#4d4d4d]"
+                    : "text-gray-200 group-hover:text-gray-400"
                   }`}
               >
                 {job.title}
               </h3>
-              <div className="flex items-center flex-wrap gap-3 my-2 text-gray-600 text-sm">
+
+              <div
+                className={`flex items-center flex-wrap gap-3 my-2 text-sm ${theme === "light" ? "text-gray-600" : "text-gray-400"
+                  }`}
+              >
                 <span className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4 text-gray-500" /> {job.posted}
+                  <Calendar className={`w-4 h-4 ${theme === "light" ? "text-gray-500" : "text-gray-400"}`} />{" "}
+                  {job.posted}
                 </span>
                 <span className="flex items-center gap-1">
-                  <Briefcase className="w-4 h-4 text-gray-500" /> {job.workType}
+                  <Briefcase className={`w-4 h-4 ${theme === "light" ? "text-gray-500" : "text-gray-400"}`} />{" "}
+                  {job.workType}
                 </span>
                 <span className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4 text-gray-500" /> {job.location}
+                  <MapPin className={`w-4 h-4 ${theme === "light" ? "text-gray-500" : "text-gray-400"}`} />{" "}
+                  {job.location}
                 </span>
               </div>
-              <p className="text-sm mt-2 text-gray-700 line-clamp-2">{job.shortDesc}</p>
-              <span className="text-gray-900 text-sm hover:underline">See details →</span>
+
+              <p
+                className={`text-sm mt-2 line-clamp-2 ${theme === "light" ? "text-gray-700" : "text-gray-300"
+                  }`}
+              >
+                {job.shortDesc}
+              </p>
+
+              <span
+                className={`text-sm hover:underline ${theme === "light" ? "text-gray-900" : "text-gray-200"
+                  }`}
+              >
+                See details →
+              </span>
             </div>
           ))}
         </div>
+
 
         {/* Pagination */}
         {pageCount > 1 && (
@@ -199,14 +227,25 @@ export default function CareerView() {
       </div>
 
       {/* Right Column - Job Details */}
-      <div className="flex-1 p-6 bg-white rounded-xl shadow-md">
+      <div
+        className={`flex-1 p-6 rounded-xl shadow-md ${theme === "light" ? "bg-white" : "bg-[#111]"
+          }`}
+      >
         {loading ? (
           <SkeletonCareerView />
         ) : details ? (
           <>
             <div className="mb-4 pb-4">
-              <h2 className="text-2xl font-bold text-gray-900">{details.title}</h2>
-              <p className="text-gray-600 flex items-center gap-1">
+              <h2
+                className={`text-2xl font-bold ${theme === "light" ? "text-gray-900" : "text-gray-100"
+                  }`}
+              >
+                {details.title}
+              </h2>
+              <p
+                className={`flex items-center gap-1 ${theme === "light" ? "text-gray-600" : "text-gray-400"
+                  }`}
+              >
                 <MapPin className="w-4 h-4" /> {details.location}
               </p>
             </div>
@@ -215,7 +254,7 @@ export default function CareerView() {
             <div className="flex items-center gap-4 mb-6">
               <button
                 onClick={() => setOpen(true)}
-                className="cursor-pointer group relative bg-gray-100 hover:bg-zinc-300 text-black font-semibold text-sm py-3 rounded-lg transition-all duration-200 shadow-lg w-36 h-10"
+                className={`cursor-pointer group relative bg-gray-100 hover:bg-zinc-300 text-black font-semibold text-sm py-3 rounded-lg transition-all duration-200 ease-in-out shadow-lg hover:shadow-lg w-40 h-12`}
               >
                 <div className="relative flex items-center justify-center gap-2">
                   <span className="relative inline-block overflow-hidden">
@@ -226,7 +265,6 @@ export default function CareerView() {
                       Right Now
                     </span>
                   </span>
-
                   <svg
                     className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45"
                     viewBox="0 0 24 24"
@@ -254,16 +292,39 @@ export default function CareerView() {
             </div>
 
             {/* Job Info Grid */}
-            <div className="grid grid-cols-2 gap-4 mt-2 text-sm bg-gray-30 p-4 rounded-lg">
-              <p><strong>Date posted:</strong> {details.datePosted}</p>
-              <p><strong>Job number:</strong> {details.jobNumber}</p>
-              <p><strong>Job status:</strong> {details.jobStatus}</p>
-              <p><strong>Travel:</strong> {details.travel}</p>
-              <p><strong>Role type:</strong> {details.roleType}</p>
-              <p><strong>Discipline:</strong> {details.discipline}</p>
-              <p><strong>Employment type:</strong> {details.employmentType}</p>
-              <p><strong>Profession:</strong> {details.profession}</p>
-              <p><strong>Work Mode:</strong> {details.workMode}</p>
+            <div
+              className={`grid grid-cols-2 gap-4 mt-2 text-sm p-4 rounded-lg ${theme === "light"
+                ? "bg-gray-50 text-gray-800"
+                : "bg-[#1a1a1a] text-gray-300"
+                }`}
+            >
+              <p>
+                <strong>Date posted:</strong> {details.datePosted}
+              </p>
+              <p>
+                <strong>Job number:</strong> {details.jobNumber}
+              </p>
+              <p>
+                <strong>Job status:</strong> {details.jobStatus}
+              </p>
+              <p>
+                <strong>Travel:</strong> {details.travel}
+              </p>
+              <p>
+                <strong>Role type:</strong> {details.roleType}
+              </p>
+              <p>
+                <strong>Discipline:</strong> {details.discipline}
+              </p>
+              <p>
+                <strong>Employment type:</strong> {details.employmentType}
+              </p>
+              <p>
+                <strong>Profession:</strong> {details.profession}
+              </p>
+              <p>
+                <strong>Work Mode:</strong> {details.workMode}
+              </p>
             </div>
 
             {/* Optional Sections */}
@@ -277,12 +338,21 @@ export default function CareerView() {
             {renderSection("Diversity & Inclusion", details.diversityStatement)}
           </>
         ) : (
-          <div className="flex flex-col items-center text-center text-gray-500">
-            <h3 className="text-lg font-medium text-gray-700">Select a job</h3>
-            <p className="text-sm text-gray-400 mt-1">Nothing is selected</p>
+          <div
+            className={`flex flex-col items-center text-center ${theme === "light" ? "text-gray-500" : "text-gray-400"
+              }`}
+          >
+            <h3
+              className={`text-lg font-medium ${theme === "light" ? "text-gray-700" : "text-gray-300"
+                }`}
+            >
+              Select a job
+            </h3>
+            <p className="text-sm mt-1">Nothing is selected</p>
           </div>
         )}
       </div>
+
     </div>
   );
 }
