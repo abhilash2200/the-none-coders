@@ -105,19 +105,37 @@ export default function CareerView() {
     if (!content) return null;
     return (
       <>
-        <h3 className="mt-8 font-semibold text-lg pb-1">{title}</h3>
+        <h3
+          className={`mt-8 font-semibold text-lg pb-1 ${
+            theme === "light" ? "text-gray-900" : "text-gray-100"
+          }`}
+        >
+          {title}
+        </h3>
+  
         {Array.isArray(content) ? (
-          <ul className="list-disc pl-6 text-gray-700 mt-2 space-y-1">
+          <ul
+            className={`list-disc pl-6 mt-2 space-y-1 ${
+              theme === "light" ? "text-gray-700" : "text-gray-300"
+            }`}
+          >
             {content.map((c, idx) => (
               <li key={idx}>{c}</li>
             ))}
           </ul>
         ) : (
-          <div className="prose prose-sm text-gray-700 mt-2">{content}</div>
+          <div
+            className={`prose prose-sm mt-2 ${
+              theme === "light" ? "text-gray-700" : "text-gray-300"
+            }`}
+          >
+            {content}
+          </div>
         )}
       </>
     );
   };
+  
 
   return (
     <div className="container mx-auto py-10 px-4 flex gap-6">
