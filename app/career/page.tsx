@@ -19,13 +19,13 @@ function Page() {
       <section className="py-6 lg:py-12">
         <div className="container mx-auto px-4">
           <HeadingText textalign="text-start" heading="CAREER" />
-          <p className="md:text-[20px] text-[18px] mt-3 md:mt-0">
+          <p className={`md:text-[20px] text-[18px] ${theme === "light" ? "text-[#3A3A3A]" : "text-gray-200"} mt-3 md:mt-0`}>
           Join us to grow, learn, and shine. At Non Coders, every position counts. Grow your future with passion, purpose, and limitless possibilities together.
           </p>
         </div>
 
         {/* Desktop View */}
-        <div className="hidden md:block bg-white/90 relative">
+        <div className={`hidden md:block ${theme === "light" ? "bg-white/90" : "bg-[#111]"} relative`}>
           <CareerView />
           <div className="absolute right-0 bottom-0 -z-[1]">
             <Image
@@ -39,7 +39,7 @@ function Page() {
         </div>
 
         {/* Mobile View */}
-        <div className="block md:hidden bg-white/90 relative">
+        <div className={`block md:hidden ${theme === "light" ? "bg-white/90" : "bg-[#111]"} relative`}>
           <ResponsiveCareerView />
           <div className="absolute right-0 bottom-0 -z-[1]">
             <Image

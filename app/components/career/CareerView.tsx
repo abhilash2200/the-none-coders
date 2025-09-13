@@ -19,6 +19,7 @@ import {
   uiuxDesigner,
 } from "../../data/jobDetails";
 import ApplicationDialog from "./ApplicationDialog";
+import { useTheme } from "@/app/context/ThemeContext";
 
 export interface JobDetails {
   id: number;
@@ -61,6 +62,7 @@ const jobDetailsMap: Record<number, JobDetails> = Object.fromEntries(
 );
 
 export default function CareerView() {
+  const {theme} = useTheme()
   const [loading, setLoading] = useState(false);
   const [selectedJob, setSelectedJob] = useState<number | null>(null);
   const [open, setOpen] = useState(false);

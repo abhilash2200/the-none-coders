@@ -33,7 +33,7 @@ export default function Page() {
                     <HeadingText textalign="text-start" heading="ABOUT US" />
                     <div className="flex flex-wrap gap-y-4">
                         <div className="w-full lg:w-[50%] flex flex-col justify-center">
-                            <p className={`md:text-[19px] text-[18px] ${ theme === "light" ? "text-[#000]" : "text-[white]"} mt-3 md:mt-0 leaing-tight`}>
+                            <p className={`md:text-[19px] text-[18px] ${ theme === "light" ? "text-[#000]" : "text-gray-200"} mt-3 md:mt-0 leaing-tight`}>
                                 A vision to incorporate THE NON CODERS started with a journey of 7 Years in the Digital Marketing Industry by
                                 the parent company DIGITAL WOLF. While achieving the milestones of advertising and generating leads for the
                                 brands we found a huge gap between the administration level and the operation level of members related to the

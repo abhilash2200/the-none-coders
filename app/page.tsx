@@ -80,20 +80,13 @@ export default function Home() {
                 </div>
                 <div className="overflow-hidden text-[35px] leading-[40px] py-1 md:py-3 mb-2 md:mb-0">
                   <div className="relative flex items-start gap-x-1 h-[40px] overflow-hidden">
-                    <p className="inline m-0 text-[19px] md:text-[30px]">Help you build something</p>
-                    {/* <ul className="mt-0 text-left list-none animate-change text-[#19d442] text-[19px] md:text-[30px]">
-                      <li className="leading-[40px] m-0">Great.</li>
-                      <li className="leading-[40px] m-0">World Class.</li>
-                      <li className="leading-[40px] m-0">Excellent.</li>
-                      <li className="leading-[40px] m-0">Amazing.</li>
-                    </ul> */}
+                    <p className={`inline m-0 text-[19px] md:text-[30px] ${theme === "light" ? "text-black" : "text-gray-300"}`}>Help you build something</p>
                     <ContainerTextFlip
                       words={["Great.", "World Class.", "Excellent.", "Amazing."]}
                       className="text-[#19d442] text-[19px] md:text-[30px]"
                     />
                   </div>
                 </div>
-                {/* <p className="text-[30px]">Help you build something <span className="bg-[#61FB83] px-1">Great.</span></p> */}
               </div>
               <button onClick={handleClickOpen} id="mainButton"
                 className="cursor-pointer group relative bg-gray-100 hover:bg-zinc-300 text-black font-semibold text-sm py-3 rounded-lg transition-all duration-200 ease-in-out shadow-lg hover:shadow-lg w-40 h-12"
