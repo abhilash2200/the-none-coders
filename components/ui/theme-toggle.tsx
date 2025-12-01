@@ -20,7 +20,7 @@ export function ThemeToggle({
   variant = 'button',
   showLabel = true 
 }: ThemeToggleProps) {
-  const { theme, toggleTheme, resolvedTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   const icons = {
     light: Sun,

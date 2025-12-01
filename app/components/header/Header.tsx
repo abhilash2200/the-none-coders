@@ -13,7 +13,6 @@ import { usePathname } from "next/navigation";
 import { List, ListItem, Collapse, ListItemButton } from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { Inter } from "next/font/google";
-import { useTheme } from "@/theme";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { motion, AnimatePresence } from "framer-motion";
 import { slideInRight } from "@/lib/animations";
@@ -49,7 +48,6 @@ function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [openAccordionIndex, setOpenAccordionIndex] = React.useState<number | null>(null);
   const mobileMenuRef = React.useRef<HTMLDivElement>(null);
-  const { resolvedTheme } = useTheme();
 
   // Disable scroll when mobile menu is open
   React.useEffect(() => {
