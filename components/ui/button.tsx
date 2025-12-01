@@ -34,8 +34,11 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size">,
-    VariantProps<typeof buttonVariants> {
+  extends Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    "size" | "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart" | "onAnimationEnd"
+  >,
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   asLink?: boolean;
   href?: string;
@@ -72,35 +75,31 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const isDisabled = disabled || loading;
 
     // Motion props for animations
-    const defaultMotionProps: Partial<MotionProps> = {
+    const defaultMotionProps = {
       whileHover: { scale: 1.02 },
       whileTap: { scale: 0.98 },
-      transition: { duration: 0.2, ease: "easeOut" },
+      transition: { duration: 0.2, ease: "easeOut" as const },
       ...motionProps,
     };
 
-    // If it's a link, render as Link
+    // If it's a link, render as Link (without motion to avoid type conflicts)
     if (asLink && href) {
       return (
-        <motion.div
-          {...defaultMotionProps}
-          className={cn(fullWidth && "w-full", "inline-block")}
+        <Link
+          href={href}
+          className={cn(
+            buttonVariants({ variant, size }),
+            fullWidth && "w-full",
+            "transition-transform duration-200 hover:scale-105 active:scale-95",
+            className
+          )}
+          aria-disabled={isDisabled}
         >
-          <Link
-            href={href}
-            className={cn(
-              buttonVariants({ variant, size }),
-              fullWidth && "w-full",
-              className
-            )}
-            aria-disabled={isDisabled}
-          >
-            {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-            {leftIcon && !loading && leftIcon}
-            {children}
-            {rightIcon && !loading && rightIcon}
-          </Link>
-        </motion.div>
+          {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+          {leftIcon && !loading && leftIcon}
+          {children}
+          {rightIcon && !loading && rightIcon}
+        </Link>
       );
     }
 
@@ -122,6 +121,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     // Regular button with motion
+    // Type assertion to avoid conflicts between React's event handlers and Framer Motion's types
     return (
       <motion.button
         ref={buttonRef}
@@ -132,7 +132,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         disabled={isDisabled}
         {...defaultMotionProps}
-        {...props}
+        {...(props as Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart' | 'onAnimationEnd' | 'size'>)}
         aria-busy={loading}
         aria-disabled={isDisabled}
       >
