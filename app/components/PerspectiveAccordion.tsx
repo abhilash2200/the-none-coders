@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { useTheme } from '../context/ThemeContext';
+import { Button } from '@/components/ui/button';
 
 const accordionData = [
   {
@@ -47,15 +48,15 @@ const PerspectiveAccordion = () => {
 
       return (
         <div key={index} className="md:border-t-3 border-t-2 border-[#5379F6] mb-5">
-          <button
+          <Button
             onClick={() => toggleAccordion(index)}
-            className={`w-full flex justify-between items-center text-[20px] text-left px-4 py-3 font-bold  hover:cursor-pointer transition ${
-            theme === "light" ? "hover:bg-gray-100" : "hover:bg-gray-900"
-          }`}
+            variant="ghost"
+            size="lg"
+            className="w-full flex justify-between items-center text-left px-4 py-3 font-semibold"
           >
             <span className={`text-[16px] md:text-[20px] ${ theme === "light" ? "text-black" : "text-white" }`}>{item.title}</span>
             <span className={`text-[16px] md:text-[20px] ${ theme === "light" ? "text-black" : "text-white" }`}>{isOpen ? <RemoveIcon/> : <AddIcon/>}</span>
-          </button>
+          </Button>
 
           <div
             className={`overflow-hidden transition-all duration-1000 ease-in-out ${

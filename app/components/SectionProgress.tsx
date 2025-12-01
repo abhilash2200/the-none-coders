@@ -2,6 +2,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
+import { Button } from "@/components/ui/button";
 
 type SectionItem = { id: string; title: string };
 
@@ -92,25 +93,26 @@ const SectionProgress: React.FC<SectionProgressProps> = ({
                     transition={{ type: "spring", stiffness: 80, damping: 20 }}
                 />
                 {sections.map((s, i) => (
-                    <button
+                    <Button
                         key={s.id}
                         ref={(el) => {
                             btnRefs.current[i] = el;
                         }}
                         onClick={() => handleJump(s.id)}
-                        className={`relative z-10 px-6 py-4 text-[12px] md:text-[15px] uppercase tracking-wide text-left transition-colors
-                      ${theme === "light"
+                        variant="ghost"
+                        size="sm"
+                        className={`relative z-10 px-6 py-4 text-[12px] md:text-[15px] uppercase tracking-wide text-left w-full justify-start ${
+                            theme === "light"
                                 ? i === active
-                                    ? "text-gray-900"
+                                    ? "text-gray-900 font-semibold"
                                     : "text-gray-600"
                                 : i === active
-                                    ? "text-white"
+                                    ? "text-white font-semibold"
                                     : "text-gray-400"
-                            }
-                    `}
+                        }`}
                     >
                         {s.title}
-                    </button>
+                    </Button>
 
                 ))}
             </div>

@@ -1,5 +1,6 @@
-import React from 'react'
-import { useTheme } from "../context/ThemeContext";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { fadeInUp } from '@/lib/animations';
 
 interface HeadingProps {
   heading: string;
@@ -7,18 +8,21 @@ interface HeadingProps {
 }
 
 function HeadingText({ heading, textalign }: HeadingProps) {
-  const { theme } = useTheme();
-
   return (
-    <h2
-      className={`text-[25px] lg:text-[37px] font-[400] leading-tight ${textalign} ${
-        theme === "light" ? "text-[#414141]" : "text-white"
-      }`}
+    <motion.h2
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className={`text-2xl lg:text-4xl font-normal leading-tight ${textalign}`}
+      style={{
+        color: 'var(--color-foregroundSecondary)',
+      }}
     >
       {heading}
-    </h2>
+    </motion.h2>
   );
 }
 
 export default HeadingText;
-

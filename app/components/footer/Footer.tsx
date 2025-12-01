@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGoogle, FaYoutube, FaFacebook } from "react-icons/fa";
-import { useTheme } from "../../context/ThemeContext";
 
 type FooterLink = {
   label: string;
@@ -52,16 +51,15 @@ const socialIcons = [
 ];
 
 function Footer() {
-  const { theme } = useTheme();
-
   return (
     <footer
-      className={`pt-12 transition-colors duration-300 ${
-        theme === "light" ? "bg-[#FAFAFA] text-[#3A3A3A]" : "bg-[#222] text-white"
-      }`}
+      className="pt-12 transition-colors duration-300"
+      style={{
+        backgroundColor: 'var(--color-backgroundSecondary)',
+        color: 'var(--color-foreground)',
+      }}
     >
       <div className="container mx-auto px-4">
-
         <div className="flex flex-wrap gap-y-4">
           {footerSections.map((section, idx) => (
             <motion.div
@@ -73,16 +71,22 @@ function Footer() {
               transition={{ duration: 0.5, delay: idx * 0.2 }}
             >
               <motion.h3
-                className="text-[22px] font-bold mb-3 relative inline-block"
+                className="text-xl font-bold mb-3 relative inline-block"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.05 }}
+                style={{
+                  color: 'var(--color-foregroundSecondary)',
+                }}
               >
                 {section.title}
                 <motion.span
-                  className="absolute left-0 -bottom-1 h-[3px] bg-[#19d442] w-full origin-left"
+                  className="absolute left-0 -bottom-1 h-[3px] w-full origin-left"
+                  style={{
+                    backgroundColor: 'var(--color-brand)',
+                  }}
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.3 }}
@@ -98,8 +102,17 @@ function Footer() {
                       className="inline-block"
                     >
                       <Link
-                        className="text-[16px] hover:text-[#19d442] transition-colors duration-300"
+                        className="text-base transition-colors duration-300"
                         href={link.href}
+                        style={{
+                          color: 'var(--color-foreground)',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = 'var(--color-brand)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = 'var(--color-foreground)';
+                        }}
                       >
                         {link.label}
                       </Link>
@@ -111,7 +124,12 @@ function Footer() {
           ))}
 
           {/* Bottom Section */}
-          <div className="w-full border-t border-[#414141] py-8">
+          <div
+            className="w-full border-t py-8"
+            style={{
+              borderColor: 'var(--color-border)',
+            }}
+          >
             <div className="flex flex-wrap gap-y-3 items-center">
               {/* Privacy + Terms */}
               <motion.div
@@ -124,16 +142,34 @@ function Footer() {
                 <div className="flex justify-center md:justify-start items-center gap-x-2">
                   <p>
                     <Link
-                      className="text-[15px] hover:text-[#19d442] transition-colors duration-300"
+                      className="text-sm transition-colors duration-300"
                       href="/privacy-policy"
+                      style={{
+                        color: 'var(--color-foreground)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--color-brand)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--color-foreground)';
+                      }}
                     >
                       PRIVACY POLICY
                     </Link>
                   </p>
                   <p>
                     <Link
-                      className="text-[15px] hover:text-[#19d442] transition-colors duration-300"
+                      className="text-sm transition-colors duration-300"
                       href="/terms-conditions"
+                      style={{
+                        color: 'var(--color-foreground)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--color-brand)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--color-foreground)';
+                      }}
                     >
                       TERMS & CONDITIONS
                     </Link>
@@ -158,8 +194,19 @@ function Footer() {
                         whileHover={{ scale: 1.2, rotate: 5 }}
                         whileTap={{ scale: 0.9 }}
                       >
-                        <Link href={item.href}>
-                          <Icon className="w-6 h-6 hover:text-[#19d442]" />
+                        <Link href={item.href} aria-label={item.alt}>
+                          <Icon
+                            className="w-6 h-6 transition-colors duration-300"
+                            style={{
+                              color: 'var(--color-foreground)',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = 'var(--color-brand)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = 'var(--color-foreground)';
+                            }}
+                          />
                         </Link>
                       </motion.li>
                     );
@@ -175,7 +222,12 @@ function Footer() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <p className="text-[18px] text-center lg:text-left">
+                <p
+                  className="text-lg text-center lg:text-left"
+                  style={{
+                    color: 'var(--color-foreground)',
+                  }}
+                >
                   COPYRIGHT © THE NON-CODERS
                 </p>
               </motion.div>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { Button } from "@/components/ui/button";
 
 export type ApplicationFormProps = {
     jobId?: number | null;
@@ -161,19 +162,21 @@ export default function ApplicationForm({
 
         {/* Actions */}
         <div className="pt-2 flex items-center justify-end gap-2">
-            <button
+            <Button
                 type="button"
+                variant="outline"
+                size="md"
                 onClick={onClose}
-                className="px-4 py-2 rounded-[5px] border-1 hover:cursor-pointer hover:scale-101 transition-transform ease-in"
             >
                 Cancel
-            </button>
-            <button
+            </Button>
+            <Button
                 type="submit"
-                className="px-4 py-2 rounded-[5px] bg-[#1d1d1d] text-white hover:bg-[#414141] hover:cursor-pointer hover:scale-101 transition-transform ease-in"
+                variant="primary"
+                size="md"
             >
                 Submit application
-            </button>
+            </Button>
         </div>
     </form>
     );

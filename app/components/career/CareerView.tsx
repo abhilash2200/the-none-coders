@@ -20,6 +20,7 @@ import {
 } from "../../data/jobDetails";
 import ApplicationDialog from "./ApplicationDialog";
 import { useTheme } from "@/app/context/ThemeContext";
+import { Button } from "@/components/ui/button";
 
 export interface JobDetails {
   id: number;
@@ -171,7 +172,7 @@ export default function CareerView() {
           {currentJobs.map((job: JobItem) => (
             <div
               key={job.id}
-              className={`p-5 mb-3 cursor-pointer rounded-xl transition border shadow-sm hover:shadow-md group ${selectedJob === job.id
+              className={`p-5 mb-3 cursor-pointer transition border shadow-sm hover:shadow-md group ${selectedJob === job.id
                 ? theme === "light"
                   ? "border-gray-200 bg-gray-50"
                   : "border-gray-700 bg-[#1a1a1a]"
@@ -270,34 +271,13 @@ export default function CareerView() {
 
             {/* Apply Button */}
             <div className="flex items-center gap-4 mb-6">
-              <button
+              <Button
                 onClick={() => setOpen(true)}
-                className={`cursor-pointer group relative bg-gray-100 hover:bg-zinc-300 text-black font-semibold text-sm py-3 rounded-lg transition-all duration-200 ease-in-out shadow-lg hover:shadow-lg w-40 h-12`}
+                variant="primary"
+                size="md"
               >
-                <div className="relative flex items-center justify-center gap-2">
-                  <span className="relative inline-block overflow-hidden">
-                    <span className="block transition-transform duration-300 group-hover:-translate-y-full">
-                      Get Started
-                    </span>
-                    <span className="absolute inset-0 transition-transform duration-300 translate-y-full group-hover:translate-y-0">
-                      Right Now
-                    </span>
-                  </span>
-                  <svg
-                    className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle fill="currentColor" r="11" cy="12" cx="12"></circle>
-                    <path
-                      strokeLinejoin="round"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                      stroke="white"
-                      d="M7.5 16.5L16.5 7.5M16.5 7.5H10.5M16.5 7.5V13.5"
-                    ></path>
-                  </svg>
-                </div>
-              </button>
+                Apply Now
+              </Button>
 
               <ApplicationDialog
                 open={open}

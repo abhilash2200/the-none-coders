@@ -10,7 +10,7 @@ import TerminalIcon from "@mui/icons-material/Terminal";
 import SkeletonUpdates from "../components/SkeletonUpdate";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import CircleButton from "../components/CircleButton";
+import { ExpandArrowButton } from "@/components/ui/ExpandArrowButton";
 import { useTheme } from "../context/ThemeContext";
 
 function Page() {
@@ -98,9 +98,11 @@ function Page() {
                                         </Link>
                                         <p className={`${theme === "light" ? "text-gray-600" : "text-gray-200"} text-sm`}>{update.description}</p>
                                         <div className="mt-5 flex flex-start">
-                                            <Link href={`/updates/${update.slug}`}>
-                                                <CircleButton />
-                                            </Link>
+                                            <ExpandArrowButton
+                                              href={`/updates/${update.slug}`}
+                                              text="Read More"
+                                              ariaLabel={`Read more about ${update.title}`}
+                                            />
                                         </div>
                                     </div>
                                 ))}

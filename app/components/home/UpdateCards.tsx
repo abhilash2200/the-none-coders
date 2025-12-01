@@ -16,19 +16,19 @@ interface Update {
 const update: Update[] = [
     {
         title: 'Mobile App Development: Creating Dreams in Ones Hand',
-        img: '/assets/img/updates/mob-dev.jpg',
+        img: '/assets/img/updates/mob-dev.webp',
         desc: "A mobile app is not an icon on a phone. It is a connector between individuals and the things they cherish.",
         href: '/updates/mobile-app-development-creating-dreams-in-ones-hand'
     },
     {
         title: 'OTT Platform Development: Keeping Entertainment Even Closer Than Before',
-        img: '/assets/img/updates/ott-dev.jpg',
+        img: '/assets/img/updates/ott-dev.webp',
         desc: "OTT stands for Over-The-Top. It's a service that streams videos, movies, music, or live events over the internet. No satellite.",
         href: '/updates/ott-platform-development-keeping-entertainment-even-closer-than-before'
     },
     {
         title: 'CRM Development: The Pulse of Successful Growing Businesses',
-        img: '/assets/img/updates/crm-dev.jpg',
+        img: '/assets/img/updates/crm-dev.webp',
         desc: "CRM stands for Customer Relationship Management. In other words, it is software that stores all customer information in one location.",
         href: '/updates/crm-development-the-pulse-of-successful-growing-businesses'
     },

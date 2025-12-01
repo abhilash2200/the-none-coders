@@ -4,7 +4,7 @@ import "./globals.css";
 import "@splidejs/react-splide/css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import LayoutClient from "./layout.client";
-import { ThemeProvider } from "./context/ThemeContext";
+import { ThemeProvider } from "@/theme";
 
 const PTSans = PT_Sans({
   weight: ["400", "700"],

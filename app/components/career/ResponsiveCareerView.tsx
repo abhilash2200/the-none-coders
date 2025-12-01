@@ -23,6 +23,7 @@ import {
     uiuxDesigner,
 } from "../../data/jobDetails";
 import ApplicationDialog from "./ApplicationDialog";
+import { Button } from "@/components/ui/button";
 
 export interface JobDetails {
     id: number;
@@ -160,7 +161,7 @@ export default function ResponsiveCareerView() {
                         {paginatedJobs.map((job: JobItem) => (
                             <div
                                 key={job.id}
-                                className="p-5 rounded-[10px] border border-gray-200 transition shadow-sm hover:shadow-md bg-white cursor-pointer"
+                                className="p-5 border border-gray-200 transition shadow-sm hover:shadow-md bg-white cursor-pointer"
                                 onClick={() => {
                                     setSelectedJob(jobDetailsMap[job.id]);
                                     setShowFull(false);
@@ -203,15 +204,17 @@ export default function ResponsiveCareerView() {
                 // Job Detail
                 <div ref={detailTopRef}>
                     <div className="p-4 bg-[#fafafafa] mb-6 border border-gray-400">
-                        <button
-                            className="flex items-center gap-2 text-gray-700 font-medium hover:bg-gray-300 transition"
+                        <Button
+                            variant="ghost"
+                            size="sm"
                             onClick={() => {
                                 setSelectedJob(null);
                                 setShowFull(false);
                             }}
+                            leftIcon={<CircleArrowLeft className="w-4 h-4" />}
                         >
-                            <CircleArrowLeft /> Back to Jobs
-                        </button>
+                            Back to Jobs
+                        </Button>
                     </div>
 
                     <h2 className="text-[22px] font-semibold mb-2 text-gray-900">
@@ -253,12 +256,15 @@ export default function ResponsiveCareerView() {
                         )}
 
                         {!showFull && (
-                            <button
-                                className="text-gray-600 font-medium text-[15px] mt-2 inline-flex gap-2"
+                            <Button
+                                variant="ghost"
+                                size="sm"
+                                className="mt-2"
                                 onClick={() => setShowFull(true)}
+                                rightIcon={<SquareArrowOutDownRight className="w-3 h-3" />}
                             >
-                                Read More <SquareArrowOutDownRight className="text-[10px]" />
-                            </button>
+                                Read More
+                            </Button>
                         )}
 
                         {showFull && (
@@ -305,13 +311,15 @@ export default function ResponsiveCareerView() {
                     {/* Footer */}
                     {/* Footer */}
                     <div className="sticky bottom-0 bg-white border-t border-gray-300 p-4">
-                        <button
+                        <Button
                             onClick={() => setOpen(true)}
                             id="mainButton"
-                            className="cursor-pointer group relative bg-gray-600 hover:bg-gray-300 text-white font-semibold text-sm py-3 rounded-[5px] transition-all duration-200 ease-in-out shadow-lg w-full"
+                            variant="primary"
+                            size="lg"
+                            fullWidth
                         >
                             Apply Now
-                        </button>
+                        </Button>
                     </div>
 
                     {/* Always keep dialog outside */}

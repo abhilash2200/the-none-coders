@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "../../context/ThemeContext";
+import { Button } from "@/components/ui/button";
 
 interface FormData {
   name: string;
@@ -80,9 +81,9 @@ function SupportForm() {
       <div
         className={`w-full max-w-[650px] mx-auto ${
           theme === "light" ? "bg-white" : "bg-[#111]"
-        } rounded-lg md:p-2 shadow-lg`}
+        } md:p-2 shadow-lg`}
       >
-        <div className="md:p-6 p-2 rounded-lg">
+        <div className="md:p-6 p-2">
           {/* Header */}
           <div
             className={`text-center mb-6 ${
@@ -213,21 +214,16 @@ function SupportForm() {
             </div>
 
             {/* Submit Button */}
-            <button
+            <Button
               type="submit"
-              disabled={loading}
-              className={`mt-6 w-full font-medium py-2 rounded-[5px] flex justify-center items-center transition ${
-                theme === "light"
-                  ? "bg-[#222] text-white hover:bg-[#4b4b4b]"
-                  : "bg-[#222] text-white hover:bg-[#333]"
-              }`}
+              variant="primary"
+              size="lg"
+              loading={loading}
+              fullWidth
+              className="mt-6"
             >
-              {loading ? (
-                <span className="loader border-2 border-white border-t-transparent rounded-full w-5 h-5 animate-spin"></span>
-              ) : (
-                "Submit"
-              )}
-            </button>
+              Submit
+            </Button>
           </form>
         </div>
       </div>

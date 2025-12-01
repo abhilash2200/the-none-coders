@@ -55,7 +55,7 @@ function EmployeeItem({
       initial="rest"
       animate="rest"
       whileHover="hover"
-      className="relative w-full md:w-[45%] h-[500px] overflow-hidden rounded-xl cursor-pointer shadow-2xl bg-neutral-900 group"
+      className="relative w-full md:w-[45%] h-[500px] overflow-hidden cursor-pointer shadow-2xl bg-neutral-900 group"
     >
       {/* Image */}
       <motion.div variants={imageVariants} className="absolute inset-0 z-10 will-change-transform" style={{ transformOrigin: "left center" }}>

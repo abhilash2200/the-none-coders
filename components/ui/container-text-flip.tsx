@@ -15,6 +15,8 @@ export interface ContainerTextFlipProps {
   textClassName?: string;
   /** Duration of the transition animation in milliseconds */
   animationDuration?: number;
+  /** Additional inline styles */
+  style?: React.CSSProperties;
 }
 
 export function ContainerTextFlip({
@@ -23,6 +25,7 @@ export function ContainerTextFlip({
   className,
   textClassName,
   animationDuration = 700,
+  style,
 }: ContainerTextFlipProps) {
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -62,10 +65,14 @@ export function ContainerTextFlip({
       animate={{ width }}
       transition={{ duration: animationDuration / 2000 }}
       className={cn(
-        "relative inline-block font-bold text-[#19d442]",
+        "relative inline-block font-bold",
         textClassName,
         className,
       )}
+      style={{
+        color: 'var(--color-brand)',
+        ...style,
+      }}
       key={words[currentWordIndex]}
     >
       <motion.div

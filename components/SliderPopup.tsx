@@ -204,13 +204,13 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
 
           <Button
             type="submit"
-            disabled={loading}
-            className="w-full mt-2 bg-black text-white font-semibold py-4 rounded-md 
-             hover:bg-gray-900 transition-all duration-200 
-             disabled:opacity-60 disabled:cursor-not-allowed
-             flex items-center justify-center hover:cursor-pointer"
+            variant="primary"
+            size="lg"
+            loading={loading}
+            fullWidth
+            className="mt-2"
           >
-            {loading ? "Submitting..." : "Submit"}
+            Submit
           </Button>
 
         </form>

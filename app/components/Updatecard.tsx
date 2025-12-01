@@ -1,7 +1,9 @@
-import Link from "next/link";
+'use client';
+
 import Image from "next/image";
-import CircleButton from "./CircleButton";
-import { useTheme } from "../context/ThemeContext";
+import { ExpandArrowButton } from "@/components/ui/ExpandArrowButton";
+import { motion } from "framer-motion";
+import { cardHover } from "@/lib/animations";
 
 interface expertiseDataProps {
     title: string;
@@ -11,29 +13,54 @@ interface expertiseDataProps {
 }
 
 function Updatecard({ title, img, desc, href }: expertiseDataProps) {
-    const {theme} = useTheme()
     return (
-        <div className="flex flex-wrap gap-y-4">
-            <div className="px-1.5">
-                <Image
-                    className="w-full md:h-[320px] h-auto"
-                    src={img}
-                    alt={title}
-                    width={405}
-                    height={250}
-                />
-                <h3 className="my-3 text-[22px] leading-tight">
+        <motion.div
+            variants={cardHover}
+            initial="rest"
+            whileHover="hover"
+            className="flex flex-wrap gap-y-4"
+        >
+            <div className="px-1.5 w-full">
+                <div className="relative overflow-hidden rounded-lg">
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Image
+                            className="w-full md:h-[320px] h-auto object-cover"
+                            src={img}
+                            alt={title}
+                            width={405}
+                            height={250}
+                        />
+                    </motion.div>
+                </div>
+                <h3
+                    className="my-3 text-xl font-semibold leading-tight"
+                    style={{
+                        color: 'var(--color-foregroundSecondary)',
+                    }}
+                >
                     {title}
                 </h3>
-                <p className={`${theme === "light" ? "text-gray-600" : "text-gray-200"} text-[15px]`}>{desc}</p>
+                <p
+                    className="text-base leading-relaxed"
+                    style={{
+                        color: 'var(--color-foreground)',
+                    }}
+                >
+                    {desc}
+                </p>
 
                 <div className="mt-3">
-                    <Link href={href}>
-                        <CircleButton />
-                    </Link>
+                    <ExpandArrowButton
+                        href={href}
+                        text="Read More"
+                        ariaLabel={`Read more about ${title}`}
+                    />
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

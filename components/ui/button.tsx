@@ -1,59 +1,149 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { motion, MotionProps } from "framer-motion";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 
 const buttonVariants = cva(
-  "",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-foreground)] disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed",
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground shadow-xs",
-        destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        primary:
+          "bg-[#000000] text-white shadow-sm hover:bg-[#111111] active:bg-[#0a0a0a] dark:bg-[#ffffff] dark:text-[#000000] dark:hover:bg-[#f5f5f5] dark:active:bg-[#e5e5e5]",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+          "bg-white text-[#000000] border border-[#e5e5e5] shadow-sm hover:bg-[#fafafa] hover:border-[#d4d4d4] active:bg-[#f5f5f5] dark:bg-[#1a1a1a] dark:text-white dark:border-[#404040] dark:hover:bg-[#262626] dark:hover:border-[#525252]",
+        outline:
+          "bg-transparent text-[#000000] border border-[#d4d4d4] hover:bg-[#fafafa] hover:border-[#a3a3a3] active:bg-[#f5f5f5] dark:text-white dark:border-[#404040] dark:hover:bg-[#262626] dark:hover:border-[#525252]",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-transparent text-[#000000] hover:bg-[#f5f5f5] active:bg-[#e5e5e5] dark:text-white dark:hover:bg-[#262626] dark:active:bg-[#1f1f1f]",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9",
+        sm: "h-9 px-5 py-2.5 text-sm rounded-md",
+        md: "h-11 px-6 py-3 text-base rounded-lg",
+        lg: "h-14 px-7 py-4 text-base rounded-lg",
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "primary",
+      size: "md",
     },
   }
-)
+);
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot : "button"
-
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
+export interface ButtonProps
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size">,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+  asLink?: boolean;
+  href?: string;
+  loading?: boolean;
+  fullWidth?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  motionProps?: Partial<MotionProps>;
 }
 
-export { Button, buttonVariants }
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      asLink = false,
+      href,
+      loading = false,
+      fullWidth = false,
+      leftIcon,
+      rightIcon,
+      children,
+      disabled,
+      motionProps,
+      ...props
+    },
+    ref
+  ) => {
+    // Handle ref for motion.button
+    const buttonRef = React.useRef<HTMLButtonElement>(null);
+    React.useImperativeHandle(ref, () => buttonRef.current as HTMLButtonElement);
+    const isDisabled = disabled || loading;
+
+    // Motion props for animations
+    const defaultMotionProps: Partial<MotionProps> = {
+      whileHover: { scale: 1.02 },
+      whileTap: { scale: 0.98 },
+      transition: { duration: 0.2, ease: "easeOut" },
+      ...motionProps,
+    };
+
+    // If it's a link, render as Link
+    if (asLink && href) {
+      return (
+        <motion.div
+          {...defaultMotionProps}
+          className={cn(fullWidth && "w-full", "inline-block")}
+        >
+          <Link
+            href={href}
+            className={cn(
+              buttonVariants({ variant, size }),
+              fullWidth && "w-full",
+              className
+            )}
+            aria-disabled={isDisabled}
+          >
+            {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+            {leftIcon && !loading && leftIcon}
+            {children}
+            {rightIcon && !loading && rightIcon}
+          </Link>
+        </motion.div>
+      );
+    }
+
+    // If asChild, use Slot (for composition)
+    if (asChild) {
+      return (
+        <Slot
+          className={cn(
+            buttonVariants({ variant, size }),
+            fullWidth && "w-full",
+            className
+          )}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </Slot>
+      );
+    }
+
+    // Regular button with motion
+    return (
+      <motion.button
+        ref={buttonRef}
+        className={cn(
+          buttonVariants({ variant, size }),
+          fullWidth && "w-full",
+          className
+        )}
+        disabled={isDisabled}
+        {...defaultMotionProps}
+        {...props}
+        aria-busy={loading}
+        aria-disabled={isDisabled}
+      >
+        {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+        {leftIcon && !loading && leftIcon}
+        {children}
+        {rightIcon && !loading && rightIcon}
+      </motion.button>
+    );
+  }
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants };

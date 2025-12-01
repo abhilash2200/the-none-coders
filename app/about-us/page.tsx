@@ -42,7 +42,7 @@ export default function Page() {
                             </p>
                         </div>
                         <div className="w-full lg:w-[50%] flex justify-center items-center">
-                            <Image src="/assets/img/Bair-M.jpg" alt="" width={600} height={440} />
+                            <Image src="/assets/img/about-us.webp" alt="" width={600} height={440} />
                         </div>
                     </div>
                 </div>

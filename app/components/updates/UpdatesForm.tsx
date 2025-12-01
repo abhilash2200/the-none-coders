@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 const UpdatesForm = () => {
     const router = useRouter();
@@ -156,13 +157,15 @@ const UpdatesForm = () => {
                     rows={4}
                 />
 
-                <button
+                <Button
                     type="submit"
-                    disabled={submitting}
-                    className="w-full bg-black text-white py-2 rounded hover:bg-gray-900 hover:cursor-pointer disabled:opacity-50"
+                    variant="primary"
+                    size="lg"
+                    loading={submitting}
+                    fullWidth
                 >
-                    {submitting ? "Submitting..." : "Submit"}
-                </button>
+                    Submit
+                </Button>
             </form>
         </div>
     );

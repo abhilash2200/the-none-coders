@@ -6,7 +6,8 @@ import HeadingText from "../HeadingText";
 import EnterpriseCard from "../EnterpriseCard";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import type { Splide as SplideInstance } from "@splidejs/splide";
-import CircleButton from "../CircleButton";
+import { ExpandArrowButton } from "@/components/ui/ExpandArrowButton";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface ExpertiseData {
   title: string;
@@ -100,17 +101,17 @@ export function EnterpriseCards() {
 
         {/* Custom Buttons */}
         <div className="flex gap-4 mt-6 md:absolute md:-bottom-10 md:left-0">
-          <CircleButton
+          <ExpandArrowButton
             onClick={handlePrev}
             ariaLabel="Previous"
             text="Previous"
-            // className="hover:bg-black/10 text-black transition"
+            icon={<ArrowLeft className="w-4 h-4" />}
           />
-          <CircleButton
+          <ExpandArrowButton
             onClick={handleNext}
             ariaLabel="Next"
             text="Next"
-            // className="hover:bg-black/10 text-black transition"
+            icon={<ArrowRight className="w-4 h-4" />}
           />
         </div>
       </div>
