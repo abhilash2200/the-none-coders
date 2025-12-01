@@ -44,14 +44,14 @@ export function ExpandArrowButton({
       width: '48px',
       transition: {
         duration: 0.3,
-        ease: [0.4, 0, 0.2, 1], // easeInOut
+        ease: 'easeInOut' as const,
       },
     },
     hover: {
       width: '180px',
       transition: {
         duration: 0.3,
-        ease: [0.4, 0, 0.2, 1],
+        ease: 'easeInOut' as const,
       },
     },
   };
@@ -61,14 +61,14 @@ export function ExpandArrowButton({
       x: 0,
       transition: {
         duration: 0.3,
-        ease: [0.4, 0, 0.2, 1],
+        ease: 'easeInOut' as const,
       },
     },
     hover: {
       x: -8,
       transition: {
         duration: 0.3,
-        ease: [0.4, 0, 0.2, 1],
+        ease: 'easeInOut' as const,
       },
     },
   };
@@ -79,7 +79,7 @@ export function ExpandArrowButton({
       x: 10,
       transition: {
         duration: 0.2,
-        ease: [0.4, 0, 0.2, 1],
+        ease: 'easeInOut' as const,
       },
     },
     hover: {
@@ -88,7 +88,7 @@ export function ExpandArrowButton({
       transition: {
         duration: 0.3,
         delay: 0.1,
-        ease: [0.4, 0, 0.2, 1],
+        ease: 'easeInOut' as const,
       },
     },
   };
