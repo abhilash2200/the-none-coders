@@ -8,8 +8,8 @@ function ArrowButton() {
       <Tooltip title="Visit Now" placement="top">
         <Button
           variant="outline"
-          size="icon"
-          className="rounded-full w-14 h-14"
+          size="md"
+          className="rounded-full w-14 h-14 p-0"
           aria-label="Visit Now"
         >
           <ArrowUp className="w-6 h-6 rotate-45" />
