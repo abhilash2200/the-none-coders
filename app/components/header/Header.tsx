@@ -187,10 +187,10 @@ function Header() {
             </List>
           </Box>
 
-          {/* Theme Toggle Button */}
-          <Box sx={{ display: { xs: "none", lg: "block" }, ml: 2 }}>
+          {/* Theme Toggle Button - Temporarily Hidden */}
+          {/* <Box sx={{ display: { xs: "none", lg: "block" }, ml: 2 }}>
             <ThemeToggle variant="button" />
-          </Box>
+          </Box> */}
 
           {/* Mobile Hamburger Icon */}
           <IconButton
@@ -325,10 +325,10 @@ function Header() {
               })}
             </List>
 
-            {/* Theme Toggle inside Mobile Menu */}
-            <Box sx={{ mt: 4, textAlign: "center" }}>
+            {/* Theme Toggle inside Mobile Menu - Temporarily Hidden */}
+            {/* <Box sx={{ mt: 4, textAlign: "center" }}>
               <ThemeToggle variant="button" />
-            </Box>
+            </Box> */}
           </motion.div>
         )}
       </AnimatePresence>
