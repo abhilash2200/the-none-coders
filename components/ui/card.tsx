@@ -3,24 +3,45 @@ import { motion } from "framer-motion";
 import { cardHover } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart" | "onAnimationEnd"> {
   hover?: boolean;
   asChild?: boolean;
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ className, hover = true, children, ...props }, ref) => {
-    const Component = hover ? motion.div : "div";
     const motionProps = hover
       ? {
           variants: cardHover,
-          initial: "rest",
-          whileHover: "hover",
+          initial: "rest" as const,
+          whileHover: "hover" as const,
         }
       : {};
 
+    if (hover) {
+      return (
+        <motion.div
+          ref={ref}
+          className={cn(
+            "rounded-xl border transition-all duration-200",
+            "bg-[var(--color-card)]",
+            "border-[var(--color-cardBorder)]",
+            "shadow-sm hover:shadow-md",
+            className
+          )}
+          style={{
+            color: 'var(--color-cardForeground)',
+          }}
+          {...motionProps}
+          {...(props as Omit<React.HTMLAttributes<HTMLDivElement>, 'onDrag' | 'onDragStart' | 'onDragEnd' | 'onAnimationStart' | 'onAnimationEnd'>)}
+        >
+          {children}
+        </motion.div>
+      );
+    }
+
     return (
-      <Component
+      <div
         ref={ref}
         className={cn(
           "rounded-xl border transition-all duration-200",
@@ -32,11 +53,10 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         style={{
           color: 'var(--color-cardForeground)',
         }}
-        {...motionProps}
         {...props}
       >
         {children}
-      </Component>
+      </div>
     );
   }
 );

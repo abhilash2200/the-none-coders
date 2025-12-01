@@ -2,7 +2,7 @@
 
 import { motion, MotionProps } from 'framer-motion';
 import { ReactNode } from 'react';
-import { fadeInUp, sectionReveal, staggerContainer, staggerItem } from '@/lib/animations';
+import { fadeInUp, fadeInLeft, sectionReveal, staggerContainer, staggerItem } from '@/lib/animations';
 
 interface MotionSectionProps extends Omit<MotionProps, 'initial' | 'animate' | 'variants'> {
   children: ReactNode;

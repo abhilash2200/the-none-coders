@@ -1,12 +1,24 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register ScrollTrigger plugin
+// GSAP imports - conditional to avoid build errors if not installed
+let gsap: any;
+let ScrollTrigger: any;
+
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    gsap = require('gsap');
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    ScrollTrigger = require('gsap/ScrollTrigger').ScrollTrigger;
+    if (gsap && ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+  } catch (e) {
+    // GSAP not installed - hook will be a no-op
+    console.warn('GSAP not installed. useScrollReveal will not work.');
+  }
 }
 
 interface UseScrollRevealOptions {
@@ -16,7 +28,7 @@ interface UseScrollRevealOptions {
   scrub?: boolean | number;
   once?: boolean;
   markers?: boolean;
-  animation?: gsap.core.Tween | gsap.core.Timeline;
+  animation?: any; // gsap.core.Tween | gsap.core.Timeline
 }
 
 /**
@@ -25,7 +37,7 @@ interface UseScrollRevealOptions {
  */
 export function useScrollReveal(options: UseScrollRevealOptions = {}) {
   const elementRef = useRef<HTMLElement>(null);
-  const animationRef = useRef<ScrollTrigger | null>(null);
+  const animationRef = useRef<any>(null); // ScrollTrigger instance
 
   const {
     trigger,
@@ -38,6 +50,11 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
   } = options;
 
   useEffect(() => {
+    if (!gsap || !ScrollTrigger) {
+      console.warn('GSAP not available. useScrollReveal is disabled.');
+      return;
+    }
+
     const element = trigger 
       ? (typeof trigger === 'string' ? document.querySelector(trigger) : trigger)
       : elementRef.current;
