@@ -188,17 +188,17 @@ function Header() {
           </Box>
 
           {/* Theme Toggle Button - Temporarily Hidden */}
-          {/* <Box sx={{ display: { xs: "none", lg: "block" }, ml: 2 }}>
+          <Box sx={{ display: { xs: "none", lg: "block" }, ml: 2 }}>
             <ThemeToggle variant="button" />
-          </Box> */}
+          </Box>
 
           {/* Mobile Hamburger Icon */}
           <IconButton
             size="large"
             edge="start"
             className="!block lg:!hidden"
-            sx={{ 
-              mr: 2, 
+            sx={{
+              mr: 2,
               color: 'var(--color-foreground)',
             }}
             onClick={() => setMenuOpen(true)}
@@ -256,7 +256,7 @@ function Header() {
           >
             {/* Close Button */}
             <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
-              <IconButton 
+              <IconButton
                 onClick={() => setMenuOpen(false)}
                 sx={{ color: 'var(--color-foreground)' }}
                 aria-label="Close menu"
@@ -276,9 +276,9 @@ function Header() {
                     <ListItem disablePadding>
                       <ListItemButton
                         onClick={() => (hasDropdown ? toggleAccordion(i) : setMenuOpen(false))}
-                        sx={{ 
-                          display: "flex", 
-                          justifyContent: "space-between", 
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
                           alignItems: "center",
                           color: 'var(--color-foreground)',
                         }}

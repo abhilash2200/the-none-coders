@@ -16,6 +16,7 @@ import { MotionSection } from "@/components/ui/motion-section";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
 
+
 interface WhatWeDeliverData {
   title: string;
   desc: string;
@@ -170,11 +171,12 @@ export default function Home() {
             >
               <Image
                 className="mx-auto"
-                src="/assets/img/hero-img-modified.png"
-                alt="hero img"
-                height={700}
+                src="/assets/img/developer.gif"
                 width={440}
+                height={700}
+                alt="hero img"
                 priority
+                unoptimized
               />
             </motion.div>
           </div>
