@@ -95,6 +95,7 @@ function Page() {
                   alt={section.title}
                   width={600}
                   height={440}
+                  unoptimized
                 />
               </div>
               <div className="w-full md:w-[50%] flex items-center justify-center">
