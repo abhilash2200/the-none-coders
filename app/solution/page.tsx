@@ -15,6 +15,7 @@ interface SectionData {
   image: string;
   link: string;
   reverse?: boolean;
+  imageWidthClass?: string;
 }
 
 function Page() {
@@ -27,6 +28,7 @@ function Page() {
         "Empower your business with a custom-built CRM that simplifies lead management, automates workflows, and keeps every customer interaction in one place. Our CRM solutions are designed to fit any industry—whether it’s sales, marketing, finance, or support—giving your team the tools to work smarter, not harder. From tracking leads to building lasting customer relationships, we create CRMs that boost productivity, enhance decision-making, and help your business grow with confidence.",
       image: "/assets/img/crm-development.gif",
       link: "/crm",
+      imageWidthClass: "lg:w-[70%]",
     },
     {
       id: "mobile-app-development",
@@ -36,6 +38,7 @@ function Page() {
       image: "/assets/img/mobile-app-development.gif",
       link: "/mobile-apps",
       reverse: true,
+      imageWidthClass: "lg:w-[70%]",
     },
     {
       id: "ai-ml",
@@ -44,6 +47,7 @@ function Page() {
         "Leverage the power of AI and machine learning to make your business smarter and more efficient. Our solutions integrate seamlessly with your CRM, automating tasks like lead scoring, customer insights, and data summarisation—reducing manual hours and boosting productivity. From intelligent reporting to workflow automation, we design AI-driven products that adapt to your processes. With advanced models, you gain faster decision-making, higher accuracy, and the tools to scale your business with confidence.",
       image: "/assets/img/ai-and-ml.gif",
       link: "/ai-ml",
+      imageWidthClass: "lg:w-[80%]",
     },
     {
       id: "website-development",
@@ -53,6 +57,7 @@ function Page() {
       image: "/assets/img/website-development.gif",
       link: "/websites",
       reverse: true,
+      imageWidthClass: "lg:w-[80%]",
     },
     {
       id: "ui-ux-designing",
@@ -61,6 +66,7 @@ function Page() {
         "Great design goes beyond looks—it’s about creating seamless experiences that users love. Our UI & UX design services focus on blending creativity with usability to deliver intuitive, engaging, and visually striking digital products. From wireframes and prototypes to final designs, we ensure every interaction is simple, consistent, and impactful. Whether for websites, mobile apps, or enterprise platforms, we design interfaces that not only look beautiful but also enhance user satisfaction and business growth.",
       image: "/assets/img/ui-ux-designing.gif",
       link: "/ui-ux",
+      imageWidthClass: "lg:w-[80%]",
     },
   ];
 
@@ -90,7 +96,7 @@ function Page() {
             >
               <div className="w-full md:w-[50%] flex justify-center items-center">
                 <Image
-                  className="mx-auto"
+                  className={`mx-auto lg:mx-0 ${section.imageWidthClass || "lg:w-[50%]"}`}
                   src={section.image}
                   alt={section.title}
                   width={600}

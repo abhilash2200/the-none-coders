@@ -137,7 +137,7 @@ function SupportForm() {
                   placeholder={field.placeholder}
                   value={formData[field.name]}
                   onChange={handleChange}
-                  className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${
+                  className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${
                     theme === "light"
                       ? "bg-white text-black"
                       : "bg-[#1a1a1a] text-white"
@@ -161,7 +161,7 @@ function SupportForm() {
                 name="services"
                 value={formData.services}
                 onChange={handleChange}
-                className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${
+                className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${
                   theme === "light"
                     ? "bg-white text-black"
                     : "bg-[#1a1a1a] text-white"
@@ -196,7 +196,7 @@ function SupportForm() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className={`w-full rounded-[5px] border px-3 py-2 focus:outline-none focus:ring-1 ${
+                className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${
                   theme === "light"
                     ? "bg-white text-black"
                     : "bg-[#1a1a1a] text-white"

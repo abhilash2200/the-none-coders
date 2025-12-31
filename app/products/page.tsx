@@ -15,6 +15,7 @@ interface SectionData {
   image: string;
   link: string;
   reverse?: boolean;
+  imageWidthClass?: string;
 }
 
 function Page() {
@@ -25,42 +26,47 @@ function Page() {
       title: "E-LEARNING APPS",
       description:
         "E-learning apps unlock doors to knowledge anywhere and anytime. They convert phones into classrooms and learning into fun, easy, and personalised experiences. With videos, notes, and tests, learning becomes interesting, developing students' confidence, happiness, and brighter futures.",
-      image: "/assets/img/e-learning.webp",
+      image: "/assets/img/e-learning.gif",
       link: "/crm",
+      imageWidthClass: "lg:w-[70%]",
     },
     {
       id: "student-management-system",
       title: "STUDENT MANAGEMENT SYSTEM",
       description:
         "A student management system is a guiding light for schools and colleges. It monitors attendance, exams, fees, and performance. Teachers teach better, students learn better, and parents stay updated. It establishes harmony, saves time, and fosters trust.",
-      image: "/assets/img/student-management-system.webp",
+      image: "/assets/img/student-management-system.gif",
       link: "/mobile-apps",
       reverse: true,
+      imageWidthClass: "lg:w-[50%]",
     },
     {
       id: "ott-platforms",
       title: "OTT PLATFORMS",
       description:
         "OTT platforms place entertainment in your own hands. Films, television shows, and live events await streaming at any time. They unite families, bring laughter to empty hours, and cause stories to travel through hearts without limits. Entertainment becomes freedom, happiness, and togetherness.",
-      image: "/assets/img/ott-platforms.webp",
+      image: "/assets/img/ott-platforms.gif",
       link: "/ai-ml",
+      imageWidthClass: "lg:w-[60%]",
     },
     {
       id: "crm-billing-system",
       title: "CRM & BILLING SYSTEM",
       description:
         "A CRM and billing system is a nurturing partner to businesses. It remembers each customer, makes billing easy, and does not make mistakes. Work is easier, relationships become deeper, and trust becomes stronger. Customers feel appreciated, businesses feel enabled, and growth comes naturally without tension.",
-      image: "/assets/img/crm-billing-system.webp",
+      image: "/assets/img/crm-billing-system.gif",
       link: "/websites",
       reverse: true,
+      imageWidthClass: "lg:w-[60%]",
     },
     {
       id: "project-management-tool",
       title: "PROJECT MANAGEMENT TOOL",
       description:
         "A project management tool is the pulse of collaboration. It structures tasks, makes deadlines, and monitors progress. Teams are cohesive, confusion vanishes, and objectives become attainable. Projects seem smoother, tensions subside, and success tastes like a collective journey amid pride.",
-      image: "/assets/img/project-management.webp",
+      image: "/assets/img/project-management.gif",
       link: "/ui-ux",
+      imageWidthClass: "lg:w-[60%]",
     },
   ];
 
@@ -90,20 +96,21 @@ function Page() {
             >
               <div className="w-full md:w-[50%] flex justify-center items-center">
                 <Image
-                  className="mx-auto"
+                  className={`mx-auto lg:mx-0 ${section.imageWidthClass || "lg:w-[50%]"}`}
                   src={section.image}
                   alt={section.title}
                   width={600}
                   height={440}
+                  unoptimized
                 />
               </div>
               <div className="w-full md:w-[50%] flex items-center justify-center">
                 <div className="flex flex-col justify-center">
                   <HeadingText textalign="text-start" heading={section.title} />
-                  <div className="mt-3">
+                  <div className="mt-5">
                     <p className={`md:text-[19px] ${theme === "light" ? "text-[#414141] " : "text-gray-200"} text-[18px]`}>{section.description}</p>
                   </div>
-                  <div className="mt-3 flex justify-start items-center">
+                  <div className="mt-5 flex justify-start items-center">
                     <ExpandArrowButton
                       href={section.link}
                       text="Visit Now"

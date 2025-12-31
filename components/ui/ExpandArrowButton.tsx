@@ -48,7 +48,7 @@ export function ExpandArrowButton({
       },
     },
     hover: {
-      width: '180px',
+      width: '140px',
       transition: {
         duration: 0.3,
         ease: 'easeInOut' as const,
