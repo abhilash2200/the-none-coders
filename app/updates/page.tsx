@@ -64,11 +64,11 @@ function Page() {
                         <SkeletonUpdates />
                     ) : (
                         <>
-                            <div className="flex flex-wrap gap-y-6 gap-x-2">
+                            <div className="flex flex-wrap justify-between gap-y-6 gap-x-2">
                                 {currentBlogs.map((update: UpdateListItem) => (
                                     <div
                                         key={update.slug}
-                                        className="w-full md:w-[49%] lg:w-[32.33%] md:p-4 p-2 rounded-md border-1 border-[#cacaca]"
+                                        className="w-full md:w-[49%] lg:w-[32%] md:p-4 p-2 rounded-md border-1 border-[#cacaca]"
                                     >
                                         <Image
                                             src={update.image}
