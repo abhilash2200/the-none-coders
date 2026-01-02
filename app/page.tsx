@@ -26,22 +26,22 @@ interface WhatWeDeliverData {
 const whatwedeliverData: WhatWeDeliverData[] = [
   {
     title: 'A Great Consultation',
-    desc: 'We believe every successful IT project starts with a great consultation. We take time to understand your business, challenges, and goals before suggesting solutions. Through careful listening and strategic insights, we create tailored roadmaps that align technology with growth. With the right consultation, we turn ideas into impactful, scalable solutions.',
+    desc: 'Every meaningful digital journey starts with understanding. We take our time to understand your business machinery, where challenges show up, and what future you want to build. By listening carefully and asking the right questions, we create clear paths where technology supports ambition and ideas turn into lasting results.',
     icon: '/assets/icons/octicon-codescan.png'
   },
   {
     title: 'Seamless Technology',
-    desc: 'We believe technology should feel seamless, not complex. We design solutions that integrate smoothly into your business, connecting people, processes, and data without friction. From CRM systems to AI-driven tools, we ensure every solution is intuitive, scalable, and reliable. With seamless technology, we help you focus on growth while innovation works in the background.',
+    desc: 'The best technology works quietly in the background. Our solutions fit naturally into daily operations, making processes smoother and decisions smarter. Systems connect smoothly, information flows easily, and everything stays in balance, allowing everything to feel simple instead of stressful.',
     icon: '/assets/icons/octicon-codescan.png'
   },
   {
     title: 'World Class Experience',
-    desc: 'We deliver a world-class experience by blending innovation, reliability, and user-centric design. Every solution is crafted to meet global standards while addressing unique business needs. From intuitive interfaces to seamless integrations, we ensure technology feels effortless. With a focus on excellence, we transform digital journeys into impactful, world-class experiences.',
+    desc: 'The genuine quality is realised with the very first use. We design the digital experience to be intuitive, secure, and elegant. We address every detail with care, such that the experience with technology would be familiar, trustworthy, or memorable with the very first touch.',
     icon: '/assets/icons/octicon-codescan.png'
   },
   {
     title: 'Unbelievable Support',
-    desc: 'We believe great technology is incomplete without unbelievable support. From the first consultation to post-deployment assistance, we stay by your side at every step. Our team ensures quick responses, proactive solutions, and round-the-clock guidance. With a commitment to reliability and care, we deliver support that feels less like a service and more like a partnership.',
+    desc: 'Great support is always there in one’s life. It stays along even after the delivery and is always there to help. The answers to all the questions are given on priority, all complications are resolved prudently, and suggestions are always there. It thus establishes trust based on consistency, concern, and commitment.',
     icon: '/assets/icons/octicon-codescan.png'
   },
 ];
