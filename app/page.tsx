@@ -27,22 +27,22 @@ const whatwedeliverData: WhatWeDeliverData[] = [
   {
     title: 'A Great Consultation',
     desc: 'Every meaningful digital journey starts with understanding. We take our time to understand your business machinery, where challenges show up, and what future you want to build. By listening carefully and asking the right questions, we create clear paths where technology supports ambition and ideas turn into lasting results.',
-    icon: '/assets/icons/octicon-codescan.png'
+    icon: '/assets/img/Information.gif'
   },
   {
     title: 'Seamless Technology',
     desc: 'The best technology works quietly in the background. Our solutions fit naturally into daily operations, making processes smoother and decisions smarter. Systems connect smoothly, information flows easily, and everything stays in balance, allowing everything to feel simple instead of stressful.',
-    icon: '/assets/icons/octicon-codescan.png'
+    icon: '/assets/img/cloud-robotics-abstract.gif'
   },
   {
     title: 'World Class Experience',
     desc: 'The genuine quality is realised with the very first use. We design the digital experience to be intuitive, secure, and elegant. We address every detail with care, such that the experience with technology would be familiar, trustworthy, or memorable with the very first touch.',
-    icon: '/assets/icons/octicon-codescan.png'
+    icon: '/assets/img/user-reviews.gif'
   },
   {
     title: 'Unbelievable Support',
     desc: 'Great support is always there in one’s life. It stays along even after the delivery and is always there to help. The answers to all the questions are given on priority, all complications are resolved prudently, and suggestions are always there. It thus establishes trust based on consistency, concern, and commitment.',
-    icon: '/assets/icons/octicon-codescan.png'
+    icon: '/assets/img/contact-us.gif'
   },
 ];
 
