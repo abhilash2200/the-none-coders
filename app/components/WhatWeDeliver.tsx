@@ -21,10 +21,10 @@ function WhatWeDeliver({ title, desc, icon }: cardData) {
         whileHover={{ scale: 1.1, rotate: 5 }}
         transition={{ duration: 0.2 }}
       >
-        <Image src={icon} alt={title} width={70} height={70} />
+        <Image src={icon} alt={title} width={80} height={80} />
       </motion.div>
       <h3
-        className="text-2xl mb-2 mt-4 md:mt-6 font-semibold"
+        className="text-2xl mb-2 mt-4 md:mt-2 font-semibold"
         style={{ color: 'var(--color-foregroundSecondary)' }}
       >
         {title}
