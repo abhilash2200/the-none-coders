@@ -78,7 +78,7 @@ export default function Home() {
       }}
     >
       {/* Hero Section */}
-      <section className="py-6 lg:py-12">
+      <section className="py-6 lg:py-30">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-y-4">
             <motion.div
