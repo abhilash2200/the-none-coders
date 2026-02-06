@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import HeadingText from "../components/HeadingText";
 import SectionProgress from "../components/SectionProgress";
 import { motion } from "framer-motion"
 import { ExpandArrowButton } from "@/components/ui/ExpandArrowButton";
 import { useTheme } from "../context/ThemeContext";
+import SliderPopup from "@/components/SliderPopup";
 
 interface SectionData {
   id: string;
@@ -20,6 +21,15 @@ interface SectionData {
 
 function Page() {
   const { theme } = useTheme()
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const sections: SectionData[] = [
     {
       id: "e-learning-apps",
@@ -27,7 +37,7 @@ function Page() {
       description:
         "E-learning apps unlock doors to knowledge anywhere and anytime. They convert phones into classrooms and learning into fun, easy, and personalised experiences. With videos, notes, and tests, learning becomes interesting, developing students' confidence, happiness, and brighter futures.",
       image: "/assets/img/e-learning.gif",
-      link: "/crm",
+      link: "#",
       imageWidthClass: "lg:w-[70%]",
     },
     {
@@ -36,7 +46,7 @@ function Page() {
       description:
         "A student management system is a guiding light for schools and colleges. It monitors attendance, exams, fees, and performance. Teachers teach better, students learn better, and parents stay updated. It establishes harmony, saves time, and fosters trust.",
       image: "/assets/img/student-management-system.gif",
-      link: "/mobile-apps",
+      link: "#",
       reverse: true,
       imageWidthClass: "lg:w-[50%]",
     },
@@ -46,7 +56,7 @@ function Page() {
       description:
         "OTT platforms place entertainment in your own hands. Films, television shows, and live events await streaming at any time. They unite families, bring laughter to empty hours, and cause stories to travel through hearts without limits. Entertainment becomes freedom, happiness, and togetherness.",
       image: "/assets/img/ott-platforms.gif",
-      link: "/ai-ml",
+      link: "#",
       imageWidthClass: "lg:w-[60%]",
     },
     {
@@ -55,7 +65,7 @@ function Page() {
       description:
         "A CRM and billing system is a nurturing partner to businesses. It remembers each customer, makes billing easy, and does not make mistakes. Work is easier, relationships become deeper, and trust becomes stronger. Customers feel appreciated, businesses feel enabled, and growth comes naturally without tension.",
       image: "/assets/img/crm-billing-system.gif",
-      link: "/websites",
+      link: "#",
       reverse: true,
       imageWidthClass: "lg:w-[60%]",
     },
@@ -65,7 +75,7 @@ function Page() {
       description:
         "A project management tool is the pulse of collaboration. It structures tasks, makes deadlines, and monitors progress. Teams are cohesive, confusion vanishes, and objectives become attainable. Projects seem smoother, tensions subside, and success tastes like a collective journey amid pride.",
       image: "/assets/img/project-management.gif",
-      link: "/ui-ux",
+      link: "#",
       imageWidthClass: "lg:w-[60%]",
     },
   ];
@@ -112,9 +122,9 @@ function Page() {
                   </div>
                   <div className="mt-5 flex justify-start items-center">
                     <ExpandArrowButton
-                      href={section.link}
-                      text="Visit Now"
-                      ariaLabel="Visit Now"
+                      onClick={handleClickOpen}
+                      text="Learn More"
+                      ariaLabel="Learn More"
                     />
                   </div>
                 </div>
@@ -123,6 +133,7 @@ function Page() {
           </motion.div>
         </section>
       ))}
+      <SliderPopup open={open} handleClose={handleClose} />
     </main>
   );
 }

@@ -131,7 +131,7 @@ function Page() {
                                         >
                                             <Mail className="w-5 h-5 hover:text-[#477951]" />
                                             <a
-                                                href="https://calendly.com/digitalwolf/support"
+                                                href="#"
                                                 className="md:text-lg text-md hover:underline flex items-center gap-2"
                                             >
                                                 Open A Support Ticket{" "}

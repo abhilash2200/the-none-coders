@@ -126,7 +126,7 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
               placeholder="Full Name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-md border text-sm focus:outline-none focus:ring-1 ${errors.name
+              className={`w-full px-4 py-3 rounded-none border text-sm focus:outline-none focus:ring-1 ${errors.name
                 ? "border-red-500 focus:ring-red-500"
                 : "border-gray-300 focus:ring-black"
                 }`}
@@ -141,7 +141,7 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-md border text-sm focus:outline-none focus:ring-1 ${errors.email
+              className={`w-full px-4 py-3 rounded-none border text-sm focus:outline-none focus:ring-1 ${errors.email
                 ? "border-red-500 focus:ring-red-500"
                 : "border-gray-300 focus:ring-black"
                 }`}
@@ -169,16 +169,19 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
               name="projectType"
               value={formData.projectType}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-md border text-sm bg-white focus:outline-none focus:ring-1 ${errors.projectType
+              className={`w-full px-4 py-3 rounded-none border text-sm bg-white focus:outline-none focus:ring-1 ${errors.projectType
                 ? "border-red-500 focus:ring-red-500"
                 : "border-gray-300 focus:ring-black"
                 }`}
             >
-              <option value="">Select Project Type</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Mobile App">Mobile App</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Custom Software">Custom Software</option>
+              <option value="">Service you’re interested in</option>
+              <option value="web-development">Web Development</option>
+              <option value="mobile-apps">Mobile Apps Development</option>
+              <option value="crm">CRM Development</option>
+              <option value="erp">ERP Development</option>
+              <option value="cloud">Cloud Solutions</option>
+              <option value="ai-ml">AI & ML Application</option>
+              <option value="other">Other</option>
             </select>
             {errors.projectType && (
               <p className="text-red-500 text-xs mt-1">{errors.projectType}</p>
@@ -192,7 +195,7 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
               rows={3}
               value={formData.message}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-md border text-sm focus:outline-none focus:ring-1 ${errors.message
+              className={`w-full px-4 py-3 rounded-none border text-sm focus:outline-none focus:ring-1 ${errors.message
                 ? "border-red-500 focus:ring-red-500"
                 : "border-gray-300 focus:ring-black"
                 }`}
@@ -208,7 +211,7 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
             size="lg"
             loading={loading}
             fullWidth
-            className="mt-2"
+            className="mt-2 rounded-none cursor-pointer"
           >
             Submit
           </Button>

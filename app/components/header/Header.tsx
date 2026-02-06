@@ -188,9 +188,9 @@ function Header() {
           </Box>
 
           {/* Theme Toggle Button - Temporarily Hidden */}
-          <Box sx={{ display: { xs: "none", lg: "block" }, ml: 2 }}>
+          {/* <Box sx={{ display: { xs: "none", lg: "block" }, ml: 2 }}>
             <ThemeToggle variant="button" />
-          </Box>
+          </Box> */}
 
           {/* Mobile Hamburger Icon */}
           <IconButton

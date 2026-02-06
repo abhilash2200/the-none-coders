@@ -95,7 +95,7 @@ const UpdatesForm = () => {
                         placeholder="Full Name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border rounded-none px-3 py-2"
                     />
                     {errors.name && (
                         <p className="text-red-500 text-sm mt-1">{errors.name}</p>
@@ -109,7 +109,7 @@ const UpdatesForm = () => {
                         placeholder="Email Address"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border rounded-none px-3 py-2"
                     />
                     {errors.email && (
                         <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -123,7 +123,7 @@ const UpdatesForm = () => {
                         placeholder="Phone Number"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border rounded-none px-3 py-2"
                     />
                     {errors.phone && (
                         <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
@@ -135,13 +135,16 @@ const UpdatesForm = () => {
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border rounded-none px-3 py-2"
                     >
                         <option value="">Service you’re interested in</option>
-                        <option value="web">Web Development</option>
-                        <option value="app">App Development</option>
-                        <option value="seo">SEO Services</option>
-                        <option value="design">UI/UX Design</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="mobile-apps">Mobile Apps Development</option>
+                        <option value="crm">CRM Development</option>
+                        <option value="erp">ERP Development</option>
+                        <option value="cloud">Cloud Solutions</option>
+                        <option value="ai-ml">AI & ML Application</option>
+                        <option value="other">Other</option>
                     </select>
                     {errors.service && (
                         <p className="text-red-500 text-sm mt-1">{errors.service}</p>
@@ -153,7 +156,7 @@ const UpdatesForm = () => {
                     placeholder="Message"
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full border rounded-none px-3 py-2"
                     rows={4}
                 />
 
@@ -163,6 +166,7 @@ const UpdatesForm = () => {
                     size="lg"
                     loading={submitting}
                     fullWidth
+                    className="rounded-none cursor-pointer"
                 >
                     Submit
                 </Button>

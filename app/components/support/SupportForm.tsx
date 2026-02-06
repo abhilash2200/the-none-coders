@@ -175,10 +175,12 @@ function SupportForm() {
                   Service you’re interested in
                 </option>
                 <option value="web-development">Web Development</option>
-                <option value="mobile-apps">Mobile Apps</option>
-                <option value="ui-ux">UI/UX Design</option>
+                <option value="mobile-apps">Mobile Apps Development</option>
+                <option value="crm">CRM Development</option>
+                <option value="erp">ERP Development</option>
+                {/* <option value="ui-ux">UI/UX Design</option> */}
                 <option value="cloud">Cloud Solutions</option>
-                <option value="ai-ml">AI & Machine Learning</option>
+                <option value="ai-ml">AI & ML Application</option>
                 <option value="other">Other</option>
               </select>
               {errors.services && (
@@ -220,7 +222,7 @@ function SupportForm() {
               size="lg"
               loading={loading}
               fullWidth
-              className="mt-6"
+              className="mt-6 rounded-none cursor-pointer"
             >
               Submit
             </Button>

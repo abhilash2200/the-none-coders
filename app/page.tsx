@@ -78,7 +78,7 @@ export default function Home() {
       }}
     >
       {/* Hero Section */}
-      <section className="py-6 lg:py-30">
+      <section className="py-6 lg:py-36">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-y-4">
             <motion.div
@@ -116,11 +116,20 @@ export default function Home() {
                       Help you build something
                     </p>
                     <ContainerTextFlip
-                      words={["Great.", "World Class.", "Excellent.", "Amazing."]}
+                      words={["Great.", "Excellent.", "Amazing.", "Superb."]}
                       className="text-xl md:text-3xl"
                     />
                   </motion.div>
                 </div>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="text-base md:text-lg mt-3 mb-4 leading-relaxed"
+                  style={{ color: 'var(--color-foreground)' }}
+                >
+                  Help you create some amazing apps and software for the growth of your business. Help your business reach unprecedented heights like never before.
+                </motion.p>
               </div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -133,21 +142,21 @@ export default function Home() {
                   id="mainButton"
                   variant="primary"
                   size="lg"
-                  className="group relative overflow-hidden"
+                  className="group relative overflow-hidden rounded-none cursor-pointer"
                   rightIcon={
                     <motion.svg
                       className="w-4 h-4"
                       viewBox="0 0 24 24"
-                      whileHover={{ rotate: 45 }}
+                      fill="none"
+                      whileHover={{ x: 4 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <circle fill="currentColor" r="11" cy="12" cx="12" />
                       <path
                         strokeLinejoin="round"
                         strokeLinecap="round"
                         strokeWidth="2"
-                        stroke="white"
-                        d="M7.5 16.5L16.5 7.5M16.5 7.5H10.5M16.5 7.5V13.5"
+                        stroke="currentColor"
+                        d="M5 12h14M12 5l7 7-7 7"
                       />
                     </motion.svg>
                   }

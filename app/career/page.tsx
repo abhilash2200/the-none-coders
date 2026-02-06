@@ -1,8 +1,9 @@
 "use client";
 import { useEffect } from "react";
-import CareerView from "../components/career/CareerView";
-import ResponsiveCareerView from "../components/career/ResponsiveCareerView";
-import Image from "next/image";
+import ComingSoon from "../components/career/ComingSoon";
+// import CareerView from "../components/career/CareerView";
+// import ResponsiveCareerView from "../components/career/ResponsiveCareerView";
+// import Image from "next/image";
 import HeadingText from "../components/HeadingText";
 import { useTheme } from "../context/ThemeContext";
 
@@ -17,15 +18,18 @@ function Page() {
       theme === "light" ? "bg-[#FFF] text-[#3A3A3A]" : "bg-[#111] text-white"
     }`}>
       <section className="py-6 lg:py-12">
-        <div className="container mx-auto px-4">
+        {/* <div className="container mx-auto px-4">
           <HeadingText textalign="text-start" heading="CAREER" />
           <p className={`md:text-[20px] text-[18px] ${theme === "light" ? "text-[#3A3A3A]" : "text-gray-200"} mt-3 md:mt-0`}>
           Join us to grow, learn, and shine. At Non Coders, every position counts. Grow your future with passion, purpose, and limitless possibilities together.
           </p>
-        </div>
+        </div> */}
 
-        {/* Desktop View */}
-        <div className={`hidden md:block ${theme === "light" ? "bg-white/90" : "bg-[#111]"} relative`}>
+        {/* Coming Soon Component */}
+        <ComingSoon />
+
+        {/* Desktop View - Commented Out */}
+        {/* <div className={`hidden md:block ${theme === "light" ? "bg-white/90" : "bg-[#111]"} relative`}>
           <CareerView />
           <div className="absolute right-0 bottom-0 -z-[1]">
             <Image
@@ -36,10 +40,10 @@ function Page() {
               className="w-auto"
             />
           </div>
-        </div>
+        </div> */}
 
-        {/* Mobile View */}
-        <div className={`block md:hidden ${theme === "light" ? "bg-white/90" : "bg-[#111]"} relative`}>
+        {/* Mobile View - Commented Out */}
+        {/* <div className={`block md:hidden ${theme === "light" ? "bg-white/90" : "bg-[#111]"} relative`}>
           <ResponsiveCareerView />
           <div className="absolute right-0 bottom-0 -z-[1]">
             <Image
@@ -50,7 +54,7 @@ function Page() {
               className="w-auto"
             />
           </div>
-        </div>
+        </div> */}
       </section>
     </main>
   );
