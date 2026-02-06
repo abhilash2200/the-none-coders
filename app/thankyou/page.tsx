@@ -130,9 +130,7 @@ export default function ThankYouPage() {
           transition={{ delay: 0.7, duration: 0.5 }}
           className="flex justify-center"
         >
-          <Link href="/">
-            <BackButton />
-          </Link>
+          <BackButton />
         </motion.div>
 
         <motion.div

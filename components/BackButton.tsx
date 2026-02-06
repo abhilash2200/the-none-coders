@@ -1,14 +1,16 @@
 import { Tooltip } from "@mui/material";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 function BackButton() {
+    const router = useRouter();
+
     return (
         <div>
             <Tooltip title="Go To Home" placement="top">
                 <Button
-                    asLink
-                    href="/"
+                    onClick={() => router.push("/")}
                     variant="secondary"
                     size="lg"
                     leftIcon={<ArrowLeft className="w-5 h-5" />}

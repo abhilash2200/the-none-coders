@@ -9,15 +9,27 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 type PopupFormProps = {
   open: boolean;
   handleClose: () => void;
 };
 
-export default function SliderPopup({ open, handleClose }: PopupFormProps) {
+export default function SliderPopup(props: PopupFormProps) {
+  return (
+    <Suspense fallback={null}>
+      <SliderPopupContent {...props} />
+    </Suspense>
+  );
+}
+
+function SliderPopupContent({ open, handleClose }: PopupFormProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const utmSource = searchParams.get("utm_source") || "";
+  const url = typeof window !== "undefined" ? window.location.href : "";
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -87,20 +99,61 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
     if (!validate()) return;
 
     setLoading(true);
-    console.log("Form Submitted:", formData);
-    router.push("/thankyou");
-    await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      projectType: "",
-      message: "",
-    });
+    try {
+      const payload = {
+        FullName: formData.name,
+        EmailId: formData.email,
+        MobileNo: formData.phone,
+        Address: "",
+        PostalCode: "",
+        Query: formData.message,
+        EnquirySource: "Website",
+        Remarks: "",
+        EnquiryType: formData.projectType,
+        UTMSource: utmSource || url,
+        AlternateNo: "",
+        Education: "",
+        InstituteName: "",
+        Position_Applied_For: "",
+        CurrentLocation: "",
+        Preferred_Location: "",
+        Technical_Score: "",
+        DataCategory: "Service",
+        InterestedService: formData.projectType,
+        Campaign: "",
+      };
 
-    setLoading(false);
-    handleClose();
+      const response = await fetch("/api/insert-lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      console.log("Form Submitted successfully");
+      router.push("/thankyou");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        projectType: "",
+        message: "",
+      });
+
+      handleClose();
+    } catch (error) {
+      console.error("Submission Error:", error);
+      // Optional: Add a toast notification here
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -156,7 +209,7 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
               placeholder="Phone Number"
               value={formData.phone}
               onChange={handleChange}
-              className={`w-full px-4 py-3 rounded-md border text-sm focus:outline-none focus:ring-1 ${errors.phone
+              className={`w-full px-4 py-3 rounded-none border text-sm focus:outline-none focus:ring-1 ${errors.phone
                 ? "border-red-500 focus:ring-red-500"
                 : "border-gray-300 focus:ring-black"
                 }`}
@@ -176,11 +229,11 @@ export default function SliderPopup({ open, handleClose }: PopupFormProps) {
             >
               <option value="">Service you’re interested in</option>
               <option value="web-development">Web Development</option>
-              <option value="mobile-apps">Mobile Apps Development</option>
-              <option value="crm">CRM Development</option>
-              <option value="erp">ERP Development</option>
-              <option value="cloud">Cloud Solutions</option>
-              <option value="ai-ml">AI & ML Application</option>
+              <option value="mobile-apps-development">Mobile Apps Development</option>
+              <option value="crm-development">CRM Development</option>
+              <option value="erp-development">ERP Development</option>
+              <option value="cloud-solutions">Cloud Solutions</option>
+              <option value="ai-ml-application">AI & ML Application</option>
               <option value="other">Other</option>
             </select>
             {errors.projectType && (

@@ -86,10 +86,10 @@ function Page() {
                                         >
                                             <Phone className="w-5 h-5 hover:text-[#477951]" />
                                             <a
-                                                href="tel:+918250054478"
+                                                href="tel:+917003659978"
                                                 className="md:text-lg text-md hover:underline"
                                             >
-                                                +91 82500 54478
+                                                +91 70036 59978
                                             </a>
                                         </div>
                                         <div

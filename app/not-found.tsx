@@ -33,12 +33,10 @@ export default function NotFoundPage() {
               transition={{ delay: 0.8, duration: 0.6 }}
               className="mt-10"
             >
-              <Link href="/">
-                <BackButton />
-              </Link>
+              <BackButton />
             </motion.div>
           </div>
-          
+
           <div className="w-full md:w-[50%] mt-10 md:mt-0">
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -57,10 +55,10 @@ export default function NotFoundPage() {
             </motion.div>
           </div>
         </div>
-        
+
         {/* Additional decorative elements */}
         <div className="mt-16 text-center">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.8 }}

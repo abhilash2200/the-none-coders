@@ -19,12 +19,12 @@ export default function QuickActionsWithForm() {
     {
       icon: <WhatsAppIcon />,
       name: "WhatsApp",
-      onClick: () => window.open("https://wa.me/1234567890", "_blank"),
+      onClick: () => window.open("https://wa.me/7003659978", "_blank"),
     },
     {
       icon: <CallIcon />,
       name: "Call",
-      onClick: () => window.open("tel:1234567890"),
+      onClick: () => window.open("tel:+917003659978"),
     },
     {
       icon: <MessageIcon />,

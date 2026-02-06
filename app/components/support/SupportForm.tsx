@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { Button } from "@/components/ui/button";
 
@@ -14,8 +15,19 @@ interface FormData {
 }
 
 function SupportForm() {
+  return (
+    <Suspense fallback={null}>
+      <SupportFormContent />
+    </Suspense>
+  );
+}
+
+function SupportFormContent() {
   const { theme } = useTheme();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const utmSource = searchParams.get("utm_source") || "";
+  const url = typeof window !== "undefined" ? window.location.href : "";
 
   const initialState: FormData = {
     name: "",
@@ -59,48 +71,81 @@ function SupportForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
     setLoading(true);
 
-    setTimeout(() => {
-      console.log("Form Submitted:", formData);
+    try {
+      const payload = {
+        FullName: formData.name,
+        EmailId: formData.email,
+        MobileNo: formData.phone,
+        Address: formData.location,
+        PostalCode: "",
+        Query: formData.message,
+        EnquirySource: "Website",
+        Remarks: "",
+        EnquiryType: formData.services,
+        UTMSource: utmSource || url,
+        AlternateNo: "",
+        Education: "",
+        InstituteName: "",
+        Position_Applied_For: "",
+        CurrentLocation: "",
+        Preferred_Location: "",
+        Technical_Score: "",
+        DataCategory: "Service",
+        InterestedService: formData.services,
+        Campaign: "",
+      };
+
+      const response = await fetch("/api/insert-lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      console.log("Form Submitted successfully");
       setFormData(initialState);
-      setLoading(false);
       router.push("/thankyou");
-    }, 2000);
+    } catch (error) {
+      console.error("Submission Error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <main
-      className={`transition-colors duration-300 ${
-        theme === "light" ? "text-[#3A3A3A]" : "text-white"
-      }`}
+      className={`transition-colors duration-300 ${theme === "light" ? "text-[#3A3A3A]" : "text-white"
+        }`}
     >
       <div
-        className={`w-full max-w-[650px] mx-auto ${
-          theme === "light" ? "bg-white" : "bg-[#111]"
-        } md:p-2 shadow-lg`}
+        className={`w-full max-w-[650px] mx-auto ${theme === "light" ? "bg-white" : "bg-[#111]"
+          } md:p-2 shadow-lg`}
       >
         <div className="md:p-6 p-2">
           {/* Header */}
           <div
-            className={`text-center mb-6 ${
-              theme === "light" ? "bg-white" : "bg-[#111]"
-            } p-2`}
+            className={`text-center mb-6 ${theme === "light" ? "bg-white" : "bg-[#111]"
+              } p-2`}
           >
             <h2
-              className={`md:text-2xl text-[20px] mb-1 font-bold ${
-                theme === "light" ? "text-[#222]" : "text-white"
-              }`}
+              className={`md:text-2xl text-[20px] mb-1 font-bold ${theme === "light" ? "text-[#222]" : "text-white"
+                }`}
             >
               Get a Free Consultation
             </h2>
             <p
-              className={`leading-tight ${
-                theme === "light" ? "text-gray-600" : "text-gray-300"
-              }`}
+              className={`leading-tight ${theme === "light" ? "text-gray-600" : "text-gray-300"
+                }`}
             >
               Fill out the form below and our team will get back to you
               shortly.
@@ -137,15 +182,13 @@ function SupportForm() {
                   placeholder={field.placeholder}
                   value={formData[field.name]}
                   onChange={handleChange}
-                  className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${
-                    theme === "light"
+                  className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${theme === "light"
                       ? "bg-white text-black"
                       : "bg-[#1a1a1a] text-white"
-                  } ${
-                    errors[field.name]
+                    } ${errors[field.name]
                       ? "border-red-500 focus:ring-red-500"
                       : "border-gray-300 focus:ring-[#4a90e2]"
-                  }`}
+                    }`}
                 />
                 {errors[field.name] && (
                   <p className="text-red-500 text-xs mt-1">
@@ -161,26 +204,24 @@ function SupportForm() {
                 name="services"
                 value={formData.services}
                 onChange={handleChange}
-                className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${
-                  theme === "light"
+                className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${theme === "light"
                     ? "bg-white text-black"
                     : "bg-[#1a1a1a] text-white"
-                } ${
-                  errors.services
+                  } ${errors.services
                     ? "border-red-500 focus:ring-red-500"
                     : "border-gray-300 focus:ring-[#4a90e2]"
-                }`}
+                  }`}
               >
                 <option value="" disabled>
                   Service you’re interested in
                 </option>
                 <option value="web-development">Web Development</option>
-                <option value="mobile-apps">Mobile Apps Development</option>
-                <option value="crm">CRM Development</option>
-                <option value="erp">ERP Development</option>
+                <option value="mobile-apps-development">Mobile Apps Development</option>
+                <option value="crm-development">CRM Development</option>
+                <option value="erp-development">ERP Development</option>
                 {/* <option value="ui-ux">UI/UX Design</option> */}
-                <option value="cloud">Cloud Solutions</option>
-                <option value="ai-ml">AI & ML Application</option>
+                <option value="cloud-solutions">Cloud Solutions</option>
+                <option value="ai-ml-application">AI & ML Application</option>
                 <option value="other">Other</option>
               </select>
               {errors.services && (
@@ -198,15 +239,13 @@ function SupportForm() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={4}
-                className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${
-                  theme === "light"
+                className={`w-full border px-3 py-2 focus:outline-none focus:ring-1 ${theme === "light"
                     ? "bg-white text-black"
                     : "bg-[#1a1a1a] text-white"
-                } ${
-                  errors.message
+                  } ${errors.message
                     ? "border-red-500 focus:ring-red-500"
                     : "border-gray-300 focus:ring-[#4a90e2]"
-                }`}
+                  }`}
               />
               {errors.message && (
                 <p className="text-red-500 text-xs mt-1">

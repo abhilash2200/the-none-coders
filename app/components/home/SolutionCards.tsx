@@ -32,7 +32,7 @@ const solution: Solution[] = [
     title: "College Management Software",
     img: "/assets/img/solution-3.jpg",
     desc: "College management software is a supporting hand for schools. It handles students, teachers, exams, and records in one place. Less paperwork, more learning, and a happier campus life.",
-    href: "/products/app-development#ott-platforms",
+    href: "/products#college-management-software",
   },
   {
     title: "WEB DEVELOPMENT",
